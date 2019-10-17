@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "万象",
+    "usingComponents": {
+        "custom": "/components/custom/custom"
+    }
+}
