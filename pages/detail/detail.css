@@ -1,0 +1,206 @@
+.detail_container {
+    /* width: 100%; */
+    padding: 43.48rpx 56.16rpx 60.39rpx;
+}
+.detail_title {
+}
+.title_text {
+    font-family: PingFangSC-Medium;
+    font-size: 43.48rpx;
+    color: #000000;
+    letter-spacing: 0;
+    line-height: 64rpx;
+}
+.yc_icon {
+    text-align: center;
+    line-height: 30.8rpx;
+    width: 59.78rpx;
+    height: 30.8rpx;
+    border: 1px solid #afafaf;
+    font-size: 21.74rpx;
+    border-radius: 1px;
+    display: inline-block;
+    position: relative;
+    top: -10rpx;
+    left: 12rpx;
+}
+.anthor_info {
+    margin-top: 24.15rpx;
+    height: 39.86rpx;
+}
+.touxiang {
+    width: 39.86rpx;
+    height: 39.86rpx;
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
+    float: left;
+    background: #000000;
+    border-radius: 50%;
+}
+.anthor_name {
+    font-family: PingFangSC-Regular;
+    font-size: 21.74rpx;
+    color: #222222;
+    float: left;
+    height: 40rpx;
+    line-height: 40rpx;
+    margin-left: 14.49rpx;
+}
+.anthor_biaoqian {
+    margin-left: 14.49rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 21.74rpx;
+    color: #999999;
+    float: left;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+.anthor_zhuanzai {
+    font-family: PingFangSC-Regular;
+    font-size: 21.74rpx;
+    color: #999999;
+    letter-spacing: 0;
+    text-align: right;
+    height: 40rpx;
+    line-height: 40rpx;
+    float: right;
+}
+.anthor_time {
+    font-family: PingFangSC-Regular;
+    font-size: 21.74rpx;
+    color: #999999;
+    letter-spacing: 0;
+    text-align: right;
+    height: 40rpx;
+    line-height: 40rpx;
+    float: right;
+}
+.hexin_guandian {
+    margin-top: 30.19rpx;
+    /* width: 100%; */
+    min-height: 120.77rpx;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 1.21rpx;
+    border-top: 2px solid rgba(0, 0, 0, 0.6);
+    padding: 18.12rpx 9.66rpx 18.12rpx 18.12rpx;
+}
+.hexin_guandian_title {
+    font-family: PingFangSC-Medium;
+    font-size: 28.99rpx;
+    color: #000000;
+    margin-bottom: 7.25rpx;
+    /* letter-spacing: 0; */
+    /* line-height: 48px; */
+}
+.hexin_guandian_detail {
+    font-family: PingFangSC-Regular;
+    font-size: 28.99rpx;
+    color: #666666;
+    letter-spacing: 0;
+    /* text-align: justify; */
+    line-height: 43.48rpx;
+}
+.two_lv_title {
+    width: 100%;
+    height: 96.62rpx;
+    /* border: 1px solid rgba(0, 0, 0, 0.2); */
+    position: relative;
+    z-index: 1;
+    margin: 65.22rpx 0 21.74rpx 0;
+}
+.two_lv_title_bg {
+    width: 276.57rpx;
+    height: 63.41rpx;
+    background: #979797;
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #979797;
+}
+
+.two_lv_title_text {
+    width: 276.57rpx;
+    height: 63.41rpx;
+    background: #ffffff;
+    border: 1px solid #979797;
+    text-align: center;
+    line-height: 63.41rpx;
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    top: 50%;
+    transform: translate(-47%, -42%);
+    font-size: 32.61rpx;
+    color: #333333;
+    /* text-align: justify; */
+}
+.p_text {
+    font-family: PingFangSC-Regular;
+    font-size: 28.99rpx;
+    color: #333333;
+    /* text-align: justify; */
+    line-height: 54.35rpx;
+    margin-bottom: 28.99rpx;
+}
+.join_img {
+    width: 637.68rpx;
+    height: 346.62rpx;
+    margin: 0 0 21.74rpx;
+}
+.tips_text {
+    width: 623.18rpx;
+    height: 66.43rpx;
+    border-left: 2px solid #999999;
+    font-family: PingFangSC-Regular;
+    font-size: 28.99rpx;
+    color: #999999;
+    /* text-align: justify; */
+    line-height: 32.61rpx;
+    padding-left: 14.49rpx;
+}
+.bottom_sm {
+    font-family: PingFangSC-Regular;
+    font-size: 21.74rpx;
+    color: #999999;
+    text-align: justify;
+    line-height: 21.74rpx;
+}
+.m_b_24 {
+    margin-bottom: 14.49rpx;
+}
+.jubao_btn {
+    color: #3777d6;
+    margin-left: 14.49rpx;
+}
+
+.good_btn {
+    width: 140.1rpx;
+    height: 140.1rpx;
+    background: #ffffff;
+    box-shadow: 0 2px 18px 0 rgba(0, 0, 0, 0.07);
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-top: 55.56rpx;
+    overflow: auto;
+}
+.zan_logo {
+    width: 43.48rpx;
+    height: 43.48rpx;
+    margin: 39.25rpx auto 10.49rpx;
+}
+.zan_logo_img {
+    width: 43.48rpx;
+    height: 43.48rpx;
+}
+.zan_num {
+    /* width: 43.48rpx;
+    height: 43.48rpx; */
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    font-family: PingFangSC-Regular;
+    font-size: 25.36rpx;
+    color: rgba(0, 0, 0, 0.3);
+    line-height: 25.36rpx;
+}
