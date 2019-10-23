@@ -1,46 +1,8 @@
 <!-- index.swan -->
 <view class="container">
-	<!-- <view class="article_item">
-		<view class="article_img">
-			<image src="./../../images/image.png"></image>
-		</view>
-		<text class="article_title">中国的科学传播，真的达到效果了吗</text>
-		<view class="info_detail">
-			<view class="info_detail_left flex">
-				<view class="anthor_logo">
-					<image src="https://pic1.58cdn.com.cn/p1/n_v1bkuyfvjvsxlfppwjc5mq.png"></image>
-				</view>
-				<text class="info_detail_text">翠翠含冰</text>
-				<text class="info_detail_text m_20 color_9">/</text>
-				<text class="info_detail_text color_9">科技界的达人</text>
-			</view>
-			<view class="info_detail_right flex">
-				<text class="info_detail_text color_9">1204 阅读</text>
-				<text class="info_detail_text m_20 color_9">/</text>
-				<text class="info_detail_text color_9">12赞</text>
-			</view>
-		</view>
-	</view> -->
-
-	<!-- <custom></custom>
-    <custom></custom>
-    <custom></custom>
-    <custom></custom>
-    <custom></custom> -->
-
-	<view class="anthor_list">
-		<view class="anthor_list_top">
-			<view class="anthor_list_top_line"></view>
-			<view class="anthor_list_top_title">作者推荐</view>
-		</view>
-		<scroll-view scroll-x class="scroll-view" bind:scrolltoupper="toLeft" bind:scrolltolower="toRight"
-			scroll-left="{= scrollLeft =}" upper-threshold="1" lower-threshold="1" bind:scroll="scroll">
-			<view id="four" class="color-a row-view">A</view>
-			<view id="five" class="color-b row-view">B</view>
-			<view id="six" class="color-c row-view">C</view>
-		</scroll-view>
-
-
-	</view>
-
+	<custom></custom>
+	<anthor></anthor>
+	<custom></custom>
+	<custom></custom>
+	<custom></custom>
 </view>

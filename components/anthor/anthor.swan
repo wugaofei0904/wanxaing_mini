@@ -1,0 +1,43 @@
+	<view class="anthor_list">
+		<view class="anthor_list_top">
+			<view class="anthor_list_top_line"></view>
+			<view class="anthor_list_top_title">作者推荐</view>
+		</view>
+		<scroll-view scroll-x="true" class="scroll-view" bind:scrolltoupper="toLeft" bind:scrolltolower="toRight"
+			 upper-threshold="1" lower-threshold="1" bind:scroll="scroll">
+			<view id="one" class="row-view color-a anthor_list_item">
+				<view class="anthor_img">
+					<image class="anthor_logo" src="./../../images/touxaing.png"></image>
+                    <image class="v_logo" src="./../../images/v_logo.png"></image>
+				</view>
+				<view class="anthor_name">古月紫苑</view>
+				<text class="anthor_info">美国加州摄影中斯特呀导师</text>
+			</view>
+			<view id="two" class="row-view color-a  anthor_list_item">
+				<view class="anthor_img">
+					<image class="anthor_logo" src="./../../images/touxaing.png"></image>
+                    <image class="v_logo" src="./../../images/v_logo.png"></image>
+				</view>
+				<view class="anthor_name">古月紫苑</view>
+				<text class="anthor_info">美国加州摄影中斯特呀导师</text>
+			</view>
+			<view id="three" class="row-view color-a anthor_list_item">
+				<view class="anthor_img">
+					<image class="anthor_logo" src="./../../images/touxaing.png"></image>
+                    <image class="v_logo" src="./../../images/v_logo.png"></image>
+				</view>
+				<view class="anthor_name">古月紫苑</view>
+				<text class="anthor_info">美国加州摄影中斯特呀导师</text>
+			</view>      
+            <view id="four" class="row-view color-a anthor_list_item">
+				<view class="anthor_img">
+					<image class="anthor_logo" src="./../../images/touxaing.png"></image>
+                    <image class="v_logo" src="./../../images/v_logo.png"></image>
+				</view>
+				<view class="anthor_name">古月紫苑</view>
+				<text class="anthor_info">美国加州摄影中斯特呀导师</text>
+			</view>      
+		</scroll-view>
+
+        
+	</view>
