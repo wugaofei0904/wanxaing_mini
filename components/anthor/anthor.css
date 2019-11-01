@@ -1,0 +1,80 @@
+.anthor_list {
+    padding-left: 56.16rpx;
+    margin-top: 48.31rpx;
+}
+.anthor_list_top {
+    height: 28.99rpx;
+    display: flex;
+    align-items: center;
+    font-family: PingFangSC-Semibold;
+    font-size: 28.99rpx;
+    color: #000000;
+    line-height: 28.99rpx;
+    margin-bottom: 24.15rpx;
+}
+.anthor_list_top_line {
+    width: 5.43rpx;
+    height: 28.99rpx;
+    background: #000000;
+    margin-right: 7.25rpx;
+}
+.anthor_list_contianer {
+    /* width: calc(100%); */
+    /* display: flex; */
+    /* height: 307.97rpx; */
+}
+
+.scroll-view {
+    height: 312.97rpx;
+    white-space: nowrap;
+    padding: 0 0.25rem;
+}
+
+.row-view {
+    display: inline-block !important;
+    width: 197.09rpx;
+    padding: 0 30.8rpx;
+    height: 307.97rpx;
+    /* line-height: 1.66rem; */
+    margin-right: 14.49rpx;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1rpx 2rpx 2rpx rgba(0, 0, 0, 0.15);
+    /* box-shadow: 0 0 6rpx 6rpx rgba(0,0,0,0.15); */
+}
+.anthor_list_item {
+    overflow: hidden;
+    text-align: center;
+}
+.anthor_img {
+    width: 126.81rpx;
+    height: 126.81rpx;
+    overflow: hidden;
+    margin: 32.61rpx auto 0;
+    position: relative;
+}
+.anthor_img .v_logo{
+    width: 25.36rpx;
+    height: 25.36rpx;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.anthor_img .anthor_logo{
+    width: 100%;
+    height: 100%;
+}
+.anthor_name {
+    font-family: PingFangSC-Regular;
+    font-size: 25.36rpx;
+    color: #000000;
+    line-height: 25.36rpx;
+    margin: 21.74rpx 0 10.87rpx 0;
+}
+.anthor_info {
+    font-family: PingFangSC-Regular;
+    font-size: 21.74rpx;
+    color: #999999;
+    text-align: center;
+     white-space: pre-wrap;
+}

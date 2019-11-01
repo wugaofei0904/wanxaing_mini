@@ -1,4 +1,4 @@
-<view class="article_item">
+<view bindtap="jumpDetail" class="article_item">
 	<view class="article_img">
 		<image src="https://img.58cdn.com.cn/escstatic/fecar/pmuse/test/image.png"></image>
 	</view>

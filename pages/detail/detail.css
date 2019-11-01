@@ -204,3 +204,63 @@
     color: rgba(0, 0, 0, 0.3);
     line-height: 25.36rpx;
 }
+
+/* ---- */
+
+.container_node {
+    /* padding-left: 56.16rpx; */
+    margin-top: 48.31rpx;
+}
+.container_node_top {
+    height: 28.99rpx;
+    display: flex;
+    align-items: center;
+    font-family: PingFangSC-Semibold;
+    font-size: 28.99rpx;
+    color: #000000;
+    line-height: 28.99rpx;
+    margin-bottom: 24.15rpx;
+}
+.container_node_top_line {
+    width: 5.43rpx;
+    height: 28.99rpx;
+    background: #000000;
+    margin-right: 7.25rpx;
+}
+.anthor_msg {
+    display: flex;
+}
+.anthor_msg_logo {
+    width: 83.33rpx;
+    height: 83.33rpx;
+    position: relative;
+}
+.anthor_msg_logo .anthor_logo {
+    width: 83.33rpx;
+    height: 83.33rpx;
+}
+.anthor_msg_info{
+    margin-left: 18.12rpx;
+}
+.v_logo{
+    width: 21.74rpx;
+    height: 21.74rpx;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.anthor_msg_name {
+    font-family: PingFangSC-Regular;
+    font-size: 27.17rpx;
+    color: #000000;
+    /* text-align: justify; */
+    line-height: 27.17rpx;
+    margin: 9.66rpx 0 8.45rpx;
+}
+
+.anthor_msg_bq {
+    font-family: PingFangSC-Regular;
+    font-size: 23.55rpx;
+    color: #9c9c9c;
+    text-align: justify;
+}

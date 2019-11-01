@@ -11,6 +11,17 @@ Component({
         age: 1
     },
     methods: {
-        tap: function(){}
+        tap: function () { },
+        jumpDetail: function () {
+            swan.navigateTo({
+                url: '/pages/detail/detail',
+                success: res => {
+                    console.log('navigateTo success')
+                },
+                fail: err => {
+                    console.log('navigateTo fail')
+                }
+            });
+        }
     }
 });
