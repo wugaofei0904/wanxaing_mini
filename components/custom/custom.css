@@ -1,6 +1,8 @@
 .article_item {
     width: 100%;
-    padding: 43.48rpx 56.16rpx 0;
+    padding: 43.48rpx 0 0;
+
+    /* padding: 43.48rpx 56.16rpx 0; */
 }
 .article_item image {
     width: 637.68rpx;

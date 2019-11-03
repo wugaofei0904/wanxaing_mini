@@ -1,21 +1,21 @@
-<view class="article_item">
+<view data-id="{{dataitem.id}}" bindtap="jumpDetail" class="article_item">
 	<view class="article_img">
-		<image src="https://img.58cdn.com.cn/escstatic/fecar/pmuse/test/image.png"></image>
+		<image src="{{dataitem.picUrl}}"></image>
 	</view>
 	<text class="article_title">中国的科学传播，真的达到效果了吗</text>
 	<view class="info_detail">
 		<view class="info_detail_left flex">
 			<view class="anthor_logo">
-				<image src="https://pic1.58cdn.com.cn/p1/n_v1bkuyfvjvsxlfppwjc5mq.png"></image>
+				<image src="{{dataitem.authorName}}"></image>
 			</view>
-			<text class="info_detail_text">翠翠含冰</text>
+			<text class="info_detail_text">{{dataitem.authorName}}</text>
 			<text class="info_detail_text m_20 color_9">/</text>
 			<text class="info_detail_text color_9">科技界的达人</text>
 		</view>
 		<view class="info_detail_right flex">
-			<text class="info_detail_text color_9">1204 阅读</text>
+			<text class="info_detail_text color_9">{{dataitem.readNum}} 阅读</text>
 			<text class="info_detail_text m_20 color_9">/</text>
-			<text class="info_detail_text color_9">12赞</text>
+			<text class="info_detail_text color_9">{{dataitem.likeNum}}赞</text>
 		</view>
 	</view>
 </view>

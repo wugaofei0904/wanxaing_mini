@@ -1,8 +1,19 @@
 <!-- index.swan -->
 <view class="container">
-	<custom></custom>
-	<anthor></anthor>
-	<custom></custom>
-	<custom></custom>
-	<custom></custom>
+	<!-- <view class="style_pad">
+		<custom></custom>
+	</view> -->
+
+	<!-- <anthor></anthor> -->
+
+	<view class="style_pad">
+		<view s-for="listData" s-for-item="item">
+			<custom dataitem='{{item}}' ></custom>
+		</view>
+		<!-- <custom></custom>
+		<custom></custom>
+		<custom></custom>
+		<custom></custom>
+		<custom></custom> -->
+	</view>
 </view>
