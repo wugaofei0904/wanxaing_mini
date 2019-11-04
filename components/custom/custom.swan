@@ -2,7 +2,7 @@
 	<view class="article_img">
 		<image src="{{dataitem.picUrl}}"></image>
 	</view>
-	<text class="article_title">中国的科学传播，真的达到效果了吗</text>
+	<text class="article_title">{{dataitem.title}}</text>
 	<view class="info_detail">
 		<view class="info_detail_left flex">
 			<view class="anthor_logo">

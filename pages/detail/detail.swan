@@ -1,104 +1,107 @@
 <view class="detail_container">
 	<!-- 标题 -->
 	<view class="detail_title">
-		<text class="title_text">科学杂志 全面揭露新视野号冥王星新发现</text>
-		<view class="yc_icon">原创</view>
+		<text class="title_text">{{detailData.title}}</text>
+		<view s-if="{{detailData.isOwn == 1}}" class="yc_icon">原创</view>
 	</view>
 	<!-- 作者信息 -->
 	<view class="anthor_info">
 		<view class="touxiang">
 			<!-- <image src=""></image> -->
 		</view>
-		<view class="anthor_name">脆脆寒冰</view>
-		<view class="anthor_biaoqian">/ 科技节的达人</view>
+		<view class="anthor_name">{{detailData.authorName}}</view>
+		<view class="anthor_biaoqian">/ {{detailData.tags}}</view>
 		<view class="anthor_time">07月31日</view>
 		<view class="anthor_zhuanzai">转载自大鱼小子·</view>
 	</view>
 	<!-- 核心观点 -->
-	<view class="hexin_guandian">
+	<view s-if="{{detailData.corePoint}}" class="hexin_guandian">
 		<view class="hexin_guandian_title">观点</view>
-		<text
-			class="hexin_guandian_detail">经过长达9年半、近48亿千米的太空旅行，新视野号探测器于2015年7月14日飞速掠过冥王星。新视野号上的7台科学仪器记录了大约50GB的数据</text>
+		<text class="hexin_guandian_detail">{{detailData.corePoint}}</text>
 	</view>
+
+
+	<block s-if="{{renderedByHtml}}">
+		<rich-text nodes="{{textBody}}" selectable="true"></rich-text>
+	</block>
+
 	<!-- 二级标题 -->
-	<view class="two_lv_title">
+	<!-- <view class="two_lv_title">
 		<view class="two_lv_title_bg"></view>
 		<view class="two_lv_title_text">新视野号探测器</view>
-	</view>
+	</view> -->
 	<!-- 正文段落 -->
-	<view class="p_text">
+	<!-- <view class="p_text">
 		一年前，冥王星不过是美国航空航天局（NASA）新视野号探测器（New Horizons）相机里拍到的一个明亮光点，看上去与克莱德·汤博（Clyde Tombaugh）然而本周，在《科学》（Science）
-	</view>
+	</view> -->
 	<!-- 正文插图 -->
-	<image class="join_img" src="./../../images/people-img.png"></image>
+	<!-- <image class="join_img" src="./../../images/people-img.png"></image> -->
 	<!-- 正文提示 -->
-	<view class="tips_text">
+	<!-- <view class="tips_text">
 		自1930年发现这颗当时所谓的第九大行星以来它在望远镜里一贯的模样并没有太大的不同。
-	</view>
+	</view> -->
 
 	<!-- 二级标题 -->
-	<view class="two_lv_title">
+	<!-- <view class="two_lv_title">
 		<view class="two_lv_title_bg"></view>
 		<view class="two_lv_title_text">第九大行星</view>
-	</view>
+	</view> -->
 
 	<!-- 正文段落 -->
-	<view class="p_text">
+	<!-- <view class="p_text">
 		期刊上，新视野号科学家首次发表了一组细致全面的科学论文，详细描述了去年夏天新视野号飞掠冥王星所取得的成果。
-	</view>
+	</view> -->
 	<!-- 正文段落 -->
-	<view class="p_text">
+	<!-- <view class="p_text">
 		来自美国西南研究院的新视野号首席研究员艾伦·斯特恩（AlanStern）说，“这5篇细致入微的论文彻底改变了我们对于冥王星的认识——揭示了这颗前‘第九大行星’的真实面貌，有着多样和活跃的地质活动，奇特的表面化学构成，复杂的大气层，与太阳谜一般的相互作用，还有迷人的小卫星系统。”
-	</view>
+</view> -->
 
-	<!-- 底部声明 -->
-	<view class="bottom_sm">
-		<view class="m_b_24">本文系作者授权万象发表未经许可，不得转载</view>
-		<view>本文仅代表作者观点，不代表万象立场 <text class="jubao_btn">举报</text></view>
-	</view>
+<!-- 底部声明 -->
+<view class="bottom_sm">
+	<view class="m_b_24">本文系作者授权万象发表未经许可，不得转载</view>
+	<view>本文仅代表作者观点，不代表万象立场 <text class="jubao_btn">举报</text></view>
+</view>
 
-	<!-- 赞 -->
-	<view bindtap="likeAdd" class="good_btn">
-		<view class="zan_logo">
-			<image class="zan_logo_img" src="./../../images/zan_logo.png"></image>
+<!-- 赞 -->
+<view bindtap="likeAdd" class="good_btn">
+	<view class="zan_logo">
+		<image class="zan_logo_img" src="./../../images/zan_logo.png"></image>
+	</view>
+	<view class="zan_num">{{likeNum}}</view>
+</view>
+
+<!-- 作者 -->
+<view class="container_node">
+	<view class="container_node_top">
+		<view class="container_node_top_line"></view>
+		<view class="container_node_title">作者</view>
+	</view>
+	<view class="anthor_msg">
+		<view class="anthor_msg_logo">
+			<image class="anthor_logo" src="./../../images/touxaing.png"></image>
+			<image class="v_logo" src="./../../images/v_logo.png"></image>
 		</view>
-		<view class="zan_num">1244</view>
-	</view>
-
-	<!-- 作者 -->
-	<view class="container_node">
-		<view class="container_node_top">
-			<view class="container_node_top_line"></view>
-			<view class="container_node_title">作者</view>
-		</view>
-		<view class="anthor_msg">
-			<view class="anthor_msg_logo">
-				<image class="anthor_logo" src="./../../images/touxaing.png"></image>
-                <image class="v_logo" src="./../../images/v_logo.png"></image>
-			</view>
-			<view class="anthor_msg_info">
-				<view class="anthor_msg_name">翠翠含冰</view>
-				<view class="anthor_msg_bq">知名科技界的自媒体达人</view>
-			</view>
+		<view class="anthor_msg_info">
+			<view class="anthor_msg_name">{{detailData.authorName}}</view>
+			<view class="anthor_msg_bq">知名科技界的自媒体达人</view>
 		</view>
 	</view>
+</view>
 
-	<!-- 相关推荐 -->
-	<view class="container_node">
-		<view class="container_node_top">
-			<view class="container_node_top_line"></view>
-			<view class="container_node_title">相关推荐</view>
-		</view>
-		<custom></custom>
-		<custom></custom>
-		<custom></custom>
-		<custom></custom>
+<!-- 相关推荐 -->
+<view s-for="{{tuijianList.length}}" class="container_node">
+	<view class="container_node_top">
+		<view class="container_node_top_line"></view>
+		<view class="container_node_title">相关推荐</view>
 	</view>
 
+	<view s-for="{{tuijianList}}" s-for-item="item">
+		<custom dataitem='{{item}}'></custom>
+	</view>
 
-
-
-
-
+	<!-- <custom></custom>
+		<custom></custom>
+		<custom></custom> -->
+</view>
 
 </view>
