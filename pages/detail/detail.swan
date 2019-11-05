@@ -1,3 +1,5 @@
+<import src="../../bdParse/bdParse/bdParse.swan" />
+
 <view class="detail_container">
 	<!-- 标题 -->
 	<view class="detail_title">
@@ -21,9 +23,11 @@
 	</view>
 
 
-	<block s-if="{{renderedByHtml}}">
+	<template is="bdParse" data="{{ {bdParseData:article.nodes} }}" />
+
+	<!-- <block s-if="{{renderedByHtml}}">
 		<rich-text nodes="{{textBody}}" selectable="true"></rich-text>
-	</block>
+	</block> -->
 
 	<!-- 二级标题 -->
 	<!-- <view class="two_lv_title">
@@ -56,52 +60,52 @@
 		来自美国西南研究院的新视野号首席研究员艾伦·斯特恩（AlanStern）说，“这5篇细致入微的论文彻底改变了我们对于冥王星的认识——揭示了这颗前‘第九大行星’的真实面貌，有着多样和活跃的地质活动，奇特的表面化学构成，复杂的大气层，与太阳谜一般的相互作用，还有迷人的小卫星系统。”
 </view> -->
 
-<!-- 底部声明 -->
-<view class="bottom_sm">
-	<view class="m_b_24">本文系作者授权万象发表未经许可，不得转载</view>
-	<view>本文仅代表作者观点，不代表万象立场 <text class="jubao_btn">举报</text></view>
-</view>
-
-<!-- 赞 -->
-<view bindtap="likeAdd" class="good_btn">
-	<view class="zan_logo">
-		<image class="zan_logo_img" src="./../../images/zan_logo.png"></image>
+	<!-- 底部声明 -->
+	<view class="bottom_sm">
+		<view class="m_b_24">本文系作者授权万象发表未经许可，不得转载</view>
+		<view>本文仅代表作者观点，不代表万象立场 <text class="jubao_btn">举报</text></view>
 	</view>
-	<view class="zan_num">{{likeNum}}</view>
-</view>
 
-<!-- 作者 -->
-<view class="container_node">
-	<view class="container_node_top">
-		<view class="container_node_top_line"></view>
-		<view class="container_node_title">作者</view>
-	</view>
-	<view class="anthor_msg">
-		<view class="anthor_msg_logo">
-			<image class="anthor_logo" src="./../../images/touxaing.png"></image>
-			<image class="v_logo" src="./../../images/v_logo.png"></image>
+	<!-- 赞 -->
+	<view bindtap="likeAdd" class="good_btn">
+		<view class="zan_logo">
+			<image class="zan_logo_img" src="./../../images/zan_logo.png"></image>
 		</view>
-		<view class="anthor_msg_info">
-			<view class="anthor_msg_name">{{detailData.authorName}}</view>
-			<view class="anthor_msg_bq">知名科技界的自媒体达人</view>
+		<view class="zan_num">{{likeNum}}</view>
+	</view>
+
+	<!-- 作者 -->
+	<view class="container_node">
+		<view class="container_node_top">
+			<view class="container_node_top_line"></view>
+			<view class="container_node_title">作者</view>
+		</view>
+		<view class="anthor_msg">
+			<view class="anthor_msg_logo">
+				<image class="anthor_logo" src="./../../images/touxaing.png"></image>
+				<image class="v_logo" src="./../../images/v_logo.png"></image>
+			</view>
+			<view class="anthor_msg_info">
+				<view class="anthor_msg_name">{{detailData.authorName}}</view>
+				<view class="anthor_msg_bq">知名科技界的自媒体达人</view>
+			</view>
 		</view>
 	</view>
-</view>
 
-<!-- 相关推荐 -->
-<view s-for="{{tuijianList.length}}" class="container_node">
-	<view class="container_node_top">
-		<view class="container_node_top_line"></view>
-		<view class="container_node_title">相关推荐</view>
-	</view>
+	<!-- 相关推荐 -->
+	<view s-for="{{tuijianList.length}}" class="container_node">
+		<view class="container_node_top">
+			<view class="container_node_top_line"></view>
+			<view class="container_node_title">相关推荐</view>
+		</view>
 
-	<view s-for="{{tuijianList}}" s-for-item="item">
-		<custom dataitem='{{item}}'></custom>
-	</view>
+		<view s-for="{{tuijianList}}" s-for-item="item">
+			<custom dataitem='{{item}}'></custom>
+		</view>
 
-	<!-- <custom></custom>
+		<!-- <custom></custom>
 		<custom></custom>
 		<custom></custom> -->
-</view>
+	</view>
 
 </view>

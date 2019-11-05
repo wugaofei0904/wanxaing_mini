@@ -1,3 +1,4 @@
+var bdParse = require('../../bdParse/bdParse/bdParse.js');
 Page({
     data: {
         detailData: {},
@@ -118,14 +119,16 @@ Page({
                 'content-type': 'application/json'
             },
             success: res => {
-                console.log(res.data.data);
+            //    debugger
+                console.log( res.data.data.body.replace(/\<img/gi, '<img style="max-width:250px;height:auto" '));
                 if (res.data.success) {
                     this.setData({
                         detailData: res.data.data,
                         likeNum: res.data.data.likeNum,
-                        textBody: res.data.data.body,
-                        renderedByHtml:true
+                        // textBody: res.data.data.body.replace(/\<img/gi, '<img style="max-width:250px!important;height:auto" width="200" height="150" '),
+                        // renderedByHtml:true
                     }, () => {
+                        _this.setData({ content:bdParse.bdParse('article', 'html', res.data.data.body, _this, 5), })
                         _this.getTuijianList(res.data.data.authorName);
                     })
 

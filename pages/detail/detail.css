@@ -1,8 +1,18 @@
+
+@import "../../bdParse/bdParse/bdParse.css";
 .detail_container {
     /* width: 100%; */
     padding: 43.48rpx 56.16rpx 60.39rpx;
 }
 .detail_title {
+}
+.rich-img {
+    width: 100%;
+    height: auto;
+}
+.bdParse-img{
+     width: 100%!important;
+    height: auto;
 }
 .title_text {
     font-family: PingFangSC-Medium;
@@ -239,10 +249,10 @@
     width: 83.33rpx;
     height: 83.33rpx;
 }
-.anthor_msg_info{
+.anthor_msg_info {
     margin-left: 18.12rpx;
 }
-.v_logo{
+.v_logo {
     width: 21.74rpx;
     height: 21.74rpx;
     position: absolute;
