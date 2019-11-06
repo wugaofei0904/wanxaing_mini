@@ -1,1 +1,1 @@
-{"appid":"17611433","preview":{"packageId":427545}}
+{"appid":"17611433","compilation-args":{"options":[{"extra":{"compileArgs":"--module cmd","ext":{},"index":"pages/detail/detail","query":"","scene":{}},"id":0,"text":"详情"},{"extra":{"compileArgs":"--module cmd","ext":{},"index":"pages/test/test","query":"","scene":{}},"id":1,"text":"测试"}],"selected":0},"host":"baiduboxapp","preview":{"packageId":427644},"setting":{"urlCheck":false},"swan":{"baiduboxapp":{"extensionJsVersion":"1.5.4","swanJsVersion":"3.105.21"}}}
