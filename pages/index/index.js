@@ -4,17 +4,18 @@ Page({
         listData: []
     },
     onLoad() {
-        console.log(123)
+        let that = this;
         swan.request({
-            url: 'http://open.suwenyj.xyz:8080/article/list-page?pageSize=15&pageNum=1&status=1', // 仅为示例，并非真实的接口地址
+            url: 'http://pub.suwenyj.xyz/open/article/list-page?pageSize=15&pageNum=1&status=1', // 仅为示例，并非真实的接口地址
             header: {
                 'content-type': 'application/json'
             },
-            success: res => {
-                // console.log(res.data);
+            success: res => {            
                 if (res.data.success) {
                     this.setData({
                         listData: res.data.data
+                    },()=>{
+                        that.removeSkeleton()
                     })
                 } else {
                     swan.showToast({
@@ -33,6 +34,5 @@ Page({
                 console.log('错误信息：' + err.errMsg);
             }
         });
-
     }
 });

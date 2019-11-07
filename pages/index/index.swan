@@ -10,10 +10,5 @@
 		<view s-for="listData" s-for-item="item">
 			<custom dataitem='{{item}}' ></custom>
 		</view>
-		<!-- <custom></custom>
-		<custom></custom>
-		<custom></custom>
-		<custom></custom>
-		<custom></custom> -->
 	</view>
 </view>

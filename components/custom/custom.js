@@ -9,7 +9,8 @@ Component({
 
                 console.log(newVal)
             }
-        }
+        },
+        noMargin: false
     },
     data: {
         age: 1

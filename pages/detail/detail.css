@@ -1,8 +1,17 @@
+@import "../../bdParse/bdParse/bdParse.css";
 .detail_container {
     /* width: 100%; */
-    padding: 43.48rpx 56.16rpx 60.39rpx;
+    padding: 43.48rpx 50.16rpx 60.39rpx;
 }
 .detail_title {
+}
+.rich-img {
+    width: 100%;
+    height: auto;
+}
+.bdParse-img {
+    width: 100% !important;
+    height: auto;
 }
 .title_text {
     font-family: PingFangSC-Medium;
@@ -10,15 +19,16 @@
     color: #000000;
     letter-spacing: 0;
     line-height: 64rpx;
+    font-weight: 600;
 }
 .yc_icon {
     text-align: center;
     line-height: 30.8rpx;
     width: 59.78rpx;
     height: 30.8rpx;
-    border: 1px solid #afafaf;
+    border: 1px solid rgba(0, 0, 0, 0.3);
     font-size: 21.74rpx;
-    border-radius: 1px;
+    border-radius: 2px;
     display: inline-block;
     position: relative;
     top: -10rpx;
@@ -27,6 +37,7 @@
 .anthor_info {
     margin-top: 24.15rpx;
     height: 39.86rpx;
+    margin-bottom: 24.15rpx;
 }
 .touxiang {
     width: 39.86rpx;
@@ -35,7 +46,20 @@
     float: left;
     background: #000000;
     border-radius: 50%;
+    /* overflow: hidden; */
+    position: relative;
 }
+.touxiang .touxiang {
+    width: 100%;
+    height: 100%;
+}
+.touxiang .v_logo {
+    width: 14.49rpx;
+    height: 14.49rpx;
+    right: -2rpx;
+    bottom: -2rpx;
+}
+
 .anthor_name {
     font-family: PingFangSC-Regular;
     font-size: 21.74rpx;
@@ -77,17 +101,22 @@
 .hexin_guandian {
     margin-top: 30.19rpx;
     /* width: 100%; */
-    min-height: 120.77rpx;
+    /* min-height: 120.77rpx; */
     border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 1.21rpx;
-    border-top: 2px solid rgba(0, 0, 0, 0.6);
+    border-radius:0 0 4.42rpx 4.42rpx;
+    border-top: 3px solid rgba(0, 0, 0, 1);
     padding: 18.12rpx 9.66rpx 18.12rpx 18.12rpx;
+    margin-bottom: 72.46rpx;
+}
+.container_node_title{
+    font-weight: 600;
 }
 .hexin_guandian_title {
     font-family: PingFangSC-Medium;
     font-size: 28.99rpx;
     color: #000000;
     margin-bottom: 7.25rpx;
+    font-weight: 600;
     /* letter-spacing: 0; */
     /* line-height: 48px; */
 }
@@ -165,6 +194,7 @@
     color: #999999;
     text-align: justify;
     line-height: 21.74rpx;
+    margin-top: 28.99rpx;
 }
 .m_b_24 {
     margin-bottom: 14.49rpx;
@@ -193,6 +223,14 @@
     width: 43.48rpx;
     height: 43.48rpx;
 }
+.author_msg {
+    display: inline-block;
+    /* flex: 1; */
+    /* width: 362.32rpx; */
+    height: 100%;
+    /* background: #000000; */
+    overflow: hidden;
+}
 .zan_num {
     /* width: 43.48rpx;
     height: 43.48rpx; */
@@ -203,6 +241,9 @@
     font-size: 25.36rpx;
     color: rgba(0, 0, 0, 0.3);
     line-height: 25.36rpx;
+}
+.zan_num.liked {
+    color: #333333;
 }
 
 /* ---- */
@@ -235,14 +276,21 @@
     height: 83.33rpx;
     position: relative;
 }
+.line {
+    width: 638.29rpx;
+    height: 0.6rpx;
+    background: #dfdfdf;
+    margin-top: 43.48rpx;
+}
 .anthor_msg_logo .anthor_logo {
     width: 83.33rpx;
     height: 83.33rpx;
+    border-radius: 50%;
 }
-.anthor_msg_info{
+.anthor_msg_info {
     margin-left: 18.12rpx;
 }
-.v_logo{
+.v_logo {
     width: 21.74rpx;
     height: 21.74rpx;
     position: absolute;

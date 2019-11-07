@@ -1,21 +1,23 @@
-<view data-id="{{dataitem.id}}" bindtap="jumpDetail" class="article_item">
+<view data-id="{{dataitem.id}}" bindtap="jumpDetail" class="article_item {{noMargin ? 'noMargin :''}}">
 	<view class="article_img">
 		<image src="{{dataitem.picUrl}}"></image>
 	</view>
-	<text class="article_title">中国的科学传播，真的达到效果了吗</text>
+	<text class="article_title">{{dataitem.title}}</text>
 	<view class="info_detail">
 		<view class="info_detail_left flex">
+            <view class="v_logo"></view>
 			<view class="anthor_logo">
-				<image src="{{dataitem.authorName}}"></image>
+				<image src="{{dataitem.headImg}}"></image>
 			</view>
 			<text class="info_detail_text">{{dataitem.authorName}}</text>
-			<text class="info_detail_text m_20 color_9">/</text>
-			<text class="info_detail_text color_9">科技界的达人</text>
+            <!-- <text class="info_detail_text">不知火舞</text> -->
+			<text s-if="{{dataitem.detail && dataitem.detail != ''}}" class="info_detail_text m_20 color_9">/</text>
+			<text s-if="{{dataitem.detail && dataitem.detail != ''}}" class="info_detail_text color_9">{{dataitem.detail}}</text>
 		</view>
 		<view class="info_detail_right flex">
 			<text class="info_detail_text color_9">{{dataitem.readNum}} 阅读</text>
-			<text class="info_detail_text m_20 color_9">/</text>
-			<text class="info_detail_text color_9">{{dataitem.likeNum}}赞</text>
+			<text s-if="{{dataitem.likeNum != 0}}" class="info_detail_text m_20 color_9">/</text>
+			<text s-if="{{dataitem.likeNum != 0}}" class="info_detail_text color_9">{{dataitem.likeNum}}赞</text>
 		</view>
 	</view>
 </view>

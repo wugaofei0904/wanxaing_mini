@@ -1,28 +1,47 @@
 .article_item {
     width: 100%;
-    padding: 43.48rpx 0 0;
+    /* padding: 43.48rpx 0 0; */
+    margin-top: 61.59rpx;
 
     /* padding: 43.48rpx 56.16rpx 0; */
 }
 .article_item image {
-    width: 637.68rpx;
-    height: 359.3rpx;
-    border-radius: 6rpx;
+    /* width: 637.68rpx; */
+    width: 100%;
+    /* height: 359.3rpx; */
+    border-radius: 10rpx;
+}
+.v_logo{
+    position: absolute;
+    bottom: 0;
+    left: 24.15rpx;
+    display: block;
+    width: 14.49rpx;
+    height: 14.49rpx;
+    z-index: 999;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAzdJREFUSA2dVUtIFVEY/s6Z+0ApfERWJrhICCEfXBcF0jqim3KtbYsQ3bRoZSu1rBYt2rRrFVKErfJGj1vLCokepHaTXlhiIYb2MNK6j5m//8x1jjPO3FB/GOY///v8/znfEfgP0f2WHbm/2TYiioNEnRBUDQiD1zMCYgpC3AsbuCXaXn0qFkYEKehBY1VuyTrNQbsIFA6ycWRCgDjpUNgQvUGJfAlyyaYDRNYNrrLcCbKWPyfKAEZXJDF+zW0v3YvscEM3Wdbd9QZXMYgQJTKvZpINA+6Yegd25So4yHAbbITnoJ2RjtdXlK+doNBzereRyoMK4KBZChmxaNv4REgZqIHyFnXPjaZeyKp9ti/9mkT+6cmgOFpm1J+ArDkI8+MQrMnrauoRmOYFNjgs1VHkjXRra2Zo8TPEptrCt30/IKNutYcXZfWQu7vYJgxr6uaKjhDP3m6MyeVzbu/E0dL8C4eFYEdRsUevvYyEERvg62AgP3YeMP941JTHUcl9j3ukvKCfb0C531ostjRr3s3IumOQ5fUwv6RAXx+7VTbPVyQu1Q31aWCBvr3UYlkZkKB0J1TvKbsAc1y1O4AIdbJw/f1Ka/65ForKJs07TKi5DyJUAjN9kc/Md0fs+fORL+GLxg0MIJpzJYhWADx0h2TNIchtrbDmnsGaTjriwL+awUyQZvUcdJsiZTAaT4HMDPKjA0GuWqbgQ9qoqEVuxjsHsTwHY08PRLQS5tvLwOK028HHEyOuhETKp1kWeObAJ0ls3Qujth3WwntYHwaLuWk53+iUDEuRLECulmvGM4fNuxCKnWVQs2COnuGznNd2xRghMSwLGC6GgozccxBchSithsVwQD/SQeYeGVc/Em5PP7Lh2n4sbDz32PDCOwdamoU5cWm1kW+tOsLl9CiFnaCwC4MBxU/W7EMbmxQ+5cfO+eDA76EgWvSHO9JPlI53skKZ4QbV5L4Vyfo5buVgJJE+7njaO3AW0US6nzN28pd1ZGv9q7YwLPS5gytfTwIlUC+Reix4b3fUei3EBY0IEq3hRJoh1UusK078RrfwZTmiUJFfkTqFLcqaq82oS8TOKXUU1WkpFuUfias8MXVc7zgAAAAASUVORK5CYII=');
+    background-size: 100% auto;
 }
 .article_img {
     overflow: auto;
-    margin-bottom: 30.8rpx;
+    margin-bottom: 30.19rpx;
+}
+.noMargin{
+    margin-top: 0;
 }
 .article_title {
+    width: 100%;
     font-family: PingFangSC-Semibold;
     font-size: 32.61rpx;
     color: #222222;
-    line-height: 32.61rpx;
+    line-height: 45.61rpx;
+    font-weight: 600;
 }
 .info_detail {
     /* display: flex;
     align-items: center */
-    width: 637.68rpx;
+    /* width: 637.6/8rpx; */
+    width: 100%;
     height: 39.86rpx;
     /* padding: 0 56.16rpx; */
     margin-top: 18.12rpx;
@@ -40,6 +59,7 @@
     border-radius: 50%;
     overflow: hidden;
     margin-right: 14.49rpx;
+    position: relative;
 }
 .m_20{
     margin: 0 12.08rpx;
@@ -53,6 +73,7 @@
 .info_detail_left{
     height: 100%;
     float: left;
+    position: relative;
 }
 .info_detail_right{
     height: 100%;
