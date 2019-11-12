@@ -1,37 +1,58 @@
 <style>
 .skeleton-list1 {
+    height:100%;
     background: #ffffff;
-    padding-top:24px;
+    padding:24px 16px;
+    position:relative;
+    z-index:9999;
 }
 .header{
-    width:90%;
-    height:60px;
+    width:100%;
+    height:36px;
     background:#f3f3f3;
     margin:0 auto 24px;
 }
 .mode1{
-    width:90%;
-    height:30px;
+    width:100%;
+    height:24px;
     background:#f3f3f3;
-    margin:0 auto 24px;
+    margin-top:26px;
 }
 .mode2{
-    width:90%;
-    height:70px;
+    width:60%;
+    height:24px;
     background:#f3f3f3;
-    margin:0 auto 24px;
+    margin-top:16px;
 }
 .mode3{
-    width:90%;
-    height:300px;
+    width:50%;
+     height:24px;
     background:#f3f3f3;
-    margin:0 auto 24px;
+    margin-top:16px;
+     margin-bottom:16px;
 }
-.mode4{
+.mode4,.mode5,.mode6,.mode7{
     width:90%;
-    height:30px;
+    height:24px;
     background:#f3f3f3;
-    margin:0 auto 24px;
+    margin-bottom:16px;
+}
+.mode0{
+    width:100%;
+    height:240px;
+    background:#f3f3f3;
+    margin-bottom:16px;
+}
+.mode8{
+    width:100%;
+    height:24px;
+    background:#f3f3f3;
+    margin-bottom:16px;
+}
+.mode9{
+    width:90%;
+    height:400px;
+    margin-bottom:16px;
 }
 </style>
 <div style="width:100%">
@@ -42,5 +63,13 @@
         <div class="mode3"></div>
         <div class="mode4"></div>
         <div class="mode5"></div>
+        <div class="mode6"></div>
+        <div class="mode7"></div>
+        <div class="mode8"></div>
+        <div class="mode8"></div>
+        <div class="mode8"></div>
+        <div class="mode8"></div>
+
+        <div class="mode0"></div>
     </div>
 </div>

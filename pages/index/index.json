@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "万象",
+    "navigationBarTitleText": "见地",
     "usingComponents": {
         "custom": "/components/custom/custom",
         "anthor": "/components/anthor/anthor"

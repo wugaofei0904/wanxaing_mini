@@ -3,11 +3,26 @@
     /* width: 100%; */
     padding: 43.48rpx 50.16rpx 60.39rpx;
 }
+.pad_box {
+}
 .detail_title {
 }
 .rich-img {
     width: 100%;
     height: auto;
+}
+
+.noLineHeight .bdParse-p,
+.noLineHeight .bdParse-section {
+    margin: 0 0 12.08rpx;
+    line-height: 54.35rpx;
+    font-size: 28.99rpx;
+}
+
+.bdParse-p,
+.bdParse-section {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
 }
 .bdParse-img {
     width: 100% !important;
@@ -19,7 +34,8 @@
     color: #000000;
     letter-spacing: 0;
     line-height: 64rpx;
-    font-weight: 600;
+    /* font-weight: 600; */
+    font-weight: bold;
 }
 .yc_icon {
     text-align: center;
@@ -44,7 +60,7 @@
     height: 39.86rpx;
     /* border: 1px solid rgba(0, 0, 0, 0.1); */
     float: left;
-    background: #000000;
+    /* background: #000000; */
     border-radius: 50%;
     /* overflow: hidden; */
     position: relative;
@@ -78,6 +94,18 @@
     height: 40rpx;
     line-height: 40rpx;
 }
+.anthor_biaoqian.hidden {
+    width: 362.32rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.flex_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .anthor_zhuanzai {
     font-family: PingFangSC-Regular;
     font-size: 21.74rpx;
@@ -103,20 +131,23 @@
     /* width: 100%; */
     /* min-height: 120.77rpx; */
     border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius:0 0 4.42rpx 4.42rpx;
+    border-radius: 0 0 4.42rpx 4.42rpx;
     border-top: 3px solid rgba(0, 0, 0, 1);
     padding: 18.12rpx 9.66rpx 18.12rpx 18.12rpx;
     margin-bottom: 72.46rpx;
 }
-.container_node_title{
-    font-weight: 600;
+.container_node_title {
+    /* font-weight: 600; */
+    font-weight: bold;
 }
 .hexin_guandian_title {
     font-family: PingFangSC-Medium;
     font-size: 28.99rpx;
     color: #000000;
     margin-bottom: 7.25rpx;
-    font-weight: 600;
+    /* font-weight: 600; */
+    font-weight: bold;
+
     /* letter-spacing: 0; */
     /* line-height: 48px; */
 }

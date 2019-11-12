@@ -11,7 +11,7 @@
     /* height: 359.3rpx; */
     border-radius: 10rpx;
 }
-.v_logo{
+.v_logo {
     position: absolute;
     bottom: 0;
     left: 24.15rpx;
@@ -19,15 +19,16 @@
     width: 14.49rpx;
     height: 14.49rpx;
     z-index: 999;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAzdJREFUSA2dVUtIFVEY/s6Z+0ApfERWJrhICCEfXBcF0jqim3KtbYsQ3bRoZSu1rBYt2rRrFVKErfJGj1vLCokepHaTXlhiIYb2MNK6j5m//8x1jjPO3FB/GOY///v8/znfEfgP0f2WHbm/2TYiioNEnRBUDQiD1zMCYgpC3AsbuCXaXn0qFkYEKehBY1VuyTrNQbsIFA6ycWRCgDjpUNgQvUGJfAlyyaYDRNYNrrLcCbKWPyfKAEZXJDF+zW0v3YvscEM3Wdbd9QZXMYgQJTKvZpINA+6Yegd25So4yHAbbITnoJ2RjtdXlK+doNBzereRyoMK4KBZChmxaNv4REgZqIHyFnXPjaZeyKp9ti/9mkT+6cmgOFpm1J+ArDkI8+MQrMnrauoRmOYFNjgs1VHkjXRra2Zo8TPEptrCt30/IKNutYcXZfWQu7vYJgxr6uaKjhDP3m6MyeVzbu/E0dL8C4eFYEdRsUevvYyEERvg62AgP3YeMP941JTHUcl9j3ukvKCfb0C531ostjRr3s3IumOQ5fUwv6RAXx+7VTbPVyQu1Q31aWCBvr3UYlkZkKB0J1TvKbsAc1y1O4AIdbJw/f1Ka/65ForKJs07TKi5DyJUAjN9kc/Md0fs+fORL+GLxg0MIJpzJYhWADx0h2TNIchtrbDmnsGaTjriwL+awUyQZvUcdJsiZTAaT4HMDPKjA0GuWqbgQ9qoqEVuxjsHsTwHY08PRLQS5tvLwOK028HHEyOuhETKp1kWeObAJ0ls3Qujth3WwntYHwaLuWk53+iUDEuRLECulmvGM4fNuxCKnWVQs2COnuGznNd2xRghMSwLGC6GgozccxBchSithsVwQD/SQeYeGVc/Em5PP7Lh2n4sbDz32PDCOwdamoU5cWm1kW+tOsLl9CiFnaCwC4MBxU/W7EMbmxQ+5cfO+eDA76EgWvSHO9JPlI53skKZ4QbV5L4Vyfo5buVgJJE+7njaO3AW0US6nzN28pd1ZGv9q7YwLPS5gytfTwIlUC+Reix4b3fUei3EBY0IEq3hRJoh1UusK078RrfwZTmiUJFfkTqFLcqaq82oS8TOKXUU1WkpFuUfias8MXVc7zgAAAAASUVORK5CYII=');
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAzdJREFUSA2dVUtIFVEY/s6Z+0ApfERWJrhICCEfXBcF0jqim3KtbYsQ3bRoZSu1rBYt2rRrFVKErfJGj1vLCokepHaTXlhiIYb2MNK6j5m//8x1jjPO3FB/GOY///v8/znfEfgP0f2WHbm/2TYiioNEnRBUDQiD1zMCYgpC3AsbuCXaXn0qFkYEKehBY1VuyTrNQbsIFA6ycWRCgDjpUNgQvUGJfAlyyaYDRNYNrrLcCbKWPyfKAEZXJDF+zW0v3YvscEM3Wdbd9QZXMYgQJTKvZpINA+6Yegd25So4yHAbbITnoJ2RjtdXlK+doNBzereRyoMK4KBZChmxaNv4REgZqIHyFnXPjaZeyKp9ti/9mkT+6cmgOFpm1J+ArDkI8+MQrMnrauoRmOYFNjgs1VHkjXRra2Zo8TPEptrCt30/IKNutYcXZfWQu7vYJgxr6uaKjhDP3m6MyeVzbu/E0dL8C4eFYEdRsUevvYyEERvg62AgP3YeMP941JTHUcl9j3ukvKCfb0C531ostjRr3s3IumOQ5fUwv6RAXx+7VTbPVyQu1Q31aWCBvr3UYlkZkKB0J1TvKbsAc1y1O4AIdbJw/f1Ka/65ForKJs07TKi5DyJUAjN9kc/Md0fs+fORL+GLxg0MIJpzJYhWADx0h2TNIchtrbDmnsGaTjriwL+awUyQZvUcdJsiZTAaT4HMDPKjA0GuWqbgQ9qoqEVuxjsHsTwHY08PRLQS5tvLwOK028HHEyOuhETKp1kWeObAJ0ls3Qujth3WwntYHwaLuWk53+iUDEuRLECulmvGM4fNuxCKnWVQs2COnuGznNd2xRghMSwLGC6GgozccxBchSithsVwQD/SQeYeGVc/Em5PP7Lh2n4sbDz32PDCOwdamoU5cWm1kW+tOsLl9CiFnaCwC4MBxU/W7EMbmxQ+5cfO+eDA76EgWvSHO9JPlI53skKZ4QbV5L4Vyfo5buVgJJE+7njaO3AW0US6nzN28pd1ZGv9q7YwLPS5gytfTwIlUC+Reix4b3fUei3EBY0IEq3hRJoh1UusK078RrfwZTmiUJFfkTqFLcqaq82oS8TOKXUU1WkpFuUfias8MXVc7zgAAAAASUVORK5CYII=");
     background-size: 100% auto;
 }
 .article_img {
     overflow: auto;
-    margin-bottom: 30.19rpx;
+    margin-bottom: 18.19rpx;
 }
-.noMargin{
+.noMargin {
     margin-top: 0;
+    overflow: hidden;
 }
 .article_title {
     width: 100%;
@@ -35,7 +36,8 @@
     font-size: 32.61rpx;
     color: #222222;
     line-height: 45.61rpx;
-    font-weight: 600;
+    /* font-weight: 600; */
+    font-weight: bold;
 }
 .info_detail {
     /* display: flex;
@@ -50,9 +52,9 @@
     font-family: PingFangSC-Regular;
     font-size: 21.74rpx;
     color: #222222;
-    line-height: 21.74rpx;
+    line-height: 39.86rpx;
 }
-.anthor_logo{
+.anthor_logo {
     display: flex;
     width: 39.86rpx;
     height: 39.86rpx;
@@ -61,28 +63,40 @@
     margin-right: 14.49rpx;
     position: relative;
 }
-.m_20{
+.m_20 {
     margin: 0 12.08rpx;
 }
-.anthor_logo image{
+.anthor_logo image {
     width: 39.86rpx;
     height: 39.86rpx;
     /* border-radius: 50%;
     overflow: hidden; */
 }
-.info_detail_left{
+.info_detail_left {
     height: 100%;
     float: left;
     position: relative;
 }
-.info_detail_right{
+.info_detail_right {
     height: 100%;
     float: right;
 }
-.flex{
+.flex {
     display: flex;
     align-items: center;
 }
-.color_9{
+.color_9 {
     color: #999999;
+}
+
+.info_detail_text_hidden {
+    display: inline-block;
+    width: 322.32rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.info_detail_text_hidden.lang {
+    width: 362.32rpx;
 }

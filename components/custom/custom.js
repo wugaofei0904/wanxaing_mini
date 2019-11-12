@@ -6,14 +6,31 @@ Component({
             value: {}, // 属性初始值（必填）
             observer: function (newVal, oldVal) {
                 // 属性被改变时执行的函数（可选）
+                let baseImng = newVal.picUrl.split(',')[0];
+                // console.log(baseImng.indexOf('https:'))
 
-                console.log(newVal)
+                // if (baseImng.indexOf('https:') == 0) {  
+                //     baseImng = baseImng.replace('https:', 'http:')
+                // }
+
+                // let _headerImg = newVal.headImg;
+
+                // if (_headerImg.indexOf('https:') == 0) {            
+                //     _headerImg = _headerImg.replace('https:', 'http:')
+                // }
+
+                this.setData({
+                    imgurl: baseImng,
+                    // headerImg: baseImng,
+                })
             }
         },
         noMargin: false
     },
     data: {
-        age: 1
+        age: 1,
+        imgurl: "",
+        headerImg: ''
     },
     methods: {
         tap: function () { },
