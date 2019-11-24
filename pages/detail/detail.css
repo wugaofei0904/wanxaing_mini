@@ -3,15 +3,47 @@
     /* width: 100%; */
     padding: 43.48rpx 50.16rpx 60.39rpx;
 }
-.detail_title {
-}
 .rich-img {
     width: 100%;
     height: auto;
 }
+
+.noLineHeight .bdParse-p{
+    /* margin-top: 12.12rpx!important; */
+    margin: 0 0 22.08rpx!important;
+    line-height: 54.35rpx;
+    font-size: 28.99rpx;
+}
+.noLineHeight .bdParse-section {
+    margin: 0 0 12.08rpx;
+    line-height: 54.35rpx;
+    font-size: 28.99rpx;
+}
+.bdParse-section{
+    width: 100%!important;
+    height: 100%;
+}
+.bdParse-section .bdParse-section{
+    width: 100%!important;
+    height: 100%;
+}
+/* .bdParse-p{
+    margin-top: 12.12rpx!important;
+} */
+
+.bdParse-p,
+.bdParse-section {
+    display: block!important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
 .bdParse-img {
+    /* display: block!important;
+    overflow:auto!important; */
     width: 100% !important;
     height: auto;
+    min-height: 84.54rpx;
+    z-index: 9999;
 }
 .title_text {
     font-family: PingFangSC-Medium;
@@ -19,7 +51,8 @@
     color: #000000;
     letter-spacing: 0;
     line-height: 64rpx;
-    font-weight: 600;
+    /* font-weight: 600; */
+    font-weight: bold;
 }
 .yc_icon {
     text-align: center;
@@ -38,13 +71,14 @@
     margin-top: 24.15rpx;
     height: 39.86rpx;
     margin-bottom: 24.15rpx;
+    line-height: 39.86rpx;
 }
 .touxiang {
     width: 39.86rpx;
     height: 39.86rpx;
     /* border: 1px solid rgba(0, 0, 0, 0.1); */
     float: left;
-    background: #000000;
+    /* background: #000000; */
     border-radius: 50%;
     /* overflow: hidden; */
     position: relative;
@@ -77,6 +111,19 @@
     float: left;
     height: 40rpx;
     line-height: 40rpx;
+    flex: 1;
+}
+.anthor_biaoqian.hidden {
+    width: 362.32rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.flex_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .anthor_zhuanzai {
     font-family: PingFangSC-Regular;
@@ -88,35 +135,44 @@
     line-height: 40rpx;
     float: right;
 }
+.left_con{
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
 .anthor_time {
     font-family: PingFangSC-Regular;
     font-size: 21.74rpx;
     color: #999999;
     letter-spacing: 0;
     text-align: right;
-    height: 40rpx;
-    line-height: 40rpx;
+    height: 39.86rpx;
+    line-height: 39.86rpx;
     float: right;
+    min-width: 108.7rpx;
 }
 .hexin_guandian {
     margin-top: 30.19rpx;
     /* width: 100%; */
     /* min-height: 120.77rpx; */
     border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius:0 0 4.42rpx 4.42rpx;
+    border-radius: 0 0 4.42rpx 4.42rpx;
     border-top: 3px solid rgba(0, 0, 0, 1);
     padding: 18.12rpx 9.66rpx 18.12rpx 18.12rpx;
     margin-bottom: 72.46rpx;
 }
-.container_node_title{
-    font-weight: 600;
+.container_node_title {
+    /* font-weight: 600; */
+    font-weight: bold;
 }
 .hexin_guandian_title {
     font-family: PingFangSC-Medium;
     font-size: 28.99rpx;
     color: #000000;
     margin-bottom: 7.25rpx;
-    font-weight: 600;
+    /* font-weight: 600; */
+    font-weight: bold;
+
     /* letter-spacing: 0; */
     /* line-height: 48px; */
 }
@@ -224,12 +280,13 @@
     height: 43.48rpx;
 }
 .author_msg {
-    display: inline-block;
-    /* flex: 1; */
+    /* display: inline-block; */
+    flex: 1;
     /* width: 362.32rpx; */
     height: 100%;
     /* background: #000000; */
     overflow: hidden;
+    display: flex;
 }
 .zan_num {
     /* width: 43.48rpx;

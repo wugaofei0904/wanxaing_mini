@@ -1,41 +1,51 @@
 <import src="../../bdParse/bdParse/bdParse.swan" />
 
-<view class="detail_container">
+<view s-if="{{showContent}}" class="detail_container {{noLineHeight ? 'noLineHeight':''}} ">
 	<!-- 标题 -->
-	<view class="detail_title">
+	<view class="detail_title pad_box">
 		<text class="title_text">{{detailData.title}}</text>
-		<view s-if="{{detailData.isOwn == 1}}" class="yc_icon">原创</view>
+		<!-- <view s-if="{{detailData.isOwn == 1 && showIcon}}" class="yc_icon">原创</view> -->
 	</view>
 	<!-- 作者信息 -->
-	<view s-if="{{detailData.isOwn == 1}}" class="anthor_info">
+	<view s-if="{{detailData.isOwn == 1}}" class="anthor_info pad_box">
+
+
+		<view class="flex_box">
+			<view class="left_con">
+				<view class="touxiang">
+					<image s-if="{{showIcon}}" class="touxiang" src="{{detailData.headImg}}"></image>
+					<image s-if="{{showIcon}}" class="v_logo" src="./../../images/v_logo.png"></image>
+				</view>
+				<view class="author_msg">
+					<view class="anthor_name">{{detailData.authorName}}</view>
+					<view s-if="{{detailData.detail && detailData.detail != ''}}" class="anthor_biaoqian hidden">/
+						{{detailData.detail}}
+					</view>
+				</view>
+			</view>
+			<view>
+				<view class="anthor_time">{{time}}</view>
+			</view>
+		</view>
+
+
+	</view>
+
+	<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName == ''}}" class="anthor_info pad_box">
 		<view class="touxiang">
 			<image class="touxiang" src="{{detailData.headImg}}"></image>
 			<image class="v_logo" src="./../../images/v_logo.png"></image>
 		</view>
 		<view class="author_msg">
 			<view class="anthor_name">{{detailData.authorName}}</view>
-			<view s-if="{{detailData.detail && detailData.detail != ''}}" class="anthor_biaoqian">/
+			<view s-if="{{detailData.detail && detailData.detail != ''}}" class="anthor_biaoqian hidden">/
 				{{detailData.detail}}
 			</view>
 		</view>
 		<view class="anthor_time">{{time}}</view>
 	</view>
 
-	<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName == ''}}" class="anthor_info">
-		<view class="touxiang">
-			<image class="touxiang" src="{{detailData.headImg}}"></image>
-			<image class="v_logo" src="./../../images/v_logo.png"></image>
-		</view>
-		<view class="author_msg">
-			<view class="anthor_name">{{detailData.authorName}}</view>
-			<view s-if="{{detailData.detail && detailData.detail != ''}}" class="anthor_biaoqian">/
-				{{detailData.detail}}
-			</view>
-		</view>
-		<view class="anthor_time">{{time}}</view>
-	</view>
-
-	<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName != ''}}" class="anthor_info">
+	<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName != ''}}" class="anthor_info pad_box">
 		<view class="touxiang">
 			<image class="touxiang" src="{{detailData.headImg}}"></image>
 			<image class="v_logo" src="./../../images/v_logo.png"></image>
@@ -50,7 +60,7 @@
 	</view>
 
 	<!-- 核心观点 -->
-	<view s-if="{{detailData.corePoint}}" class="hexin_guandian">
+	<view s-if="{{detailData.corePoint}}" class="hexin_guandian pad_box">
 		<view class="hexin_guandian_title">观点</view>
 		<text class="hexin_guandian_detail">{{detailData.corePoint}}</text>
 	</view>
@@ -94,13 +104,14 @@
 </view> -->
 
 	<!-- 底部声明 -->
-	<view class="bottom_sm">
-		<view class="m_b_24">本文系作者授权万象发表未经许可，不得转载</view>
-		<view>本文仅代表作者观点，不代表万象立场 <text class="jubao_btn">举报</text></view>
+	<view class="bottom_sm pad_box">
+		<view class="m_b_24">言之有物，即为见地，本文仅代表作者观点</view>
+		<!-- <view>本文仅代表作者观点，不代表万象立场 <text class="jubao_btn">举报</text></view> -->
+		<!-- <view>本文仅代表作者观点，不代表万象立场</view> -->
 	</view>
 
 	<!-- 赞 -->
-	<view bindtap="likeAdd" class="good_btn">
+	<view bindtap="likeAdd" class="good_btn pad_box">
 		<view class="zan_logo">
 			<image class="zan_logo_img" src="{{hasLike ? './../../images/liked.png':'./../../images/zan_logo.png' }}">
 			</image>
@@ -125,12 +136,8 @@
 			</view>
 		</view>
 	</view> -->
-
-	<view class="line"></view>
-
-
 	<!-- 相关推荐 -->
-	<view s-if="{{tuijianList.length}}" class="container_node">
+	<view s-if="{{tuijianList.length}}" class="container_node pad_box">
 		<view class="container_node_top">
 			<view class="container_node_top_line"></view>
 			<view class="container_node_title">相关推荐</view>

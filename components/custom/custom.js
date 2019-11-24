@@ -6,14 +6,19 @@ Component({
             value: {}, // 属性初始值（必填）
             observer: function (newVal, oldVal) {
                 // 属性被改变时执行的函数（可选）
-
-                console.log(newVal)
+                let baseImng = newVal.picUrl.split(',')[0];
+                this.setData({
+                    imgurl: baseImng,
+                    // headerImg: baseImng,
+                })
             }
         },
         noMargin: false
     },
     data: {
-        age: 1
+        age: 1,
+        imgurl: "",
+        headerImg: ''
     },
     methods: {
         tap: function () { },
