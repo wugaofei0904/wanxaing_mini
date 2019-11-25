@@ -114,7 +114,7 @@
     flex: 1;
 }
 .anthor_biaoqian.hidden {
-    width: 362.32rpx;
+    /* width: 362.32rpx; */
     overflow: hidden;
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;

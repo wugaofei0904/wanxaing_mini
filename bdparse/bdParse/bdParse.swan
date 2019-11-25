@@ -15,7 +15,7 @@
 </template>
 
 <template name="bdParseImg">
-  <image class="{{item.classStr}} bdParse-{{item.tag}}" data-from="{{item.from}}" data-src="{{item.attr.src}}"  data-idx="{{item.imgIndex}}" src="{{item.attr.src}}"  bindload="bdParseImgLoad" bindtap="bdParseImgTap" mode="aspectFit" style="width:{{item.width ? item.width : '200' }}px;height:{{item.height ? item.height : '150' }}px;"/>
+  <image class="{{item.classStr}} bdParse-{{item.tag}}" data-from="{{item.from}}" data-src="{{item.attr.src}}"  data-idx="{{item.imgIndex}}" src="{{item.attr.src}}"  bindload="bdParseImgLoad" bindtap="bdParseImgTap" mode="scaleToFill" style="width:{{item.width ? item.width : '200' }}px;height:{{item.height ? item.height : '150' }}px;"/>
 </template>
 
 <template name="WxEmojiView">

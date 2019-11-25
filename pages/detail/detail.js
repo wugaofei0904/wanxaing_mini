@@ -155,12 +155,11 @@ Page({
                                 noLineHeight: true
                             })
                         }
-                        let _body1 = res.data.data.body.replace(/1574412151217/g, '1574416917090');
+                        let _body1 = res.data.data.body.replace(/http:/g, 'https:');
 
                         let _body = bdParse.bdParse('article', 'html', _body1, _this, 5);
 
-                        console.log(_body1,'_body1')
-
+                        // console.log(_body1,'_body1')
                         // _this.setData({ content: _body })
                         _this.getTuijianList(res.data.data.authorName);
                     })
