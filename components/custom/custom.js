@@ -7,18 +7,6 @@ Component({
             observer: function (newVal, oldVal) {
                 // 属性被改变时执行的函数（可选）
                 let baseImng = newVal.picUrl.split(',')[0];
-                // console.log(baseImng.indexOf('https:'))
-
-                // if (baseImng.indexOf('https:') == 0) {  
-                //     baseImng = baseImng.replace('https:', 'http:')
-                // }
-
-                // let _headerImg = newVal.headImg;
-
-                // if (_headerImg.indexOf('https:') == 0) {            
-                //     _headerImg = _headerImg.replace('https:', 'http:')
-                // }
-
                 this.setData({
                     imgurl: baseImng,
                     // headerImg: baseImng,

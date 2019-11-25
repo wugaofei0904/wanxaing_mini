@@ -2,31 +2,58 @@
 .detail_container {
     /* width: 100%; */
     padding: 43.48rpx 50.16rpx 60.39rpx;
-}
-.pad_box {
-}
-.detail_title {
+    line-height: 1.6;
 }
 .rich-img {
     width: 100%;
     height: auto;
 }
 
-.noLineHeight .bdParse-p,
+.noLineHeight .bdParse-p {
+    /* margin-top: 12.12rpx!important; */
+    margin: 0 0 22.08rpx !important;
+    line-height: 54.35rpx;
+    font-size: 28.99rpx;
+}
+.bdParse-p {
+    line-height: 54.35rpx;
+}
 .noLineHeight .bdParse-section {
     margin: 0 0 12.08rpx;
     line-height: 54.35rpx;
     font-size: 28.99rpx;
 }
+.bdParse-span {
+    /* display: inline-block; */
+    /* min-height: 41.06rpx; */
+}
+.bdParse-section {
+    width: 100% !important;
+    min-height: 41.06rpx;
+}
+/* .bdParse-section .bdParse-section {
+    width: 100% !important;
+    height: 100%;
+} */
+/* .bdParse-p{
+    margin-top: 12.12rpx!important;
+} */
 
 .bdParse-p,
 .bdParse-section {
+    display: block !important;
     margin-right: 0 !important;
     margin-left: 0 !important;
 }
 .bdParse-img {
-    width: 100% !important;
-    height: auto;
+    /* display: block!important;
+    overflow:auto!important; */
+    /* width: 100% !important; */
+    /* height: auto; */
+    /* min-height: 84.54rpx; */
+    /* z-index: 9999; */
+    display: block;
+    margin: 0 auto;
 }
 .title_text {
     font-family: PingFangSC-Medium;
@@ -54,6 +81,8 @@
     margin-top: 24.15rpx;
     height: 39.86rpx;
     margin-bottom: 24.15rpx;
+    line-height: 39.86rpx;
+    /* display: flex; */
 }
 .touxiang {
     width: 39.86rpx;
@@ -93,9 +122,10 @@
     float: left;
     height: 40rpx;
     line-height: 40rpx;
+    flex: 1;
 }
 .anthor_biaoqian.hidden {
-    width: 362.32rpx;
+    /* width: 362.32rpx; */
     overflow: hidden;
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
@@ -116,15 +146,25 @@
     line-height: 40rpx;
     float: right;
 }
+.left_con {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    max-width: 80%;
+}
+.flex_1 {
+    flex: 1;
+}
 .anthor_time {
     font-family: PingFangSC-Regular;
     font-size: 21.74rpx;
     color: #999999;
     letter-spacing: 0;
     text-align: right;
-    height: 40rpx;
+    height: 100%;
     line-height: 40rpx;
     float: right;
+    min-width: 88.7rpx;
 }
 .hexin_guandian {
     margin-top: 30.19rpx;
@@ -150,6 +190,9 @@
 
     /* letter-spacing: 0; */
     /* line-height: 48px; */
+}
+.flex_center {
+    align-items: center;
 }
 .hexin_guandian_detail {
     font-family: PingFangSC-Regular;
@@ -255,12 +298,17 @@
     height: 43.48rpx;
 }
 .author_msg {
-    display: inline-block;
-    /* flex: 1; */
+    /* display: inline-block; */
+    flex: 1;
     /* width: 362.32rpx; */
     height: 100%;
     /* background: #000000; */
     overflow: hidden;
+    display: flex;
+    float: left;
+}
+.author_msg.duan {
+    max-width: 45%;
 }
 .zan_num {
     /* width: 43.48rpx;

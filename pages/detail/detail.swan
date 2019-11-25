@@ -11,8 +11,7 @@
 
 
 		<view class="flex_box">
-
-			<view>
+			<view class="left_con">
 				<view class="touxiang">
 					<image s-if="{{showIcon}}" class="touxiang" src="{{detailData.headImg}}"></image>
 					<image s-if="{{showIcon}}" class="v_logo" src="./../../images/v_logo.png"></image>
@@ -33,17 +32,21 @@
 	</view>
 
 	<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName == ''}}" class="anthor_info pad_box">
-		<view class="touxiang">
-			<image class="touxiang" src="{{detailData.headImg}}"></image>
-			<image class="v_logo" src="./../../images/v_logo.png"></image>
-		</view>
-		<view class="author_msg">
-			<view class="anthor_name">{{detailData.authorName}}</view>
-			<view s-if="{{detailData.detail && detailData.detail != ''}}" class="anthor_biaoqian hidden">/
-				{{detailData.detail}}
+		<view class="flex_box">
+			<view class="left_con">
+				<view class="touxiang">
+					<image class="touxiang" src="{{detailData.headImg}}"></image>
+					<image class="v_logo" src="./../../images/v_logo.png"></image>
+				</view>
+				<view class="author_msg">
+					<view class="anthor_name">{{detailData.authorName}}</view>
+					<view s-if="{{detailData.detail && detailData.detail != ''}}" class="anthor_biaoqian hidden">/
+						{{detailData.detail}}
+					</view>
+				</view>
 			</view>
+			<view class="anthor_time">{{time}}</view>
 		</view>
-		<view class="anthor_time">{{time}}</view>
 	</view>
 
 	<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName != ''}}" class="anthor_info pad_box">
@@ -51,13 +54,15 @@
 			<image class="touxiang" src="{{detailData.headImg}}"></image>
 			<image class="v_logo" src="./../../images/v_logo.png"></image>
 		</view>
-		<view class="author_msg">
+		<view class="author_msg {{detailData.isOwn != '1' ? 'duan' : '' }}">
 			<view class="anthor_name">{{detailData.authorName}}</view>
 			<view s-if="{{detailData.otherAuthorName != ''}}" class="anthor_biaoqian">
 			</view>
 		</view>
-		<view class="anthor_time">{{time}}</view>
-		<view s-if="{{detailData.isOwn != '1'}}" class="anthor_zhuanzai">转载自{{detailData.otherAuthorName}}·</view>
+		<view class="flex_center">
+			<view class="anthor_time">{{time}}</view>
+			<view s-if="{{detailData.isOwn != '1'}}" class="anthor_zhuanzai">转载自{{detailData.otherAuthorName}}·</view>
+		</view>
 	</view>
 
 	<!-- 核心观点 -->

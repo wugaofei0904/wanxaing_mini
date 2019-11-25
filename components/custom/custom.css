@@ -74,11 +74,13 @@
 }
 .info_detail_left {
     height: 100%;
-    float: left;
+    /* float: left; */
     position: relative;
+    flex: 1;
 }
 .info_detail_right {
     height: 100%;
+    /* width: 120.77rpx; */
     float: right;
 }
 .flex {
@@ -91,12 +93,14 @@
 
 .info_detail_text_hidden {
     display: inline-block;
-    width: 322.32rpx;
+    /* width: 322.32rpx; */
+    flex: 1;
+    max-width: 362.32rpx;
     overflow: hidden;
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     white-space: nowrap;
 }
-.info_detail_text_hidden.lang {
+/* .info_detail_text_hidden.lang {
     width: 362.32rpx;
-}
+} */

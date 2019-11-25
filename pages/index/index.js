@@ -5,24 +5,30 @@ Page({
         pageNum: 1,
         isNoDta: 0
     },
+    imageError(e) {
+        console.log('image 发生 error 事件，携带值为', e.detail.errMsg);
+    },
     onLoad() {
         let that = this;
         let { pageNum } = this.data;
         swan.request({
-            url: 'https://pub.suwenyj.xyz/open/article/list-page?pageSize=10&pageNum=' + pageNum + '&status=1', // 仅为示例，并非真实的接口地址
+            url: 'https://pub.suwenyj.xyz/open/article/list-page?pageSize=5&pageNum=' + pageNum + '&status=1', // 仅为示例，并非真实的接口地址
             header: {
                 'content-type': 'application/json'
             },
             success: res => {
-                if (res.data.success) {
+                try {
                     that.removeSkeleton()
-                    if (res.data.data.length < 10) {
+                } catch (err) {
+
+                }
+                if (res.data.success) {
+                    if (res.data.data.length < 5) {
                         this.setData({
                             listData: res.data.data,
                             isNoDta: 1
                         })
                     } else {
-                        that.removeSkeleton()
                         this.setData({
                             listData: res.data.data,
                             pageNum: pageNum + 1
@@ -49,14 +55,14 @@ Page({
 
         swan.showLoading();
         swan.request({
-            url: 'https://pub.suwenyj.xyz/open/article/list-page?pageSize=15&pageNum=' + pageNum + '&status=1', // 仅为示例，并非真实的接口地址
+            url: 'https://pub.suwenyj.xyz/open/article/list-page?pageSize=5&pageNum=' + pageNum + '&status=1',
             header: {
                 'content-type': 'application/json'
             },
             success: res => {
                 if (res.data.success) {
                     swan.hideLoading();
-                    if (res.data.data.length < 10) {
+                    if (res.data.data.length < 5) {
                         // debugger
                         this.setData({
                             listData: listData.concat(res.data.data),

@@ -11,7 +11,7 @@ Page({
         time: '',
         showIcon: false,
         noLineHeight: false,
-        showContent:false
+        showContent: false
     },
     onLoad: function (option) {
 
@@ -120,7 +120,7 @@ Page({
                 'content-type': 'application/json'
             },
             success: res => {
-                console.log(res.data.data.body.replace(/\<img/gi, '<img style="max-width:250px;height:auto" '));
+                
                 if (res.data.success) {
                     this.setData({
                         detailData: res.data.data,
@@ -132,10 +132,14 @@ Page({
                             time: _time[1] + '月' + _time[2] + '日'
                         })
                         setTimeout(() => {
-                            _this.removeSkeleton()
+                            try {
+                                _this.removeSkeleton()
+                            } catch (err) {
+
+                            }
                             _this.setData({
                                 showIcon: true,
-                                showContent:true
+                                showContent: true
                             })
                         }, 500);
 
@@ -146,21 +150,17 @@ Page({
                             str = str.slice(str.indexOf('line-height') + 1)
                             num += 1
                         }
-
-                        console.log(num, 'num');
-
                         if (num < 10) {
                             _this.setData({
                                 noLineHeight: true
                             })
                         }
-                
-
-                        let _body1 = res.data.data.body.replace(/https/g, 'http');
+                        let _body1 = res.data.data.body.replace(/http:/g, 'https:');
 
                         let _body = bdParse.bdParse('article', 'html', _body1, _this, 5);
 
-                        _this.setData({ content: _body })
+                        // console.log(_body1,'_body1')
+                        // _this.setData({ content: _body })
                         _this.getTuijianList(res.data.data.authorName);
                     })
 

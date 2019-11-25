@@ -5,7 +5,7 @@
 		<!-- <image src="http://pub.suwenyj.xyz/headimg/1573145047164.png"></image> -->
 	</view>
 	<text class="article_title">{{dataitem.title}}</text>
-	<view class="info_detail">
+	<view class="info_detail flex">
 		<view class="info_detail_left flex">
 			<view class="v_logo"></view>
 			<view class="anthor_logo">
@@ -18,8 +18,10 @@
 		</view>
 		<view class="info_detail_right flex">
 			<text class="info_detail_text color_9">{{dataitem.readNum}} 阅读</text>
+            <!-- <text class="info_detail_text color_9">11 阅读</text> -->
 			<text s-if="{{dataitem.likeNum != 0}}" class="info_detail_text m_20 color_9">/</text>
 			<text s-if="{{dataitem.likeNum != 0}}" class="info_detail_text color_9">{{dataitem.likeNum}} 赞</text>
+            <!-- <text s-if="{{dataitem.likeNum != 0}}" class="info_detail_text color_9">{{dataitem.likeNum}} 赞</text> -->
 		</view>
 	</view>
 </view>

@@ -54,6 +54,7 @@
     height:400px;
     margin-bottom:16px;
 }
+
 </style>
 <div style="width:100%">
     <div class="skeleton-list1">
