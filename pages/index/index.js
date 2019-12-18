@@ -12,7 +12,7 @@ Page({
         let that = this;
         let { pageNum } = this.data;
         swan.request({
-            url: 'https://pub.suwenyj.xyz/open/article/list-page?pageSize=5&pageNum=' + pageNum + '&status=1', // 仅为示例，并非真实的接口地址
+            url: 'https://pub.suwenyj.xyz/open/article/list-page-m?pageSize=5&pageNum=' + pageNum + '&status=1', // 仅为示例，并非真实的接口地址
             header: {
                 'content-type': 'application/json'
             },
@@ -55,7 +55,7 @@ Page({
 
         swan.showLoading();
         swan.request({
-            url: 'https://pub.suwenyj.xyz/open/article/list-page?pageSize=5&pageNum=' + pageNum + '&status=1',
+            url: 'https://pub.suwenyj.xyz/open/article/list-page-m?pageSize=5&pageNum=' + pageNum + '&status=1',
             header: {
                 'content-type': 'application/json'
             },
