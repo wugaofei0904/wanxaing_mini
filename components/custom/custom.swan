@@ -1,8 +1,6 @@
 <view data-id="{{dataitem.id}}" bindtap="jumpDetail" class="article_item {{noMargin ? 'noMargin' :''}}">
 	<view class="article_img">
-		<image lazy-load="{{true}}" src="{{imgurl}}"></image>
-		<!-- <image src="https://pub.suwenyj.xyz/headimg/1573284588665.jpg"></image> -->
-		<!-- <image src="http://pub.suwenyj.xyz/headimg/1573145047164.png"></image> -->
+		<image mode="aspectFill" lazy-load="{{true}}" src="{{imgurl}}"></image>
 	</view>
 	<text class="article_title">{{dataitem.title}}</text>
 	<view class="info_detail flex">
@@ -18,10 +16,10 @@
 		</view>
 		<view class="info_detail_right flex">
 			<text class="info_detail_text color_9">{{dataitem.readNum}} 阅读</text>
-            <!-- <text class="info_detail_text color_9">11 阅读</text> -->
+			<!-- <text class="info_detail_text color_9">11 阅读</text> -->
 			<text s-if="{{dataitem.likeNum != 0}}" class="info_detail_text m_20 color_9">/</text>
 			<text s-if="{{dataitem.likeNum != 0}}" class="info_detail_text color_9">{{dataitem.likeNum}} 赞</text>
-            <!-- <text s-if="{{dataitem.likeNum != 0}}" class="info_detail_text color_9">{{dataitem.likeNum}} 赞</text> -->
+			<!-- <text s-if="{{dataitem.likeNum != 0}}" class="info_detail_text color_9">{{dataitem.likeNum}} 赞</text> -->
 		</view>
 	</view>
 </view>

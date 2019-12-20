@@ -30,7 +30,7 @@ function bdParse(bindName = 'bdParseData', type = 'html', data = '<div class="co
     var transData = {};//存放转化后的数据
     if (type == 'html') {
         transData = HtmlToJson.html2json(data, bindName);
-        // console.log(JSON.stringify(transData, ' ', ' '));
+        // console.log(transData,'122')
     } else if (type == 'md' || type == 'markdown') {
         var converter = new showdown.Converter();
         var html = converter.makeHtml(data);
@@ -44,6 +44,7 @@ function bdParse(bindName = 'bdParseData', type = 'html', data = '<div class="co
     }
     var bindData = {};
     bindData[bindName] = transData;
+    console.log(bindData,'bindData')
     that.setData(bindData)
     that.bdParseImgLoad = bdParseImgLoad;
     that.bdParseImgTap = bdParseImgTap;
@@ -92,13 +93,20 @@ function calMoreImageInfo(e, idx, that, bindName) {
     for (var i of index.split('.')) key += `.nodes[${i}]`
     var keyW = key + '.width'
     var keyH = key + '.height'
+    var keyShow = key + '.show'
 
     let max_w = realWindowWidth * 0.85;
     let last_w = recal.imageWidth > max_w ? max_w : recal.imageWidth
 
+    // console.log(last_w)
+    // console.log(last_w * recal.imageheight / recal.imageWidth)
+    // console.log([keyW],'[keyShow]')
+    // console.log([keyShow],'[keyShow]')
+    
     that.setData({
         [keyW]: last_w,
         [keyH]: last_w * recal.imageheight / recal.imageWidth,
+        [keyShow]: true
     })
 }
 

@@ -25,6 +25,7 @@
 .article_img {
     overflow: auto;
     margin-bottom: 18.19rpx;
+    width: 100%;
 }
 .noMargin {
     margin-top: 0;

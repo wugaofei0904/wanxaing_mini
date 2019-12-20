@@ -180,7 +180,7 @@ Page({
     getTuijianList(name) {
         let { id } = this.data;
         swan.request({
-            url: 'https://pub.suwenyj.xyz/open/article/list-page?id=' + id + '&pageSize=20&pageNum=1&status=&title=&authorName=' + name + '&startTime=&endTime=',
+            url: 'https://pub.suwenyj.xyz/open/article/list-page-m?id=' + id + '&pageSize=20&pageNum=1&status=&title=&authorName=' + name + '&startTime=&endTime=',
             header: {
                 'content-type': 'application/json'
             },

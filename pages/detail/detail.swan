@@ -1,132 +1,109 @@
 <import src="../../bdParse/bdParse/bdParse.swan" />
 
-<view s-if="{{showContent}}" class="detail_container {{noLineHeight ? 'noLineHeight':''}} ">
-	<!-- 标题 -->
-	<view class="detail_title pad_box">
-		<text class="title_text">{{detailData.title}}</text>
-		<!-- <view s-if="{{detailData.isOwn == 1 && showIcon}}" class="yc_icon">原创</view> -->
-	</view>
-	<!-- 作者信息 -->
-	<view s-if="{{detailData.isOwn == 1}}" class="anthor_info pad_box">
+<scroll-view scroll-y class="scroll-view" scroll-into-view="{= toView =}" scroll-with-animation="true"
+	bind:scrolltoupper="upper" bind:scrolltolower="lower" upper-threshold="1" lower-threshold="10"
+	enable-back-to-top="true">
+
+	<view s-if="{{showContent}}" class="detail_container {{noLineHeight ? 'noLineHeight':''}} ">
 
 
-		<view class="flex_box">
-			<view class="left_con">
-				<view class="touxiang">
-					<image s-if="{{showIcon}}" class="touxiang" src="{{detailData.headImg}}"></image>
-					<image s-if="{{showIcon}}" class="v_logo" src="./../../images/v_logo.png"></image>
-				</view>
-				<view class="author_msg">
-					<view class="anthor_name">{{detailData.authorName}}</view>
-					<view s-if="{{detailData.detail && detailData.detail != ''}}" class="anthor_biaoqian hidden">/
-						{{detailData.detail}}
+
+		<view class="detail-padding-box">
+
+
+			<!-- 标题 -->
+			<view class="detail_title pad_box">
+				<text class="title_text">{{detailData.title}}</text>
+				<!-- <view s-if="{{detailData.isOwn == 1 && showIcon}}" class="yc_icon">原创</view> -->
+			</view>
+			<!-- 作者信息 -->
+			<view s-if="{{detailData.isOwn == 1}}" class="anthor_info pad_box">
+
+
+				<view class="flex_box">
+					<view class="left_con">
+						<view class="touxiang">
+							<image s-if="{{showIcon}}" class="touxiang" src="{{detailData.headImg}}"></image>
+							<image s-if="{{showIcon}}" class="v_logo" src="./../../images/v_logo.png"></image>
+						</view>
+						<view class="author_msg">
+							<view class="anthor_name">{{detailData.authorName}}</view>
+							<view s-if="{{detailData.detail && detailData.detail != ''}}"
+								class="anthor_biaoqian hidden">/
+								{{detailData.detail}}
+							</view>
+						</view>
+					</view>
+					<view>
+						<view class="anthor_time">{{time}}</view>
 					</view>
 				</view>
+
+
 			</view>
-			<view>
-				<view class="anthor_time">{{time}}</view>
+
+			<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName == ''}}" class="anthor_info pad_box">
+				<view class="flex_box">
+					<view class="left_con">
+						<view class="touxiang">
+							<image class="touxiang" src="{{detailData.headImg}}"></image>
+							<image class="v_logo" src="./../../images/v_logo.png"></image>
+						</view>
+						<view class="author_msg">
+							<view class="anthor_name">{{detailData.authorName}}</view>
+							<view s-if="{{detailData.detail && detailData.detail != ''}}"
+								class="anthor_biaoqian hidden">/
+								{{detailData.detail}}
+							</view>
+						</view>
+					</view>
+					<view class="anthor_time">{{time}}</view>
+				</view>
 			</view>
-		</view>
 
-
-	</view>
-
-	<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName == ''}}" class="anthor_info pad_box">
-		<view class="flex_box">
-			<view class="left_con">
+			<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName != ''}}" class="anthor_info pad_box">
 				<view class="touxiang">
 					<image class="touxiang" src="{{detailData.headImg}}"></image>
 					<image class="v_logo" src="./../../images/v_logo.png"></image>
 				</view>
-				<view class="author_msg">
+				<view class="author_msg {{detailData.isOwn != '1' ? 'duan' : '' }}">
 					<view class="anthor_name">{{detailData.authorName}}</view>
-					<view s-if="{{detailData.detail && detailData.detail != ''}}" class="anthor_biaoqian hidden">/
-						{{detailData.detail}}
+					<view s-if="{{detailData.otherAuthorName != ''}}" class="anthor_biaoqian">
+					</view>
+				</view>
+				<view class="flex_center">
+					<view class="anthor_time">{{time}}</view>
+					<view s-if="{{detailData.isOwn != '1'}}" class="anthor_zhuanzai">{{detailData.otherAuthorName}}·
 					</view>
 				</view>
 			</view>
-			<view class="anthor_time">{{time}}</view>
-		</view>
-	</view>
 
-	<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName != ''}}" class="anthor_info pad_box">
-		<view class="touxiang">
-			<image class="touxiang" src="{{detailData.headImg}}"></image>
-			<image class="v_logo" src="./../../images/v_logo.png"></image>
-		</view>
-		<view class="author_msg {{detailData.isOwn != '1' ? 'duan' : '' }}">
-			<view class="anthor_name">{{detailData.authorName}}</view>
-			<view s-if="{{detailData.otherAuthorName != ''}}" class="anthor_biaoqian">
+			<!-- 核心观点 -->
+			<view s-if="{{detailData.corePoint}}" class="hexin_guandian pad_box">
+				<view class="hexin_guandian_title">观点</view>
+				<text class="hexin_guandian_detail">{{detailData.corePoint}}</text>
+			</view>
+
+
+			<template is="bdParse" data="{{ {bdParseData:article.nodes} }}" />
+			<!-- 底部声明 -->
+			<view class="bottom_sm pad_box">
+				<view class="m_b_24">言之有物，即为见地，本文仅代表作者观点</view>
+			</view>
+
+			<!-- 赞 -->
+			<view bindtap="likeAdd" class="good_btn pad_box">
+				<view class="zan_logo">
+					<image class="zan_logo_img"
+						src="{{hasLike ? './../../images/liked.png':'./../../images/zan_logo.png' }}">
+					</image>
+				</view>
+				<view class="zan_num {{hasLike ? 'liked':''}}">{{likeNum}}</view>
 			</view>
 		</view>
-		<view class="flex_center">
-			<view class="anthor_time">{{time}}</view>
-			<view s-if="{{detailData.isOwn != '1'}}" class="anthor_zhuanzai">转载自{{detailData.otherAuthorName}}·</view>
-		</view>
-	</view>
 
-	<!-- 核心观点 -->
-	<view s-if="{{detailData.corePoint}}" class="hexin_guandian pad_box">
-		<view class="hexin_guandian_title">观点</view>
-		<text class="hexin_guandian_detail">{{detailData.corePoint}}</text>
-	</view>
-
-
-	<template is="bdParse" data="{{ {bdParseData:article.nodes} }}" />
-
-	<!-- <block s-if="{{renderedByHtml}}">
-		<rich-text nodes="{{textBody}}" selectable="true"></rich-text>
-	</block> -->
-
-	<!-- 二级标题 -->
-	<!-- <view class="two_lv_title">
-		<view class="two_lv_title_bg"></view>
-		<view class="two_lv_title_text">新视野号探测器</view>
-	</view> -->
-	<!-- 正文段落 -->
-	<!-- <view class="p_text">
-		一年前，冥王星不过是美国航空航天局（NASA）新视野号探测器（New Horizons）相机里拍到的一个明亮光点，看上去与克莱德·汤博（Clyde Tombaugh）然而本周，在《科学》（Science）
-	</view> -->
-	<!-- 正文插图 -->
-	<!-- <image class="join_img" src="./../../images/people-img.png"></image> -->
-	<!-- 正文提示 -->
-	<!-- <view class="tips_text">
-		自1930年发现这颗当时所谓的第九大行星以来它在望远镜里一贯的模样并没有太大的不同。
-	</view> -->
-
-	<!-- 二级标题 -->
-	<!-- <view class="two_lv_title">
-		<view class="two_lv_title_bg"></view>
-		<view class="two_lv_title_text">第九大行星</view>
-	</view> -->
-
-	<!-- 正文段落 -->
-	<!-- <view class="p_text">
-		期刊上，新视野号科学家首次发表了一组细致全面的科学论文，详细描述了去年夏天新视野号飞掠冥王星所取得的成果。
-	</view> -->
-	<!-- 正文段落 -->
-	<!-- <view class="p_text">
-		来自美国西南研究院的新视野号首席研究员艾伦·斯特恩（AlanStern）说，“这5篇细致入微的论文彻底改变了我们对于冥王星的认识——揭示了这颗前‘第九大行星’的真实面貌，有着多样和活跃的地质活动，奇特的表面化学构成，复杂的大气层，与太阳谜一般的相互作用，还有迷人的小卫星系统。”
-</view> -->
-
-	<!-- 底部声明 -->
-	<view class="bottom_sm pad_box">
-		<view class="m_b_24">言之有物，即为见地，本文仅代表作者观点</view>
-		<!-- <view>本文仅代表作者观点，不代表万象立场 <text class="jubao_btn">举报</text></view> -->
-		<!-- <view>本文仅代表作者观点，不代表万象立场</view> -->
-	</view>
-
-	<!-- 赞 -->
-	<view bindtap="likeAdd" class="good_btn pad_box">
-		<view class="zan_logo">
-			<image class="zan_logo_img" src="{{hasLike ? './../../images/liked.png':'./../../images/zan_logo.png' }}">
-			</image>
-		</view>
-		<view class="zan_num {{hasLike ? 'liked':''}}">{{likeNum}}</view>
-	</view>
-
-	<!-- 作者 -->
-	<!-- <view class="container_node">
+		<!-- 作者 -->
+		<!-- <view class="container_node">
 		<view class="container_node_top">
 			<view class="container_node_top_line"></view>
 			<view class="container_node_title">作者</view>
@@ -142,20 +119,25 @@
 			</view>
 		</view>
 	</view> -->
-	<!-- 相关推荐 -->
-	<view s-if="{{tuijianList.length}}" class="container_node pad_box">
-		<view class="container_node_top">
-			<view class="container_node_top_line"></view>
-			<view class="container_node_title">相关推荐</view>
+
+
+		<!-- 广告位 -->
+		<view class="ad_container">
+			<ad appid="f1522535" apid="6775935" class="ad" type="feed"></ad>
+		</view>
+		<view class="detail-padding-box">
+			<!-- 相关推荐 -->
+			<view s-if="{{tuijianList.length}}" class="container_node pad_box">
+				<view class="container_node_top">
+					<view class="container_node_top_line"></view>
+					<view class="container_node_title">相关推荐</view>
+				</view>
+
+				<view s-for="{{tuijianList}}" s-for-item="item" s-for-index="idx">
+					<custom noMargin='{{idx == 0}}' dataitem='{{item}}'></custom>
+				</view>
+			</view>
 		</view>
 
-		<view s-for="{{tuijianList}}" s-for-item="item" s-for-index="idx">
-			<custom noMargin='{{idx == 0}}' dataitem='{{item}}'></custom>
-		</view>
-
-		<!-- <custom></custom>
-		<custom></custom>
-		<custom></custom> -->
 	</view>
-
-</view>
+</scroll-view>
