@@ -7,8 +7,9 @@
  */
 .img-loading {
     width: 100%;
-    background: url("./../../images/Loading.png") #f5f5f5 center no-repeat;
+    background: url("./../../images/loading-gif.gif") #f5f5f5 center no-repeat;
     background-size: 40.15rpx 40.15rpx;
+    margin: 0 auto;
 }
 .bdParse {
     margin: 0 5px;

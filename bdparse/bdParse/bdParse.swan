@@ -17,10 +17,12 @@
 </template>
 
 <template name="bdParseImg">
-	<view style="width:{{item.width}}px;minHeight:{{item.width*3/4}}px;" class="img-loading">
-		<image class="{{item.classStr}} {{item.show ? 'show' :'' }} bdParse-{{item.tag}}" data-from="{{item.from}}" lazy-load="{{true}}"
-			data-src="{{item.attr.src}}" data-idx="{{item.imgIndex}}" src="{{item.attr.src}}" bindload="bdParseImgLoad"
-			bindtap="bdParseImgTap" mode="widthFix" style="width:{{item.width}}px;height:{{item.height}}px;" />
+	<!-- <view style="width:{{item.width}}px;minHeight:{{item.width*3/4}}px;" class="img-loading"> -->
+	<view style="width:{{item.width}}px;height:{{item.height}}px;" class="img-loading">
+		<image class="{{item.classStr}} {{item.show ? 'show' :'' }} bdParse-{{item.tag}}" data-from="{{item.from}}"
+			lazy-load="{{true}}" data-src="{{item.attr.src}}" data-idx="{{item.imgIndex}}" src="{{item.attr.src}}"
+			bindload="bdParseImgLoad" bindtap="bdParseImgTap" mode="widthFix"
+			style="width:{{item.width}}px;height:{{item.height}}px;" />
 	</view>
 </template>
 

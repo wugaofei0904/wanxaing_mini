@@ -1,14 +1,38 @@
 @import "../../bdParse/bdParse/bdParse.css";
 .detail_container {
     /* width: 100%; */
-    padding: 43.48rpx 50.16rpx 60.39rpx;
+    /* padding: 43.48rpx 50.16rpx 60.39rpx; */
+    padding: 43.48rpx 0 60.39rpx;
+
     line-height: 1.6;
+}
+
+swan-ad {
+    /* margin-top: 34.12rpx; */
+    margin: 0 18.6rpx 0 18.6rpx;
+    /* margin-bottom: -7.25rpx; */
+    /* border-top: 18.04rpx solid rgba(0, 0, 0, 0.038);
+    border-bottom: 18.04rpx solid rgba(0, 0, 0, 0.038); */
+}
+
+.ad_container {
+    /* padding: 0 18rpx; */
+    /* margin: 18.12rpx 0;
+    width: 100%; */
+    margin-bottom: -7.25rpx;
+    border-top: 16.04rpx solid rgba(0,0,0,0.038);
+    border-bottom: 16.04rpx solid rgba(0,0,0,0.038);
 }
 .rich-img {
     width: 100%;
     height: auto;
 }
+.detail-padding-box {
 
+    /* margin-top: 55.56rpx; */
+    padding: 0 50.16rpx  55.56rpx;
+    overflow: hidden;
+}
 .noLineHeight .bdParse-p {
     /* margin-top: 12.12rpx!important; */
     margin: 0 0 22.08rpx !important;
@@ -46,12 +70,6 @@
     margin-left: 0 !important;
 }
 .bdParse-img {
-    /* display: block!important;
-    overflow:auto!important; */
-    /* width: 100% !important; */
-    /* height: auto; */
-    /* min-height: 84.54rpx; */
-    /* z-index: 9999; */
     display: block;
     margin: 0 auto;
 }
@@ -287,6 +305,8 @@
     margin: 0 auto;
     margin-top: 55.56rpx;
     overflow: auto;
+    position: relative;
+    z-index: 99;
 }
 .zan_logo {
     width: 43.48rpx;
@@ -329,7 +349,8 @@
 
 .container_node {
     /* padding-left: 56.16rpx; */
-    margin-top: 48.31rpx;
+    /* margin-top: 48.31rpx; */
+    margin-top: 40.12rpx;
 }
 .container_node_top {
     height: 28.99rpx;
