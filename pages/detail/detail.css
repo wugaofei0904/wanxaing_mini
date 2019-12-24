@@ -6,6 +6,51 @@
 
     line-height: 1.6;
 }
+.content-box {
+    width: 100%;
+    height: 1524.64rpx;
+    overflow: hidden;
+    position: relative;
+}
+.content-box.show {
+    height: auto;
+    overflow: auto;
+}
+.content-box.show .show-more {
+    display: none;
+}
+.show-more {
+    position: absolute;
+    width: 100%;
+    height: 160.77rpx;
+    padding-top: 40rpx;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+        -180deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.6) 10%,
+        rgba(255, 255, 255, 0.9) 20%,
+        #ffffff 50%,
+        #ffffff 100%
+    );
+    /* background: linear-gradient(to bottom,rgba(0,0,0,0),#ffffff); */
+}
+.show-more image {
+    display: block;
+    width: 18.12rpx;
+    height: 19.32rpx;
+    margin: 0 auto 15.1rpx;
+}
+.yuedu-btn {
+    width: 250.6rpx;
+    height: 72.46rpx;
+    border: 1.81rpx solid #333333;
+    border-radius: 66px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 72.46rpx;
+}
 
 swan-ad {
     /* margin-top: 34.12rpx; */
@@ -20,17 +65,16 @@ swan-ad {
     /* margin: 18.12rpx 0;
     width: 100%; */
     margin-bottom: -7.25rpx;
-    border-top: 16.04rpx solid rgba(0,0,0,0.038);
-    border-bottom: 16.04rpx solid rgba(0,0,0,0.038);
+    border-top: 16.04rpx solid rgba(0, 0, 0, 0.038);
+    border-bottom: 16.04rpx solid rgba(0, 0, 0, 0.038);
 }
 .rich-img {
     width: 100%;
     height: auto;
 }
 .detail-padding-box {
-
     /* margin-top: 55.56rpx; */
-    padding: 0 50.16rpx  55.56rpx;
+    padding: 0 50.16rpx 55.56rpx;
     overflow: hidden;
 }
 .noLineHeight .bdParse-p {

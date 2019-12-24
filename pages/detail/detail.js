@@ -11,6 +11,7 @@ Page({
         time: '',
         showIcon: false,
         noLineHeight: false,
+        hidecontent: true,
         showContent: false
     },
     onLoad: function (option) {
@@ -57,6 +58,11 @@ Page({
     },
     onShareAppMessage: function () {
         // 用户点击右上角转发
+    },
+    showMore() {
+        this.setData({
+            hidecontent: false
+        })
     },
     yueduAdd(id) {
 
@@ -120,7 +126,7 @@ Page({
                 'content-type': 'application/json'
             },
             success: res => {
-                
+
                 if (res.data.success) {
                     this.setData({
                         detailData: res.data.data,

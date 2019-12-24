@@ -84,8 +84,16 @@
 				<text class="hexin_guandian_detail">{{detailData.corePoint}}</text>
 			</view>
 
+			<view class="content-box {{hidecontent ? '':'show'}}">
+				<template is="bdParse" data="{{ {bdParseData:article.nodes} }}" />
 
-			<template is="bdParse" data="{{ {bdParseData:article.nodes} }}" />
+				<view bindtap="showMore" class="show-more">
+					<image src="./../../images/show-more.png"></image>
+                    <view class="yuedu-btn">阅读全文</view>
+				</view>
+			</view>
+
+
 			<!-- 底部声明 -->
 			<view class="bottom_sm pad_box">
 				<view class="m_b_24">言之有物，即为见地，本文仅代表作者观点</view>
