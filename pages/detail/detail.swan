@@ -84,30 +84,32 @@
 				<text class="hexin_guandian_detail">{{detailData.corePoint}}</text>
 			</view>
 
-			<view class="content-box {{hidecontent ? '':'show'}}">
-				<template is="bdParse" data="{{ {bdParseData:article.nodes} }}" />
+			<view style="height:{{contentHeight}}px;" class="content-box {{hidecontent ? '':'show'}}">
+				<!-- <div class="base-height"> -->
+					<template is="bdParse" data="{{ {bdParseData:article.nodes} }}" />
+					<view bindtap="showMore" class="show-more">
+						<image src="./../../images/show-more.png"></image>
+						<view class="yuedu-btn">全文剩余49%</view>
+					</view>
+					<!-- 底部声明 -->
+					<view class="bottom_sm pad_box">
+						<view class="m_b_24">言之有物，即为见地，本文仅代表作者观点</view>
+					</view>
 
-				<view bindtap="showMore" class="show-more">
-					<image src="./../../images/show-more.png"></image>
-                    <view class="yuedu-btn">阅读全文</view>
-				</view>
+					<!-- 赞 -->
+					<view bindtap="likeAdd" class="good_btn pad_box">
+						<view class="zan_logo">
+							<image class="zan_logo_img"
+								src="{{hasLike ? './../../images/liked.png':'./../../images/zan_logo.png' }}">
+							</image>
+						</view>
+						<view class="zan_num {{hasLike ? 'liked':''}}">{{likeNum}}</view>
+					</view>
+				<!-- </div> -->
 			</view>
 
 
-			<!-- 底部声明 -->
-			<view class="bottom_sm pad_box">
-				<view class="m_b_24">言之有物，即为见地，本文仅代表作者观点</view>
-			</view>
 
-			<!-- 赞 -->
-			<view bindtap="likeAdd" class="good_btn pad_box">
-				<view class="zan_logo">
-					<image class="zan_logo_img"
-						src="{{hasLike ? './../../images/liked.png':'./../../images/zan_logo.png' }}">
-					</image>
-				</view>
-				<view class="zan_num {{hasLike ? 'liked':''}}">{{likeNum}}</view>
-			</view>
 		</view>
 
 		<!-- 作者 -->
@@ -131,9 +133,14 @@
 
 		<!-- 广告位 -->
 		<view class="ad_container">
+			<view class="ad-title {{hidecontent ? '':'show'}}">
+				<view class="ad-title-mode-1">AD</view>
+				<view class="ad-title-mode-2">赞助内容</view>
+				<view class="ad-title-mode-3">广告收益用于作者激励和平台发展 </view>
+			</view>
 			<ad appid="f1522535" apid="6775935" class="ad" type="feed"></ad>
 		</view>
-		<view class="detail-padding-box">
+		<view class="tj-detail-padding-box">
 			<!-- 相关推荐 -->
 			<view s-if="{{tuijianList.length}}" class="container_node pad_box">
 				<view class="container_node_top">
@@ -142,7 +149,15 @@
 				</view>
 
 				<view s-for="{{tuijianList}}" s-for-item="item" s-for-index="idx">
-					<custom noMargin='{{idx == 0}}' dataitem='{{item}}'></custom>
+					<custom s-if="{{item != ''}}" noMargin='{{idx == 0}}' dataitem='{{item}}'></custom>
+					<view s-if="{{item == ''}}" class="ad_container">
+						<view class="ad-title {{hidecontent ? '':'show'}}">
+							<view class="ad-title-mode-1">AD</view>
+							<view class="ad-title-mode-2">赞助内容</view>
+							<view class="ad-title-mode-3">广告收益用于作者激励和平台发展 </view>
+						</view>
+						<ad appid="f1522535" apid="6775935" class="ad" type="feed"></ad>
+					</view>
 				</view>
 			</view>
 		</view>

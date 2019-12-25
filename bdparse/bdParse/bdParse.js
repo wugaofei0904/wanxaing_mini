@@ -30,7 +30,7 @@ function bdParse(bindName = 'bdParseData', type = 'html', data = '<div class="co
     var transData = {};//存放转化后的数据
     if (type == 'html') {
         transData = HtmlToJson.html2json(data, bindName);
-        // console.log(transData,'122')
+        console.log(transData,'122')
     } else if (type == 'md' || type == 'markdown') {
         var converter = new showdown.Converter();
         var html = converter.makeHtml(data);
@@ -98,8 +98,8 @@ function calMoreImageInfo(e, idx, that, bindName) {
     let max_w = realWindowWidth * 0.85;
     let last_w = recal.imageWidth > max_w ? max_w : recal.imageWidth
 
-    // console.log(last_w)
-    // console.log(last_w * recal.imageheight / recal.imageWidth)
+    // console.log(last_w,'wwwwwww')
+    // console.log(last_w * recal.imageheight / recal.imageWidth,'hhhhhh')
     // console.log([keyW],'[keyShow]')
     // console.log([keyShow],'[keyShow]')
     

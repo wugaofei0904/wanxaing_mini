@@ -12,7 +12,8 @@ Page({
         showIcon: false,
         noLineHeight: false,
         hidecontent: true,
-        showContent: false
+        showContent: false,
+        contentHeight: 1000
     },
     onLoad: function (option) {
 
@@ -63,6 +64,18 @@ Page({
         this.setData({
             hidecontent: false
         })
+    },
+    setContentHeight() {
+        try {
+            const result = swan.getSystemInfoSync();
+            console.log('getSystemInfoSync success', result.windowHeight);
+            this.setData({
+                contentHeight: result.windowHeight * 3
+            })
+        } catch (e) {
+            console.log('getSystemInfoSync fail', e);
+        }
+
     },
     yueduAdd(id) {
 
@@ -165,6 +178,7 @@ Page({
 
                         let _body = bdParse.bdParse('article', 'html', _body1, _this, 5);
 
+                        _this.setContentHeight();
                         // console.log(_body1,'_body1')
                         // _this.setData({ content: _body })
                         _this.getTuijianList(res.data.data.authorName);
@@ -193,9 +207,21 @@ Page({
             success: res => {
                 console.log(res.data.data);
                 if (res.data.success) {
+                    let arrtype = res.data.data;
+                    // 隔三个添加广告
+                    var hasAdlist = [];
+                    for (var i = 0, len = arrtype.length; i < len; i += 3) {
+                        hasAdlist.push(arrtype.slice(i, i + 3));
+                    }
+                    hasAdlist.forEach(item => {
+                        item.push('')
+                    });
+                    arrtype = [].concat.apply([], hasAdlist);
+                    // console.log(arrtype)
                     this.setData({
-                        tuijianList: res.data.data
+                        tuijianList: arrtype
                     })
+
                 } else {
                     swan.showToast({
                         title: res.data.msg

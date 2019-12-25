@@ -8,16 +8,52 @@
 }
 .content-box {
     width: 100%;
-    height: 1524.64rpx;
+    /* height: 1524.64rpx; */
     overflow: hidden;
     position: relative;
 }
 .content-box.show {
-    height: auto;
+    height: auto !important;
     overflow: auto;
 }
 .content-box.show .show-more {
     display: none;
+}
+.ad-title {
+    height: 84.54rpx;
+    width: 650.29rpx;
+    margin: 0 auto -44.99rpx;
+    display: flex;
+    align-items: center;
+}
+.ad-title.show {
+    /* border-top: 1px solid #eeeeee; */
+}
+.ad-title-mode-1 {
+    width: 21.74rpx;
+    height: 21.74rpx;
+    text-align: center;
+    line-height: 21.74rpx;
+    background: #d8d8d8;
+    /* border: 1px solid #979797; */
+    color: #ffffff;
+    font-size: 14.49rpx;
+    border-radius: 160.39rpx;
+}
+.ad-title-mode-2 {
+    font-family: PingFangSC-Regular;
+    font-size: 21.74rpx;
+    color: #666666;
+    letter-spacing: 0;
+    line-height: 21.74rpx;
+    margin: 0 14.49rpx;
+}
+.ad-title-mode-3 {
+    font-family: PingFangSC-Regular;
+    color: #999999;
+    letter-spacing: 0;
+    font-size: 21.74rpx;
+    line-height: 21.74rpx;
 }
 .show-more {
     position: absolute;
@@ -43,7 +79,7 @@
     margin: 0 auto 15.1rpx;
 }
 .yuedu-btn {
-    width: 250.6rpx;
+    width: 290.6rpx;
     height: 72.46rpx;
     border: 1.81rpx solid #333333;
     border-radius: 66px;
@@ -65,7 +101,7 @@ swan-ad {
     /* margin: 18.12rpx 0;
     width: 100%; */
     margin-bottom: -7.25rpx;
-    border-top: 16.04rpx solid rgba(0, 0, 0, 0.038);
+    /* border-top: 16.04rpx solid rgba(0, 0, 0, 0.038); */
     border-bottom: 16.04rpx solid rgba(0, 0, 0, 0.038);
 }
 .rich-img {
@@ -74,9 +110,31 @@ swan-ad {
 }
 .detail-padding-box {
     /* margin-top: 55.56rpx; */
-    padding: 0 50.16rpx 55.56rpx;
+    padding: 0 50.16rpx 10.56rpx;
     overflow: hidden;
 }
+.tj-detail-padding-box {
+    padding: 0 0 41.56rpx;
+    overflow: hidden;
+}
+.tj-detail-padding-box .ad_container{
+    padding-top: 38.49rpx;
+
+}
+.tj-detail-padding-box custom {
+    /* padding: 0 50.16rpx; */
+}
+.tj-detail-padding-box .custom__article_item {
+    padding: 0 50.16rpx;
+    width: auto;
+}
+.tj-detail-padding-box .ad_container {
+    border: 0;
+}
+.tj-detail-padding-box .ad-title.show{
+    border: 0;
+}
+
 .noLineHeight .bdParse-p {
     /* margin-top: 12.12rpx!important; */
     margin: 0 0 22.08rpx !important;
@@ -346,8 +404,7 @@ swan-ad {
     background: #ffffff;
     box-shadow: 0 2px 18px 0 rgba(0, 0, 0, 0.07);
     border-radius: 50%;
-    margin: 0 auto;
-    margin-top: 55.56rpx;
+    margin: 55.56rpx auto 14rpx;
     overflow: auto;
     position: relative;
     z-index: 99;
@@ -397,6 +454,7 @@ swan-ad {
     margin-top: 40.12rpx;
 }
 .container_node_top {
+    padding: 0 50.16rpx;
     height: 28.99rpx;
     display: flex;
     align-items: center;
@@ -406,6 +464,7 @@ swan-ad {
     line-height: 28.99rpx;
     margin-bottom: 24.15rpx;
 }
+
 .container_node_top_line {
     width: 5.43rpx;
     height: 28.99rpx;
