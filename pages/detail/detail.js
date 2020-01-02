@@ -9,6 +9,7 @@ Page({
         textBody: '',
         renderedByHtml: false,
         time: '',
+        adNumber: '0',
         showIcon: false,
         noLineHeight: false,
         hidecontent: true,
@@ -61,8 +62,10 @@ Page({
         // 用户点击右上角转发
     },
     showMore() {
+        let { adNumber } = this.data;
         this.setData({
-            hidecontent: false
+            hidecontent: false,
+            adNumber: adNumber+1
         })
     },
     setContentHeight() {
