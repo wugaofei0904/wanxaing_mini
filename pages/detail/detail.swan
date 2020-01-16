@@ -1,5 +1,6 @@
 <import src="../../bdParse/bdParse/bdParse.swan" />
-
+<!-- <test123 hours="{{hours}}" minutes="{{minutes}}" seconds="{{seconds}}"></test123> -->
+<!-- <view class="time_auto">倒计时{{hours}}:{{minutes}}:{{seconds}}</view> -->
 <scroll-view scroll-y class="scroll-view" scroll-into-view="{= toView =}" scroll-with-animation="true"
 	bind:scrolltoupper="upper" bind:scrolltolower="lower" upper-threshold="1" lower-threshold="10"
 	enable-back-to-top="true">
@@ -83,25 +84,25 @@
 
 			<view style="height:{{contentHeight}}px;" class="content-box {{hidecontent ? '':'show'}}">
 				<!-- <div class="base-height"> -->
-					<template is="bdParse" data="{{ {bdParseData:article.nodes} }}" />
-					<view bindtap="showMore" class="show-more">
-						<image src="./../../images/show-more.png"></image>
-						<view class="yuedu-btn">全文剩余49%</view>
-					</view>
-					<!-- 底部声明 -->
-					<view class="bottom_sm pad_box">
-						<view class="m_b_24">言之有物，即为见地，本文仅代表作者观点</view>
-					</view>
+				<template is="bdParse" data="{{ {bdParseData:article.nodes} }}" />
+				<view bindtap="showMore" class="show-more {{getJdAdList.length > 1?'noheight':'' }} ">
+					<image src="./../../images/show-more.png"></image>
+					<view class="yuedu-btn">全文剩余79%</view>
+				</view>
+				<!-- 底部声明 -->
+				<view class="bottom_sm pad_box">
+					<view class="m_b_24">言之有物，即为见地，本文仅代表作者观点</view>
+				</view>
 
-					<!-- 赞 -->
-					<view bindtap="likeAdd" class="good_btn pad_box">
-						<view class="zan_logo">
-							<image class="zan_logo_img"
-								src="{{hasLike ? './../../images/liked.png':'./../../images/zan_logo.png' }}">
-							</image>
-						</view>
-						<view class="zan_num {{hasLike ? 'liked':''}}">{{likeNum}}</view>
+				<!-- 赞 -->
+				<view bindtap="likeAdd" class="good_btn pad_box">
+					<view class="zan_logo">
+						<image class="zan_logo_img"
+							src="{{hasLike ? './../../images/liked.png':'./../../images/zan_logo.png' }}">
+						</image>
 					</view>
+					<view class="zan_num {{hasLike ? 'liked':''}}">{{likeNum}}</view>
+				</view>
 				<!-- </div> -->
 			</view>
 
@@ -126,16 +127,95 @@
 			</view>
 		</view>
 	</view> -->
+		<!-- jd广告位 -->
+		<!-- <view class="jd_ad_container">
+			<image class="jd-ad-head" src="./../../images/ad-icon-1.png"></image>
+			<view class="jd_detail_container">
+				<view class="jd_detail_container_l">
+					<image src=""></image>
+				</view>
+				<view class="jd_detail_container_r">
+					<view class="jd_ad_detail_title">古典文学唐诗为镜照汗青讲述唐诗背后的故事修订版（套装） </view>
+					<view class="jd_tag_list">
+						<view class="jd_tag_list_item">有赠品</view>
+						<view class="jd_tag_list_item">优惠券</view>
+						<view class="jd_tag_list_item">满减</view>
+					</view>
+					<view class="jd_price_box">
+						<text class="jd_price_box_text1">专享价</text>
+						<text class="jd_price_box_text2">￥</text>
+						<text class="jd_price_box_text3">41.30</text>
+						<text class="jd_price_box_text4">￥72.90</text>
+					</view>
+				</view>
+			</view>
+			<view class="tuijian_text">平时艺术家阿首都先生强烈推荐、台北故宫博物院萨库电话的撒谎的女生强推荐！以阿斯顿好的人生！</view>
+			<view class="jd_jump_btn">
+				领优惠券
+			</view>
+		</view> -->
+
+
+
+		<swiper s-if="{{getJdAdList.length > 1}}" indicator-color="rgba(0,0,0,0.30)" indicator-active-color="#fff"
+			duration="{{switchDuration}}" interval="{{autoPlayInterval}}" autoplay="{{switchAutoPlayStatus}}"
+			indicator-dots="{{switchIndicateStatus}}" vertical="false" circular="true" current="0" current-item-id="0"
+			previous-margin="0px" next-margin="0px" display-multiple-items="1" bind:change="swiperChange"
+			bind:animationfinish="animationfinish" class="swiper_box">
+			<block s-for="item in getJdAdList">
+				<swiper-item>
+					<test itemData="{{item}}"></test>
+				</swiper-item>
+			</block>
+		</swiper>
+
+		<view s-if="{{getJdAdList.length == 1}}">
+			<test itemData="{{getJdAdList[0]}}"></test>
+		</view>
+
+		<!-- <jdAdContainer></jdAdContainer> -->
+		<!-- <view class="jd_ad_container">
+			<image class="jd-ad-head" src="./../../images/ad-icon-2.png"></image>
+			<view class="jd_detail_container">
+				<view class="jd_detail_container_l">
+					<image src=""></image>
+				</view>
+				<view class="jd_detail_container_r">
+					<view class="jd_ad_detail_title">古典文学唐诗为镜照汗青讲述唐诗背后的故事修订版（套装） </view>
+					<view class="jd_tag_list">
+						<view class="jd_tag_list_item">有赠品</view>
+						<view class="jd_tag_list_item">优惠券</view>
+						<view class="jd_tag_list_item">满减</view>
+					</view>
+					<view class="jd_price_box">
+						<text class="jd_price_box_text1">专享价</text>
+						<text class="jd_price_box_text2">￥</text>
+						<text class="jd_price_box_text3">41.30</text>
+						<text class="jd_price_box_text4">￥72.90</text>
+					</view>
+				</view>
+			</view>
+			<view class="tuijian_text">平时艺术家阿首都先生强烈推荐、台北故宫博物院萨库电话的撒谎的女生强推荐！以阿斯顿好的人生！</view>
+			<view class="jd_jump_btn_1">
+				<view class="time_auto">倒计时9:23:56</view>
+				<view class="jd_jump_btn_r">领优惠券</view>
+			</view>
+		</view> -->
 
 
 		<!-- 广告位 -->
-		<view class="ad_container">
+		<view s-if="{{getJdAdList.length == 0}}" class="ad_container">
 			<view class="ad-title {{hidecontent ? '':'show'}}">
 				<view class="ad-title-mode-1">AD</view>
 				<view class="ad-title-mode-2">赞助内容</view>
 				<view class="ad-title-mode-3">广告收益用于作者激励和平台发展 </view>
 			</view>
-			<ad updatetime="{{adNumber}}" appid="f1522535" apid="6775935" class="ad" type="feed"></ad>
+			<!-- <ad appid="f1522535" binderror="aderror1" updatetime="{{adNumber}}" apid="{{adid_1}}" class="ad"
+				type="feed"></ad> -->
+			<!-- <ad appid="f1522535" apid="6868222" class="ad" type="banner" ></ad> -->
+			<ad appid="f1522535" apid="6867619" class="ad" type="feed"></ad>
+			<!-- <ad s-if="{{showadid_1}}" appid="f1522535" updatetime="{{adNumber}}" apid="6775935" class="ad" type="feed">
+			</ad> -->
 		</view>
 		<view class="tj-detail-padding-box">
 			<!-- 相关推荐 -->
@@ -148,12 +228,22 @@
 				<view s-for="{{tuijianList}}" s-for-item="item" s-for-index="idx">
 					<custom s-if="{{item != ''}}" noMargin='{{idx == 0}}' dataitem='{{item}}'></custom>
 					<view s-if="{{item == ''}}" class="ad_container">
+						<!-- <view  class="ad_container"> -->
 						<view class="ad-title {{hidecontent ? '':'show'}}">
 							<view class="ad-title-mode-1">AD</view>
 							<view class="ad-title-mode-2">赞助内容</view>
 							<view class="ad-title-mode-3">广告收益用于作者激励和平台发展 </view>
 						</view>
-						<ad updatetime="{{adNumber}}" appid="f1522535" apid="6775935" class="ad" type="feed"></ad>
+						<ad s-if="{{idx == 3}}" binderror="aderror2" appid="f1522535" updatetime="{{adNumber}}"
+							apid="{{adid_2}}" class="ad" type="feed"></ad>
+						<ad s-if="{{idx == 3 && showadid_2}}" binderror="aderror2" updatetime="{{adNumber}}"
+							appid="f1522535" apid="6775935" class="ad" type="feed"></ad>
+						<ad s-if="{{idx == 7}}" binderror="aderror3" updatetime="{{adNumber}}" appid="f1522535"
+							apid="{{adid_3}}" class="ad" type="feed"></ad>
+						<ad s-if="{{idx == 7 && showadid_3}}" updatetime="{{adNumber}}" binderror="aderror3"
+							appid="f1522535" apid="6775935" class="ad" type="feed"></ad>
+						<ad s-if="{{idx != 3 && idx != 7}}" updatetime="{{adNumber}}" appid="f1522535" apid="6775935"
+							class="ad" type="feed"></ad>
 					</view>
 				</view>
 			</view>

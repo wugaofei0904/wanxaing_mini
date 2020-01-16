@@ -6,6 +6,9 @@
 
     line-height: 1.6;
 }
+.swiper_box{
+    height: 581.16rpx;
+}
 .content-box {
     width: 100%;
     /* height: 1524.64rpx; */
@@ -26,8 +29,16 @@
     display: flex;
     align-items: center;
 }
+.ad-title1 {
+    height: 84.54rpx;
+    width: 650.29rpx;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
 .ad-title.show {
     /* border-top: 1px solid #eeeeee; */
+    overflow: hidden;
 }
 .ad-title-mode-1 {
     width: 21.74rpx;
@@ -58,7 +69,7 @@
 .show-more {
     position: absolute;
     width: 100%;
-    height: 160.77rpx;
+    /* height: 160.77rpx; */
     padding-top: 40rpx;
     left: 0;
     bottom: 0;
@@ -71,6 +82,9 @@
         #ffffff 100%
     );
     /* background: linear-gradient(to bottom,rgba(0,0,0,0),#ffffff); */
+}
+.noheight{
+    height: auto;
 }
 .show-more image {
     display: block;
@@ -95,6 +109,37 @@ swan-ad {
     /* border-top: 18.04rpx solid rgba(0, 0, 0, 0.038);
     border-bottom: 18.04rpx solid rgba(0, 0, 0, 0.038); */
 }
+/* .swan-ad-video-component {
+    width: 643.12rpx !important;
+} */
+
+.swan-ad-banner {
+    display: flex;
+    width: 90% !important;
+    margin: 0 auto !important;
+    line-height: normal;
+}
+
+.swan-ad-single-video-container .swan-ad-video-component {
+    opacity: 0;
+}
+.swan-ad-single-video .swan-ad-video-container img {
+    width: 96% !important;
+    height: 100%;
+    display: block;
+}
+
+.swan-ad-single-video .swan-ad-video-container .swan-ad-video-duration {
+    opacity: 0.4;
+    background: #000;
+    color: #fff;
+    border-radius: 2.41vw;
+    position: absolute;
+    font-size: 2.41vw;
+    padding: 0.97vw 2.17vw;
+    bottom: 3vw;
+    right: 4.2vw;
+}
 
 .ad_container {
     /* padding: 0 18rpx; */
@@ -102,7 +147,7 @@ swan-ad {
     width: 100%; */
     margin-bottom: -7.25rpx;
     /* border-top: 16.04rpx solid rgba(0, 0, 0, 0.038); */
-    border-bottom: 16.04rpx solid rgba(0, 0, 0, 0.038);
+    border-bottom: 20.04rpx solid rgba(0, 0, 0, 0);
 }
 .rich-img {
     width: 100%;
@@ -117,9 +162,8 @@ swan-ad {
     padding: 0 0 41.56rpx;
     overflow: hidden;
 }
-.tj-detail-padding-box .ad_container{
+.tj-detail-padding-box .ad_container {
     padding-top: 38.49rpx;
-
 }
 .tj-detail-padding-box custom {
     /* padding: 0 50.16rpx; */
@@ -131,7 +175,7 @@ swan-ad {
 .tj-detail-padding-box .ad_container {
     border: 0;
 }
-.tj-detail-padding-box .ad-title.show{
+.tj-detail-padding-box .ad-title.show {
     border: 0;
 }
 

@@ -1,6 +1,8 @@
 {
     "navigationBarTitleText": "见地",
     "usingComponents": {
-        "custom": "/components/custom/custom"
+        "custom": "/components/custom/custom",
+        "test": "/components/test/test",
+        "test123": "/components/test123/test123"
     }
 }

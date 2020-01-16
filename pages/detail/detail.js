@@ -1,4 +1,5 @@
 var bdParse = require('./../../bdparse/bdParse/bdParse.js');
+// let timer = null
 Page({
     data: {
         id: 0,
@@ -9,15 +10,68 @@ Page({
         textBody: '',
         renderedByHtml: false,
         time: '',
+        getJdAdList: [],
         adNumber: '0',
         showIcon: false,
         noLineHeight: false,
         hidecontent: true,
         showContent: false,
+        // hidecontent: false,
+        // showContent: true,
+        adid_1: '6859839',
+        adid_2: '6859974',
+        adid_3: '6860042',
+        showadid_1: false,
+        showadid_2: false,
+        showadid_3: false,
         contentHeight: 1000
     },
-    onLoad: function (option) {
+    leftTimer(date) {
 
+        const that = this;
+        var leftTime = new Date(date).getTime() - new Date().getTime(); //计算剩余的毫秒数 
+        if (leftTime <= 0) {
+            //到时间
+            leftTime = 0;
+            that.setData({
+                adHide: true  //广告无效
+            })
+            return false
+        }
+
+        clearTimeout(timer);
+
+        var days = parseInt(leftTime / 1000 / 60 / 60 / 24);
+        var hours = parseInt(leftTime / 1000 / 60 / 60 % 24);
+        var minutes = parseInt(leftTime / 1000 / 60 % 60);
+        var seconds = parseInt(leftTime / 1000 % 60);
+        days = this.paddingZero(days);
+        hours = this.paddingZero(hours);
+        minutes = this.paddingZero(minutes);
+        seconds = this.paddingZero(seconds);
+        if (days == '00') {
+            //显示倒计时
+            that.setData({
+                timeLose: true
+            })
+        }
+        that.setData({
+            hours: hours,
+            minutes: minutes,
+            seconds: seconds,
+        })
+
+        if (leftTime >= 0) {
+            timer = setTimeout(() => {
+                that.leftTimer(date)
+            }, 1000);
+        }
+    },
+    paddingZero(i) { //将0-9的数字前面加上0，例1变为01 
+        return i < 10 ? "0" + i : i;
+    },
+    onLoad: function (option) {
+        // this.leftTimer('2020/01/16 13:59:36')
         console.log(option.id)
         // 监听页面加载的生命周期函数
         this.setData({
@@ -37,6 +91,9 @@ Page({
                 hasLike: true
             })
         };
+
+        //加载jd广告
+        this.getJdAd(option.id)
 
     },
     onReady: function () {
@@ -65,7 +122,32 @@ Page({
         let { adNumber } = this.data;
         this.setData({
             hidecontent: false,
-            adNumber: adNumber+1
+            adNumber: adNumber + 1
+        })
+    },
+    updateAd() {
+        let { adNumber } = this.data;
+        let _this = this;
+        setTimeout(() => {
+            _this.setData({
+                adNumber: adNumber + 1
+            })
+        }, 100);
+
+    },
+    aderror1() {
+        this.setData({
+            showadid_1: true
+        })
+    },
+    aderror2() {
+        this.setData({
+            showadid_2: true
+        })
+    },
+    aderror3() {
+        this.setData({
+            showadid_3: true
         })
     },
     setContentHeight() {
@@ -98,6 +180,30 @@ Page({
             }
         });
     },
+
+    getJdAd(id) {
+        // /open/ad/list-ad-m?id
+        swan.request({
+            url: 'https://pub.suwenyj.xyz/open/ad/list-ad-m?id=' + id,
+            header: {
+                'content-type': 'application/json'
+            },
+            success: res => {
+                // console.log(res.data);
+                if (res.data.success) {
+                    // debugger
+                    this.setData({
+                        getJdAdList: res.data.data
+                    })
+                }
+            },
+            fail: err => {
+                console.log('错误码：' + err.errCode);
+                console.log('错误信息：' + err.errMsg);
+            }
+        });
+    },
+
     likeAdd() {
         let { hasLike } = this.data;
         if (hasLike) return;

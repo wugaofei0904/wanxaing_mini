@@ -1,0 +1,32 @@
+<view bindtap="navigateToSmartProgram" class="jd_ad_container">
+	<image class="jd-ad-head" src="./../../images/ad-icon-2.png"></image>
+	<view class="jd_detail_container">
+		<view class="jd_detail_container_l">
+			<image src="{{itemData.goodsPic}}"></image>
+		</view>
+		<view class="jd_detail_container_r">
+			<view class="jd_ad_detail_title">{{itemData.goodsTitle}}</view>
+			<view class="jd_tag_list">
+				<view class="jd_tag_list_item" s-for="{{salePoint}}">
+					<view class="{{osc != 'ios'?'androidStyle':''}}">{{item}}</view>
+				</view>
+			</view>
+			<view class="jd_price_box">
+				<text class="jd_price_box_text1">专享价</text>
+				<text class="jd_price_box_text2">￥</text>
+				<text class="jd_price_box_text3">{{salePrice}}</text>
+				<text class="jd_price_box_text4">￥{{price}}</text>
+			</view>
+		</view>
+	</view>
+	<view class="tuijian_text">{{itemData.reason}}</view>
+	<view s-if="{{timeLose && osc == 'ios'}}" class="jd_jump_btn_1">
+		<view class="time_auto">倒计时{{hours}}:{{minutes}}:{{seconds}}</view>
+		<view class="jd_jump_btn_r">立即购买</view>
+	</view>
+	<view s-if="{{!timeLose}} || osc == 'android'" class="jd_jump_btn">
+		立即购买
+	</view>
+</view>
+
+

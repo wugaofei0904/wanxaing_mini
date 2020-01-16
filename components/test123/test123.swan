@@ -1,0 +1,1 @@
+<view class="time_auto">倒计时{{hours}}:{{minutes}}:{{seconds}}</view>
