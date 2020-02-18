@@ -7,7 +7,7 @@
 		<view class="jd_detail_container_r">
 			<view class="jd_ad_detail_title">{{itemData.goodsTitle}}</view>
 			<view class="jd_tag_list">
-				<view class="jd_tag_list_item" s-for="{{salePoint}}">
+				<view class="jd_tag_list_item" wx:for="{{salePoint}}">
 					<view class="{{osc != 'ios'?'androidStyle':''}}">{{item}}</view>
 				</view>
 			</view>
@@ -20,11 +20,11 @@
 		</view>
 	</view>
 	<view class="tuijian_text">{{itemData.reason}}</view>
-	<view s-if="{{timeLose && osc == 'ios'}}" class="jd_jump_btn_1">
+	<view wx:if="{{timeLose && osc == 'ios'}}" class="jd_jump_btn_1">
 		<view class="time_auto">倒计时{{hours}}:{{minutes}}:{{seconds}}</view>
 		<view class="jd_jump_btn_r">立即购买</view>
 	</view>
-	<view s-if="{{!timeLose}} || osc == 'android'" class="jd_jump_btn">
+	<view wx:if="{{!timeLose || osc == 'android'}}" class="jd_jump_btn">
 		立即购买
 	</view>
 </view>

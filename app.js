@@ -9,8 +9,8 @@ App({
     onLaunch(options) {
         // do something when launch
         // 引导添加，参见文档： http://smartprogram.baidu.com/docs/design/component/guide_add/
-        if (swan.canIUse('showFavoriteGuide')) {
-            swan.showFavoriteGuide({
+        if (wx.canIUse('showFavoriteGuide')) {
+            wx.showFavoriteGuide({
                 type: 'bar',
                 content: '一键关注小程序',
                 success(res) {

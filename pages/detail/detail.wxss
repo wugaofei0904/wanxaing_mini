@@ -1,4 +1,4 @@
-@import "../../bdParse/bdParse/bdParse.css";
+@import "../../bdParse/bdParse/bdParse.wxss";
 .detail_container {
     /* width: 100%; */
     /* padding: 43.48rpx 50.16rpx 60.39rpx; */

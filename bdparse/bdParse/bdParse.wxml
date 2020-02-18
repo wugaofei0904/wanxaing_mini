@@ -2,7 +2,7 @@
  * 百度小程序富文本解析
  * 开发者：腾石建站
  * 官网:http://www.tengcee.com
- * bdParse.swan改造自wxParse.wxml
+ * bdParse.wxml改造自wxParse.wxml
  * wxParse的原作者github地址: https://github.com/icindy/wxParse
  */-->
 
@@ -28,10 +28,10 @@
 
 <template name="WxEmojiView">
 	<view class="WxEmojiView bdParse-inline" style="{{item.styleStr}}">
-		<block s-for="{{item.textArray}}" s-for-index="idx">
-			<block class="{{item.text == '\\n' ? 'bdParse-hide':''}}" s-if="{{item.node == 'text'}}">{{item.text}}
+		<block wx:for="{{item.textArray}}" s-for-index="idx">
+			<block class="{{item.text == '\\n' ? 'bdParse-hide':''}}" wx:if="{{item.node == 'text'}}">{{item.text}}
 			</block>
-			<block s-elif="{{item.node == 'element'}}">
+			<block wx:elif="{{item.node == 'element'}}">
 				<image class="wxEmoji" src="{{item.baseSrc}}{{item.text}}" />
 			</block>
 		</block>
@@ -43,7 +43,7 @@
 </template>
 <!--入口模版-->
 <template name="bdParse">
-	<block s-for="{{ bdParseData }}" s-for-index="0">
+	<block wx:for="{{ bdParseData }}" s-for-index="0">
 		<template is="bdParse0" data="{{ {item} }}" />
 	</block>
 </template>
@@ -53,23 +53,23 @@
 <template name="bdParse0">
 	<!--<template is="bdParse1" data="{{ {item} }}" />-->
 	<!--判断是否是标签节点-->
-	<block s-if="{{item.node == 'element'}}">
-		<block s-if="{{item.tag == 'button'}}">
+	<block wx:if="{{item.node == 'element'}}">
+		<block wx:if="{{item.tag == 'button'}}">
 			<button type="default" size="mini">
-				<block s-for="{{nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse1" data="{{ {item} }}" />
 				</block>
 			</button>
 		</block>
 		<!--li类型-->
-		<block s-elif="{{item.tag == 'li'}}">
+		<block wx:elif="{{item.tag == 'li'}}">
 			<view class="{{item.classStr}} bdParse-li" style="{{item.styleStr}}">
 				<view class="{{item.classStr}} bdParse-li-inner">
 					<view class="{{item.classStr}} bdParse-li-text">
 						<view class="{{item.classStr}} bdParse-li-circle"></view>
 					</view>
 					<view class="{{item.classStr}} bdParse-li-text">
-						<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+						<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 							<template is="bdParse1" data="{{ {item} }}" />
 						</block>
 					</view>
@@ -78,47 +78,47 @@
 		</block>
 
 		<!--video类型-->
-		<block s-elif="{{item.tag == 'video'}}">
+		<block wx:elif="{{item.tag == 'video'}}">
 			<template is="bdParseVideo" data="{{ {item} }}" />
 		</block>
 
 		<!--img类型-->
-		<block s-elif="{{item.tag == 'img'}}">
+		<block wx:elif="{{item.tag == 'img'}}">
 			<template is="bdParseImg" data="{{ {item} }}" />
 		</block>
 
 		<!--a类型-->
-		<block s-elif="{{item.tag == 'a'}}">
+		<block wx:elif="{{item.tag == 'a'}}">
 			<view bindtap="bdParseTagATap" class="bdParse-inline {{item.classStr}} bdParse-{{item.tag}}"
 				data-src="{{item.attr.href}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse1" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
-		<block s-elif="{{item.tag == 'table'}}">
+		<block wx:elif="{{item.tag == 'table'}}">
 			<view class="{{item.classStr}} bdParse-{{item.tag}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse1" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
-		<block s-elif="{{item.tag == 'br'}}">
+		<block wx:elif="{{item.tag == 'br'}}">
 			<template is="bdParseBr"></template>
 		</block>
 		<!--其他块级标签-->
-		<block s-elif="{{item.tagType == 'block'}}">
+		<block wx:elif="{{item.tagType == 'block'}}">
 			<view class="{{item.classStr}} bdParse-{{item.tag}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse1" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
 		<!--内联标签-->
-		<view s-else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
-			<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+		<view wx:else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
+			<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 				<template is="bdParse1" data="{{ {item} }}" />
 			</block>
 		</view>
@@ -126,7 +126,7 @@
 	</block>
 
 	<!--判断是否是文本节点-->
-	<block s-elif="{{item.node == 'text'}}">
+	<block wx:elif="{{item.node == 'text'}}">
 		<!--如果是，直接进行-->
 		<template is="WxEmojiView" data="{{ {item} }}" />
 	</block>
@@ -139,23 +139,23 @@
 <template name="bdParse1">
 	<!--<template is="bdParse2" data="{{ {item} }}" />-->
 	<!--判断是否是标签节点-->
-	<block s-if="{{item.node == 'element'}}">
-		<block s-if="{{item.tag == 'button'}}">
+	<block wx:if="{{item.node == 'element'}}">
+		<block wx:if="{{item.tag == 'button'}}">
 			<button type="default" size="mini">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse2" data="{{ {item} }}" />
 				</block>
 			</button>
 		</block>
 		<!--li类型-->
-		<block s-elif="{{item.tag == 'li'}}">
+		<block wx:elif="{{item.tag == 'li'}}">
 			<view class="{{item.classStr}} bdParse-li" style="{{item.styleStr}}">
 				<view class="{{item.classStr}} bdParse-li-inner">
 					<view class="{{item.classStr}} bdParse-li-text">
 						<view class="{{item.classStr}} bdParse-li-circle"></view>
 					</view>
 					<view class="{{item.classStr}} bdParse-li-text">
-						<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+						<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 							<template is="bdParse2" data="{{ {item} }}" />
 						</block>
 					</view>
@@ -164,40 +164,40 @@
 		</block>
 
 		<!--video类型-->
-		<block s-elif="{{item.tag == 'video'}}">
+		<block wx:elif="{{item.tag == 'video'}}">
 			<template is="bdParseVideo" data="{{ {item} }}" />
 		</block>
 
 		<!--img类型-->
-		<block s-elif="{{item.tag == 'img'}}">
+		<block wx:elif="{{item.tag == 'img'}}">
 			<template is="bdParseImg" data="{{ {item} }}" />
 		</block>
 
 		<!--a类型-->
-		<block s-elif="{{item.tag == 'a'}}">
+		<block wx:elif="{{item.tag == 'a'}}">
 			<view bindtap="bdParseTagATap" class="bdParse-inline {{item.classStr}} bdParse-{{item.tag}}"
 				data-src="{{item.attr.href}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse2" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
-		<block s-elif="{{item.tag == 'br'}}">
+		<block wx:elif="{{item.tag == 'br'}}">
 			<template is="bdParseBr"></template>
 		</block>
 		<!--其他块级标签-->
-		<block s-elif="{{item.tagType == 'block'}}">
+		<block wx:elif="{{item.tagType == 'block'}}">
 			<view class="{{item.classStr}} bdParse-{{item.tag}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse2" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
 		<!--内联标签-->
-		<view s-else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
-			<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+		<view wx:else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
+			<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 				<template is="bdParse2" data="{{ {item} }}" />
 			</block>
 		</view>
@@ -205,7 +205,7 @@
 	</block>
 
 	<!--判断是否是文本节点-->
-	<block s-elif="{{item.node == 'text'}}">
+	<block wx:elif="{{item.node == 'text'}}">
 		<!--如果是，直接进行-->
 		<template is="WxEmojiView" data="{{ {item} }}" />
 	</block>
@@ -217,23 +217,23 @@
 <template name="bdParse2">
 	<!--<template is="bdParse3" data="{{ {item} }}" />-->
 	<!--判断是否是标签节点-->
-	<block s-if="{{item.node == 'element'}}">
-		<block s-if="{{item.tag == 'button'}}">
+	<block wx:if="{{item.node == 'element'}}">
+		<block wx:if="{{item.tag == 'button'}}">
 			<button type="default" size="mini">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse3" data="{{ {item} }}" />
 				</block>
 			</button>
 		</block>
 		<!--li类型-->
-		<block s-elif="{{item.tag == 'li'}}">
+		<block wx:elif="{{item.tag == 'li'}}">
 			<view class="{{item.classStr}} bdParse-li" style="{{item.styleStr}}">
 				<view class="{{item.classStr}} bdParse-li-inner">
 					<view class="{{item.classStr}} bdParse-li-text">
 						<view class="{{item.classStr}} bdParse-li-circle"></view>
 					</view>
 					<view class="{{item.classStr}} bdParse-li-text">
-						<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+						<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 							<template is="bdParse3" data="{{ {item} }}" />
 						</block>
 					</view>
@@ -242,40 +242,40 @@
 		</block>
 
 		<!--video类型-->
-		<block s-elif="{{item.tag == 'video'}}">
+		<block wx:elif="{{item.tag == 'video'}}">
 			<template is="bdParseVideo" data="{{ {item} }}" />
 		</block>
 
 		<!--img类型-->
-		<block s-elif="{{item.tag == 'img'}}">
+		<block wx:elif="{{item.tag == 'img'}}">
 			<template is="bdParseImg" data="{{ {item} }}" />
 		</block>
 
 		<!--a类型-->
-		<block s-elif="{{item.tag == 'a'}}">
+		<block wx:elif="{{item.tag == 'a'}}">
 			<view bindtap="bdParseTagATap" class="bdParse-inline {{item.classStr}} bdParse-{{item.tag}}"
 				data-src="{{item.attr.href}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse3" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
-		<block s-elif="{{item.tag == 'br'}}">
+		<block wx:elif="{{item.tag == 'br'}}">
 			<template is="bdParseBr"></template>
 		</block>
 		<!--其他块级标签-->
-		<block s-elif="{{item.tagType == 'block'}}">
+		<block wx:elif="{{item.tagType == 'block'}}">
 			<view class="{{item.classStr}} bdParse-{{item.tag}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse3" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
 		<!--内联标签-->
-		<view s-else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
-			<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+		<view wx:else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
+			<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 				<template is="bdParse3" data="{{ {item} }}" />
 			</block>
 		</view>
@@ -283,7 +283,7 @@
 	</block>
 
 	<!--判断是否是文本节点-->
-	<block s-elif="{{item.node == 'text'}}">
+	<block wx:elif="{{item.node == 'text'}}">
 		<!--如果是，直接进行-->
 		<template is="WxEmojiView" data="{{ {item} }}" />
 	</block>
@@ -294,23 +294,23 @@
 <template name="bdParse3">
 	<!--<template is="bdParse4" data="{{ {item} }}" />-->
 	<!--判断是否是标签节点-->
-	<block s-if="{{item.node == 'element'}}">
-		<block s-if="{{item.tag == 'button'}}">
+	<block wx:if="{{item.node == 'element'}}">
+		<block wx:if="{{item.tag == 'button'}}">
 			<button type="default" size="mini">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse4" data="{{ {item} }}" />
 				</block>
 			</button>
 		</block>
 		<!--li类型-->
-		<block s-elif="{{item.tag == 'li'}}">
+		<block wx:elif="{{item.tag == 'li'}}">
 			<view class="{{item.classStr}} bdParse-li" style="{{item.styleStr}}">
 				<view class="{{item.classStr}} bdParse-li-inner">
 					<view class="{{item.classStr}} bdParse-li-text">
 						<view class="{{item.classStr}} bdParse-li-circle"></view>
 					</view>
 					<view class="{{item.classStr}} bdParse-li-text">
-						<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+						<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 							<template is="bdParse4" data="{{ {item} }}" />
 						</block>
 					</view>
@@ -319,40 +319,40 @@
 		</block>
 
 		<!--video类型-->
-		<block s-elif="{{item.tag == 'video'}}">
+		<block wx:elif="{{item.tag == 'video'}}">
 			<template is="bdParseVideo" data="{{ {item} }}" />
 		</block>
 
 		<!--img类型-->
-		<block s-elif="{{item.tag == 'img'}}">
+		<block wx:elif="{{item.tag == 'img'}}">
 			<template is="bdParseImg" data="{{ {item} }}" />
 		</block>
 
 		<!--a类型-->
-		<block s-elif="{{item.tag == 'a'}}">
+		<block wx:elif="{{item.tag == 'a'}}">
 			<view bindtap="bdParseTagATap" class="bdParse-inline {{item.classStr}} bdParse-{{item.tag}}"
 				data-src="{{item.attr.href}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse4" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
-		<block s-elif="{{item.tag == 'br'}}">
+		<block wx:elif="{{item.tag == 'br'}}">
 			<template is="bdParseBr"></template>
 		</block>
 		<!--其他块级标签-->
-		<block s-elif="{{item.tagType == 'block'}}">
+		<block wx:elif="{{item.tagType == 'block'}}">
 			<view class="{{item.classStr}} bdParse-{{item.tag}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse4" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
 		<!--内联标签-->
-		<view s-else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
-			<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+		<view wx:else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
+			<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 				<template is="bdParse4" data="{{ {item} }}" />
 			</block>
 		</view>
@@ -360,7 +360,7 @@
 	</block>
 
 	<!--判断是否是文本节点-->
-	<block s-elif="{{item.node == 'text'}}">
+	<block wx:elif="{{item.node == 'text'}}">
 		<!--如果是，直接进行-->
 		<template is="WxEmojiView" data="{{ {item} }}" />
 	</block>
@@ -371,23 +371,23 @@
 <template name="bdParse4">
 	<!--<template is="bdParse5" data="{{ {item} }}" />-->
 	<!--判断是否是标签节点-->
-	<block s-if="{{item.node == 'element'}}">
-		<block s-if="{{item.tag == 'button'}}">
+	<block wx:if="{{item.node == 'element'}}">
+		<block wx:if="{{item.tag == 'button'}}">
 			<button type="default" size="mini">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse5" data="{{ {item} }}" />
 				</block>
 			</button>
 		</block>
 		<!--li类型-->
-		<block s-elif="{{item.tag == 'li'}}">
+		<block wx:elif="{{item.tag == 'li'}}">
 			<view class="{{item.classStr}} bdParse-li" style="{{item.styleStr}}">
 				<view class="{{item.classStr}} bdParse-li-inner">
 					<view class="{{item.classStr}} bdParse-li-text">
 						<view class="{{item.classStr}} bdParse-li-circle"></view>
 					</view>
 					<view class="{{item.classStr}} bdParse-li-text">
-						<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+						<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 							<template is="bdParse5" data="{{ {item} }}" />
 						</block>
 					</view>
@@ -396,40 +396,40 @@
 		</block>
 
 		<!--video类型-->
-		<block s-elif="{{item.tag == 'video'}}">
+		<block wx:elif="{{item.tag == 'video'}}">
 			<template is="bdParseVideo" data="{{ {item} }}" />
 		</block>
 
 		<!--img类型-->
-		<block s-elif="{{item.tag == 'img'}}">
+		<block wx:elif="{{item.tag == 'img'}}">
 			<template is="bdParseImg" data="{{ {item} }}" />
 		</block>
 
 		<!--a类型-->
-		<block s-elif="{{item.tag == 'a'}}">
+		<block wx:elif="{{item.tag == 'a'}}">
 			<view bindtap="bdParseTagATap" class="bdParse-inline {{item.classStr}} bdParse-{{item.tag}}"
 				data-src="{{item.attr.href}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse5" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
-		<block s-elif="{{item.tag == 'br'}}">
+		<block wx:elif="{{item.tag == 'br'}}">
 			<template is="bdParseBr"></template>
 		</block>
 		<!--其他块级标签-->
-		<block s-elif="{{item.tagType == 'block'}}">
+		<block wx:elif="{{item.tagType == 'block'}}">
 			<view class="{{item.classStr}} bdParse-{{item.tag}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse5" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
 		<!--内联标签-->
-		<view s-else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
-			<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+		<view wx:else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
+			<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 				<template is="bdParse5" data="{{ {item} }}" />
 			</block>
 		</view>
@@ -437,7 +437,7 @@
 	</block>
 
 	<!--判断是否是文本节点-->
-	<block s-elif="{{item.node == 'text'}}">
+	<block wx:elif="{{item.node == 'text'}}">
 		<!--如果是，直接进行-->
 		<template is="WxEmojiView" data="{{ {item} }}" />
 	</block>
@@ -448,23 +448,23 @@
 <template name="bdParse5">
 	<!--<template is="bdParse6" data="{{ {item} }}" />-->
 	<!--判断是否是标签节点-->
-	<block s-if="{{item.node == 'element'}}">
-		<block s-if="{{item.tag == 'button'}}">
+	<block wx:if="{{item.node == 'element'}}">
+		<block wx:if="{{item.tag == 'button'}}">
 			<button type="default" size="mini">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse6" data="{{ {item} }}" />
 				</block>
 			</button>
 		</block>
 		<!--li类型-->
-		<block s-elif="{{item.tag == 'li'}}">
+		<block wx:elif="{{item.tag == 'li'}}">
 			<view class="{{item.classStr}} bdParse-li" style="{{item.styleStr}}">
 				<view class="{{item.classStr}} bdParse-li-inner">
 					<view class="{{item.classStr}} bdParse-li-text">
 						<view class="{{item.classStr}} bdParse-li-circle"></view>
 					</view>
 					<view class="{{item.classStr}} bdParse-li-text">
-						<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+						<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 							<template is="bdParse6" data="{{ {item} }}" />
 						</block>
 					</view>
@@ -473,40 +473,40 @@
 		</block>
 
 		<!--video类型-->
-		<block s-elif="{{item.tag == 'video'}}">
+		<block wx:elif="{{item.tag == 'video'}}">
 			<template is="bdParseVideo" data="{{ {item} }}" />
 		</block>
 
 		<!--img类型-->
-		<block s-elif="{{item.tag == 'img'}}">
+		<block wx:elif="{{item.tag == 'img'}}">
 			<template is="bdParseImg" data="{{ {item} }}" />
 		</block>
 
 		<!--a类型-->
-		<block s-elif="{{item.tag == 'a'}}">
+		<block wx:elif="{{item.tag == 'a'}}">
 			<view bindtap="bdParseTagATap" class="bdParse-inline {{item.classStr}} bdParse-{{item.tag}}"
 				data-src="{{item.attr.href}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse6" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
-		<block s-elif="{{item.tag == 'br'}}">
+		<block wx:elif="{{item.tag == 'br'}}">
 			<template is="bdParseBr"></template>
 		</block>
 		<!--其他块级标签-->
-		<block s-elif="{{item.tagType == 'block'}}">
+		<block wx:elif="{{item.tagType == 'block'}}">
 			<view class="{{item.classStr}} bdParse-{{item.tag}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse6" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
 		<!--内联标签-->
-		<view s-else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
-			<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+		<view wx:else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
+			<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 				<template is="bdParse6" data="{{ {item} }}" />
 			</block>
 		</view>
@@ -514,7 +514,7 @@
 	</block>
 
 	<!--判断是否是文本节点-->
-	<block s-elif="{{item.node == 'text'}}">
+	<block wx:elif="{{item.node == 'text'}}">
 		<!--如果是，直接进行-->
 		<template is="WxEmojiView" data="{{ {item} }}" />
 	</block>
@@ -525,23 +525,23 @@
 <template name="bdParse6">
 	<!--<template is="bdParse7" data="{{ {item} }}" />-->
 	<!--判断是否是标签节点-->
-	<block s-if="{{item.node == 'element'}}">
-		<block s-if="{{item.tag == 'button'}}">
+	<block wx:if="{{item.node == 'element'}}">
+		<block wx:if="{{item.tag == 'button'}}">
 			<button type="default" size="mini">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse7" data="{{ {item} }}" />
 				</block>
 			</button>
 		</block>
 		<!--li类型-->
-		<block s-elif="{{item.tag == 'li'}}">
+		<block wx:elif="{{item.tag == 'li'}}">
 			<view class="{{item.classStr}} bdParse-li" style="{{item.styleStr}}">
 				<view class="{{item.classStr}} bdParse-li-inner">
 					<view class="{{item.classStr}} bdParse-li-text">
 						<view class="{{item.classStr}} bdParse-li-circle"></view>
 					</view>
 					<view class="{{item.classStr}} bdParse-li-text">
-						<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+						<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 							<template is="bdParse7" data="{{ {item} }}" />
 						</block>
 					</view>
@@ -550,40 +550,40 @@
 		</block>
 
 		<!--video类型-->
-		<block s-elif="{{item.tag == 'video'}}">
+		<block wx:elif="{{item.tag == 'video'}}">
 			<template is="bdParseVideo" data="{{ {item} }}" />
 		</block>
 
 		<!--img类型-->
-		<block s-elif="{{item.tag == 'img'}}">
+		<block wx:elif="{{item.tag == 'img'}}">
 			<template is="bdParseImg" data="{{ {item} }}" />
 		</block>
 
 		<!--a类型-->
-		<block s-elif="{{item.tag == 'a'}}">
+		<block wx:elif="{{item.tag == 'a'}}">
 			<view bindtap="bdParseTagATap" class="bdParse-inline {{item.classStr}} bdParse-{{item.tag}}"
 				data-src="{{item.attr.href}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse7" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
-		<block s-elif="{{item.tag == 'br'}}">
+		<block wx:elif="{{item.tag == 'br'}}">
 			<template is="bdParseBr"></template>
 		</block>
 		<!--其他块级标签-->
-		<block s-elif="{{item.tagType == 'block'}}">
+		<block wx:elif="{{item.tagType == 'block'}}">
 			<view class="{{item.classStr}} bdParse-{{item.tag}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse7" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
 		<!--内联标签-->
-		<view s-else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
-			<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+		<view wx:else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
+			<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 				<template is="bdParse7" data="{{ {item} }}" />
 			</block>
 		</view>
@@ -591,7 +591,7 @@
 	</block>
 
 	<!--判断是否是文本节点-->
-	<block s-elif="{{item.node == 'text'}}">
+	<block wx:elif="{{item.node == 'text'}}">
 		<!--如果是，直接进行-->
 		<template is="WxEmojiView" data="{{ {item} }}" />
 	</block>
@@ -601,23 +601,23 @@
 <template name="bdParse7">
 	<!--<template is="bdParse8" data="{{ {item} }}" />-->
 	<!--判断是否是标签节点-->
-	<block s-if="{{item.node == 'element'}}">
-		<block s-if="{{item.tag == 'button'}}">
+	<block wx:if="{{item.node == 'element'}}">
+		<block wx:if="{{item.tag == 'button'}}">
 			<button type="default" size="mini">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse8" data="{{ {item} }}" />
 				</block>
 			</button>
 		</block>
 		<!--li类型-->
-		<block s-elif="{{item.tag == 'li'}}">
+		<block wx:elif="{{item.tag == 'li'}}">
 			<view class="{{item.classStr}} bdParse-li" style="{{item.styleStr}}">
 				<view class="{{item.classStr}} bdParse-li-inner">
 					<view class="{{item.classStr}} bdParse-li-text">
 						<view class="{{item.classStr}} bdParse-li-circle"></view>
 					</view>
 					<view class="{{item.classStr}} bdParse-li-text">
-						<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+						<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 							<template is="bdParse8" data="{{ {item} }}" />
 						</block>
 					</view>
@@ -626,40 +626,40 @@
 		</block>
 
 		<!--video类型-->
-		<block s-elif="{{item.tag == 'video'}}">
+		<block wx:elif="{{item.tag == 'video'}}">
 			<template is="bdParseVideo" data="{{ {item} }}" />
 		</block>
 
 		<!--img类型-->
-		<block s-elif="{{item.tag == 'img'}}">
+		<block wx:elif="{{item.tag == 'img'}}">
 			<template is="bdParseImg" data="{{ {item} }}" />
 		</block>
 
 		<!--a类型-->
-		<block s-elif="{{item.tag == 'a'}}">
+		<block wx:elif="{{item.tag == 'a'}}">
 			<view bindtap="bdParseTagATap" class="bdParse-inline {{item.classStr}} bdParse-{{item.tag}}"
 				data-src="{{item.attr.href}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse8" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
-		<block s-elif="{{item.tag == 'br'}}">
+		<block wx:elif="{{item.tag == 'br'}}">
 			<template is="bdParseBr"></template>
 		</block>
 		<!--其他块级标签-->
-		<block s-elif="{{item.tagType == 'block'}}">
+		<block wx:elif="{{item.tagType == 'block'}}">
 			<view class="{{item.classStr}} bdParse-{{item.tag}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse8" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
 		<!--内联标签-->
-		<view s-else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
-			<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+		<view wx:else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
+			<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 				<template is="bdParse8" data="{{ {item} }}" />
 			</block>
 		</view>
@@ -667,7 +667,7 @@
 	</block>
 
 	<!--判断是否是文本节点-->
-	<block s-elif="{{item.node == 'text'}}">
+	<block wx:elif="{{item.node == 'text'}}">
 		<!--如果是，直接进行-->
 		<template is="WxEmojiView" data="{{ {item} }}" />
 	</block>
@@ -678,23 +678,23 @@
 <template name="bdParse8">
 	<!--<template is="bdParse9" data="{{ {item} }}" />-->
 	<!--判断是否是标签节点-->
-	<block s-if="{{item.node == 'element'}}">
-		<block s-if="{{item.tag == 'button'}}">
+	<block wx:if="{{item.node == 'element'}}">
+		<block wx:if="{{item.tag == 'button'}}">
 			<button type="default" size="mini">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse9" data="{{ {item} }}" />
 				</block>
 			</button>
 		</block>
 		<!--li类型-->
-		<block s-elif="{{item.tag == 'li'}}">
+		<block wx:elif="{{item.tag == 'li'}}">
 			<view class="{{item.classStr}} bdParse-li" style="{{item.styleStr}}">
 				<view class="{{item.classStr}} bdParse-li-inner">
 					<view class="{{item.classStr}} bdParse-li-text">
 						<view class="{{item.classStr}} bdParse-li-circle"></view>
 					</view>
 					<view class="{{item.classStr}} bdParse-li-text">
-						<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+						<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 							<template is="bdParse9" data="{{ {item} }}" />
 						</block>
 					</view>
@@ -703,40 +703,40 @@
 		</block>
 
 		<!--video类型-->
-		<block s-elif="{{item.tag == 'video'}}">
+		<block wx:elif="{{item.tag == 'video'}}">
 			<template is="bdParseVideo" data="{{ {item} }}" />
 		</block>
 
 		<!--img类型-->
-		<block s-elif="{{item.tag == 'img'}}">
+		<block wx:elif="{{item.tag == 'img'}}">
 			<template is="bdParseImg" data="{{ {item} }}" />
 		</block>
 
 		<!--a类型-->
-		<block s-elif="{{item.tag == 'a'}}">
+		<block wx:elif="{{item.tag == 'a'}}">
 			<view bindtap="bdParseTagATap" class="bdParse-inline {{item.classStr}} bdParse-{{item.tag}}"
 				data-src="{{item.attr.href}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse9" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
-		<block s-elif="{{item.tag == 'br'}}">
+		<block wx:elif="{{item.tag == 'br'}}">
 			<template is="bdParseBr"></template>
 		</block>
 		<!--其他块级标签-->
-		<block s-elif="{{item.tagType == 'block'}}">
+		<block wx:elif="{{item.tagType == 'block'}}">
 			<view class="{{item.classStr}} bdParse-{{item.tag}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse9" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
 		<!--内联标签-->
-		<view s-else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
-			<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+		<view wx:else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
+			<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 				<template is="bdParse9" data="{{ {item} }}" />
 			</block>
 		</view>
@@ -744,7 +744,7 @@
 	</block>
 
 	<!--判断是否是文本节点-->
-	<block s-elif="{{item.node == 'text'}}">
+	<block wx:elif="{{item.node == 'text'}}">
 		<!--如果是，直接进行-->
 		<template is="WxEmojiView" data="{{ {item} }}" />
 	</block>
@@ -755,23 +755,23 @@
 <template name="bdParse9">
 	<!--<template is="bdParse10" data="{{ {item} }}" />-->
 	<!--判断是否是标签节点-->
-	<block s-if="{{item.node == 'element'}}">
-		<block s-if="{{item.tag == 'button'}}">
+	<block wx:if="{{item.node == 'element'}}">
+		<block wx:if="{{item.tag == 'button'}}">
 			<button type="default" size="mini">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse10" data="{{ {item} }}" />
 				</block>
 			</button>
 		</block>
 		<!--li类型-->
-		<block s-elif="{{item.tag == 'li'}}">
+		<block wx:elif="{{item.tag == 'li'}}">
 			<view class="{{item.classStr}} bdParse-li" style="{{item.styleStr}}">
 				<view class="{{item.classStr}} bdParse-li-inner">
 					<view class="{{item.classStr}} bdParse-li-text">
 						<view class="{{item.classStr}} bdParse-li-circle"></view>
 					</view>
 					<view class="{{item.classStr}} bdParse-li-text">
-						<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+						<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 							<template is="bdParse10" data="{{ {item} }}" />
 						</block>
 					</view>
@@ -780,40 +780,40 @@
 		</block>
 
 		<!--video类型-->
-		<block s-elif="{{item.tag == 'video'}}">
+		<block wx:elif="{{item.tag == 'video'}}">
 			<template is="bdParseVideo" data="{{ {item} }}" />
 		</block>
 
 		<!--img类型-->
-		<block s-elif="{{item.tag == 'img'}}">
+		<block wx:elif="{{item.tag == 'img'}}">
 			<template is="bdParseImg" data="{{ {item} }}" />
 		</block>
 
 		<!--a类型-->
-		<block s-elif="{{item.tag == 'a'}}">
+		<block wx:elif="{{item.tag == 'a'}}">
 			<view bindtap="bdParseTagATap" class="bdParse-inline {{item.classStr}} bdParse-{{item.tag}}"
 				data-src="{{item.attr.href}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse10" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
-		<block s-elif="{{item.tag == 'br'}}">
+		<block wx:elif="{{item.tag == 'br'}}">
 			<template is="bdParseBr"></template>
 		</block>
 		<!--其他块级标签-->
-		<block s-elif="{{item.tagType == 'block'}}">
+		<block wx:elif="{{item.tagType == 'block'}}">
 			<view class="{{item.classStr}} bdParse-{{item.tag}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse10" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
 		<!--内联标签-->
-		<view s-else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
-			<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+		<view wx:else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
+			<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 				<template is="bdParse10" data="{{ {item} }}" />
 			</block>
 		</view>
@@ -821,7 +821,7 @@
 	</block>
 
 	<!--判断是否是文本节点-->
-	<block s-elif="{{item.node == 'text'}}">
+	<block wx:elif="{{item.node == 'text'}}">
 		<!--如果是，直接进行-->
 		<template is="WxEmojiView" data="{{ {item} }}" />
 	</block>
@@ -832,23 +832,23 @@
 <template name="bdParse10">
 	<!--<template is="bdParse11" data="{{ {item} }}" />-->
 	<!--判断是否是标签节点-->
-	<block s-if="{{item.node == 'element'}}">
-		<block s-if="{{item.tag == 'button'}}">
+	<block wx:if="{{item.node == 'element'}}">
+		<block wx:if="{{item.tag == 'button'}}">
 			<button type="default" size="mini">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse11" data="{{ {item} }}" />
 				</block>
 			</button>
 		</block>
 		<!--li类型-->
-		<block s-elif="{{item.tag == 'li'}}">
+		<block wx:elif="{{item.tag == 'li'}}">
 			<view class="{{item.classStr}} bdParse-li" style="{{item.styleStr}}">
 				<view class="{{item.classStr}} bdParse-li-inner">
 					<view class="{{item.classStr}} bdParse-li-text">
 						<view class="{{item.classStr}} bdParse-li-circle"></view>
 					</view>
 					<view class="{{item.classStr}} bdParse-li-text">
-						<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+						<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 							<template is="bdParse11" data="{{ {item} }}" />
 						</block>
 					</view>
@@ -857,40 +857,40 @@
 		</block>
 
 		<!--video类型-->
-		<block s-elif="{{item.tag == 'video'}}">
+		<block wx:elif="{{item.tag == 'video'}}">
 			<template is="bdParseVideo" data="{{ {item} }}" />
 		</block>
 
 		<!--img类型-->
-		<block s-elif="{{item.tag == 'img'}}">
+		<block wx:elif="{{item.tag == 'img'}}">
 			<template is="bdParseImg" data="{{ {item} }}" />
 		</block>
 
 		<!--a类型-->
-		<block s-elif="{{item.tag == 'a'}}">
+		<block wx:elif="{{item.tag == 'a'}}">
 			<view bindtap="bdParseTagATap" class="bdParse-inline {{item.classStr}} bdParse-{{item.tag}}"
 				data-src="{{item.attr.href}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse11" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
-		<block s-elif="{{item.tag == 'br'}}">
+		<block wx:elif="{{item.tag == 'br'}}">
 			<template is="bdParseBr"></template>
 		</block>
 		<!--其他块级标签-->
-		<block s-elif="{{item.tagType == 'block'}}">
+		<block wx:elif="{{item.tagType == 'block'}}">
 			<view class="{{item.classStr}} bdParse-{{item.tag}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse11" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
 		<!--内联标签-->
-		<view s-else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
-			<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+		<view wx:else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
+			<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 				<template is="bdParse11" data="{{ {item} }}" />
 			</block>
 		</view>
@@ -898,7 +898,7 @@
 	</block>
 
 	<!--判断是否是文本节点-->
-	<block s-elif="{{item.node == 'text'}}">
+	<block wx:elif="{{item.node == 'text'}}">
 		<!--如果是，直接进行-->
 		<template is="WxEmojiView" data="{{ {item} }}" />
 	</block>
@@ -909,23 +909,23 @@
 <template name="bdParse11">
 	<!--<template is="bdParse12" data="{{ {item} }}" />-->
 	<!--判断是否是标签节点-->
-	<block s-if="{{item.node == 'element'}}">
-		<block s-if="{{item.tag == 'button'}}">
+	<block wx:if="{{item.node == 'element'}}">
+		<block wx:if="{{item.tag == 'button'}}">
 			<button type="default" size="mini">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse12" data="{{ {item} }}" />
 				</block>
 			</button>
 		</block>
 		<!--li类型-->
-		<block s-elif="{{item.tag == 'li'}}">
+		<block wx:elif="{{item.tag == 'li'}}">
 			<view class="{{item.classStr}} bdParse-li" style="{{item.styleStr}}">
 				<view class="{{item.classStr}} bdParse-li-inner">
 					<view class="{{item.classStr}} bdParse-li-text">
 						<view class="{{item.classStr}} bdParse-li-circle"></view>
 					</view>
 					<view class="{{item.classStr}} bdParse-li-text">
-						<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+						<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 							<template is="bdParse12" data="{{ {item} }}" />
 						</block>
 					</view>
@@ -934,40 +934,40 @@
 		</block>
 
 		<!--video类型-->
-		<block s-elif="{{item.tag == 'video'}}">
+		<block wx:elif="{{item.tag == 'video'}}">
 			<template is="bdParseVideo" data="{{ {item} }}" />
 		</block>
 
 		<!--img类型-->
-		<block s-elif="{{item.tag == 'img'}}">
+		<block wx:elif="{{item.tag == 'img'}}">
 			<template is="bdParseImg" data="{{ {item} }}" />
 		</block>
 
 		<!--a类型-->
-		<block s-elif="{{item.tag == 'a'}}">
+		<block wx:elif="{{item.tag == 'a'}}">
 			<view bindtap="bdParseTagATap" class="bdParse-inline {{item.classStr}} bdParse-{{item.tag}}"
 				data-src="{{item.attr.href}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse12" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
-		<block s-elif="{{item.tag == 'br'}}">
+		<block wx:elif="{{item.tag == 'br'}}">
 			<template is="bdParseBr"></template>
 		</block>
 		<!--其他块级标签-->
-		<block s-elif="{{item.tagType == 'block'}}">
+		<block wx:elif="{{item.tagType == 'block'}}">
 			<view class="{{item.classStr}} bdParse-{{item.tag}}" style="{{item.styleStr}}">
-				<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+				<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 					<template is="bdParse12" data="{{ {item} }}" />
 				</block>
 			</view>
 		</block>
 
 		<!--内联标签-->
-		<view s-else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
-			<block s-for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
+		<view wx:else class="{{item.classStr}} bdParse-{{item.tag}} bdParse-{{item.tagType}}" style="{{item.styleStr}}">
+			<block wx:for="{{item.nodes}}" s-for-item="item" s-for-index="idx">
 				<template is="bdParse12" data="{{ {item} }}" />
 			</block>
 		</view>
@@ -975,7 +975,7 @@
 	</block>
 
 	<!--判断是否是文本节点-->
-	<block s-elif="{{item.node == 'text'}}">
+	<block wx:elif="{{item.node == 'text'}}">
 		<!--如果是，直接进行-->
 		<template is="WxEmojiView" data="{{ {item} }}" />
 	</block>

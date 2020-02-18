@@ -44,7 +44,7 @@ Component({
 
         // this.leftTimer('2020/01/16 13:59:36')
 
-        swan.getSystemInfo({
+        wx.getSystemInfo({
             success: res => {
                 console.log('res', res.system);
                 if (res.system.indexOf('iOS') != -1) {
@@ -54,7 +54,7 @@ Component({
                 }
             },
             fail: err => {
-                swan.showToast({
+                wx.showToast({
                     title: '获取失败'
                 });
             }
@@ -73,7 +73,7 @@ Component({
 
             let _path = 'pages/proxy/union/union?isUnion=1&spreadUrl=' + encodeURIComponent(this.data.itemData.adUrl)
             console.log(_path)
-            swan.navigateToSmartProgram({
+            wx.navigateToMiniProgram({
                 appKey: '4VvF29wlVg61mjRYCp4tY5dqkBgOyoYN', // 要打开的小程序 App Key
                 path: _path, // 打开的页面路径，如果为空则打开首页
                 success: res => {
@@ -86,7 +86,7 @@ Component({
         },
 
         jdYuedu() {
-            swan.request({
+            wx.request({
                 url: 'https://pub.suwenyj.xyz/open/ad/ad-read?id=' + this.data.itemData.id,
                 header: {
                     'content-type': 'application/json'

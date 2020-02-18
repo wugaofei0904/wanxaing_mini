@@ -1,32 +1,32 @@
-<import src="../../bdParse/bdParse/bdParse.swan" />
+<import src="../../bdParse/bdParse/bdParse.wxml" />
 <!-- <test123 hours="{{hours}}" minutes="{{minutes}}" seconds="{{seconds}}"></test123> -->
 <!-- <view class="time_auto">倒计时{{hours}}:{{minutes}}:{{seconds}}</view> -->
-<scroll-view scroll-y class="scroll-view" scroll-into-view="{= toView =}" scroll-with-animation="true"
+<scroll-view scroll-y class="scroll-view" scroll-into-view="{{ toView }}" scroll-with-animation="true"
 	bind:scrolltoupper="upper" bind:scrolltolower="lower" upper-threshold="1" lower-threshold="10"
 	enable-back-to-top="true">
 
-	<view s-if="{{showContent}}" class="detail_container {{noLineHeight ? 'noLineHeight':''}} ">
+	<view wx:if="{{showContent}}" class="detail_container {{noLineHeight ? 'noLineHeight':''}} ">
 
 		<view class="detail-padding-box">
 
 			<!-- 标题 -->
 			<view class="detail_title pad_box">
 				<text class="title_text">{{detailData.title}}</text>
-				<!-- <view s-if="{{detailData.isOwn == 1 && showIcon}}" class="yc_icon">原创</view> -->
+				<!-- <view wx:if="{{detailData.isOwn == 1 && showIcon}}" class="yc_icon">原创</view> -->
 			</view>
 			<!-- 作者信息 -->
-			<view s-if="{{detailData.isOwn == 1}}" class="anthor_info pad_box">
+			<view wx:if="{{detailData.isOwn == 1}}" class="anthor_info pad_box">
 
 
 				<view class="flex_box">
 					<view class="left_con">
 						<view class="touxiang">
-							<image s-if="{{showIcon}}" class="touxiang" src="{{detailData.headImg}}"></image>
-							<image s-if="{{showIcon}}" class="v_logo" src="./../../images/v_logo.png"></image>
+							<image wx:if="{{showIcon}}" class="touxiang" src="{{detailData.headImg}}"></image>
+							<image wx:if="{{showIcon}}" class="v_logo" src="./../../images/v_logo.png"></image>
 						</view>
 						<view class="author_msg">
 							<view class="anthor_name">{{detailData.authorName}}</view>
-							<view s-if="{{detailData.detail && detailData.detail != ''}}"
+							<view wx:if="{{detailData.detail && detailData.detail != ''}}"
 								class="anthor_biaoqian hidden">/
 								{{detailData.detail}}
 							</view>
@@ -40,7 +40,7 @@
 
 			</view>
 
-			<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName == ''}}" class="anthor_info pad_box">
+			<view wx:if="{{detailData.isOwn != 1 && detailData.otherAuthorName == ''}}" class="anthor_info pad_box">
 				<view class="flex_box">
 					<view class="left_con">
 						<view class="touxiang">
@@ -49,7 +49,7 @@
 						</view>
 						<view class="author_msg">
 							<view class="anthor_name">{{detailData.authorName}}</view>
-							<view s-if="{{detailData.detail && detailData.detail != ''}}"
+							<view wx:if="{{detailData.detail && detailData.detail != ''}}"
 								class="anthor_biaoqian hidden">/
 								{{detailData.detail}}
 							</view>
@@ -59,25 +59,25 @@
 				</view>
 			</view>
 
-			<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName != ''}}" class="anthor_info pad_box">
+			<view wx:if="{{detailData.isOwn != 1 && detailData.otherAuthorName != ''}}" class="anthor_info pad_box">
 				<view class="touxiang">
 					<image class="touxiang" src="{{detailData.headImg}}"></image>
 					<image class="v_logo" src="./../../images/v_logo.png"></image>
 				</view>
 				<view class="author_msg {{detailData.isOwn != '1' ? 'duan' : '' }}">
 					<view class="anthor_name">{{detailData.authorName}}</view>
-					<view s-if="{{detailData.otherAuthorName != ''}}" class="anthor_biaoqian">
+					<view wx:if="{{detailData.otherAuthorName != ''}}" class="anthor_biaoqian">
 					</view>
 				</view>
 				<view class="flex_center">
 					<view class="anthor_time">{{time}}</view>
-					<view s-if="{{detailData.isOwn != '1'}}" class="anthor_zhuanzai">{{detailData.otherAuthorName}}·
+					<view wx:if="{{detailData.isOwn != '1'}}" class="anthor_zhuanzai">{{detailData.otherAuthorName}}·
 					</view>
 				</view>
 			</view>
 
 			<!-- 核心观点 -->
-			<view s-if="{{detailData.corePoint}}" class="hexin_guandian pad_box">
+			<view wx:if="{{detailData.corePoint}}" class="hexin_guandian pad_box">
 				<view class="hexin_guandian_title">观点</view>
 				<text class="hexin_guandian_detail">{{detailData.corePoint}}</text>
 			</view>
@@ -157,19 +157,19 @@
 
 
 
-		<swiper s-if="{{getJdAdList.length > 1}}" indicator-color="rgba(0,0,0,0.30)" indicator-active-color="#fff"
+		<swiper wx:if="{{getJdAdList.length > 1}}" indicator-color="rgba(0,0,0,0.30)" indicator-active-color="#fff"
 			duration="{{switchDuration}}" interval="{{autoPlayInterval}}" autoplay="{{switchAutoPlayStatus}}"
 			indicator-dots="{{switchIndicateStatus}}" vertical="false" circular="true" current="0" current-item-id="0"
 			previous-margin="0px" next-margin="0px" display-multiple-items="1" bind:change="swiperChange"
 			bind:animationfinish="animationfinish" class="swiper_box">
-			<block s-for="item in getJdAdList">
+			<block wx:for="{{getJdAdList}}" wx:for-item="item">
 				<swiper-item>
 					<test itemData="{{item}}"></test>
 				</swiper-item>
 			</block>
 		</swiper>
 
-		<view s-if="{{getJdAdList.length == 1}}">
+		<view wx:if="{{getJdAdList.length == 1}}">
 			<test itemData="{{getJdAdList[0]}}"></test>
 		</view>
 
@@ -204,7 +204,7 @@
 
 
 		<!-- 广告位 -->
-		<view s-if="{{getJdAdList.length == 0}}" class="ad_container">
+		<view wx:if="{{getJdAdList.length == 0}}" class="ad_container">
 			<view class="ad-title {{hidecontent ? '':'show'}}">
 				<view class="ad-title-mode-1">AD</view>
 				<view class="ad-title-mode-2">赞助内容</view>
@@ -214,35 +214,35 @@
 				type="feed"></ad> -->
 			<!-- <ad appid="f1522535" apid="6868222" class="ad" type="banner" ></ad> -->
 			<ad appid="f1522535" apid="6867619" class="ad" type="feed"></ad>
-			<!-- <ad s-if="{{showadid_1}}" appid="f1522535" updatetime="{{adNumber}}" apid="6775935" class="ad" type="feed">
+			<!-- <ad wx:if="{{showadid_1}}" appid="f1522535" updatetime="{{adNumber}}" apid="6775935" class="ad" type="feed">
 			</ad> -->
 		</view>
 		<view class="tj-detail-padding-box">
 			<!-- 相关推荐 -->
-			<view s-if="{{tuijianList.length}}" class="container_node pad_box">
+			<view wx:if="{{tuijianList.length}}" class="container_node pad_box">
 				<view class="container_node_top">
 					<view class="container_node_top_line"></view>
 					<view class="container_node_title">相关推荐</view>
 				</view>
 
-				<view s-for="{{tuijianList}}" s-for-item="item" s-for-index="idx">
-					<custom s-if="{{item != ''}}" noMargin='{{idx == 0}}' dataitem='{{item}}'></custom>
-					<view s-if="{{item == ''}}" class="ad_container">
+				<view wx:for="{{tuijianList}}" s-for-item="item" s-for-index="idx">
+					<custom wx:if="{{item != ''}}" noMargin='{{idx == 0}}' dataitem='{{item}}'></custom>
+					<view wx:if="{{item == ''}}" class="ad_container">
 						<!-- <view  class="ad_container"> -->
 						<view class="ad-title {{hidecontent ? '':'show'}}">
 							<view class="ad-title-mode-1">AD</view>
 							<view class="ad-title-mode-2">赞助内容</view>
 							<view class="ad-title-mode-3">广告收益用于作者激励和平台发展 </view>
 						</view>
-						<ad s-if="{{idx == 3}}" binderror="aderror2" appid="f1522535" updatetime="{{adNumber}}"
+						<ad wx:if="{{idx == 3}}" binderror="aderror2" appid="f1522535" updatetime="{{adNumber}}"
 							apid="{{adid_2}}" class="ad" type="feed"></ad>
-						<ad s-if="{{idx == 3 && showadid_2}}" binderror="aderror2" updatetime="{{adNumber}}"
+						<ad wx:if="{{idx == 3 && showadid_2}}" binderror="aderror2" updatetime="{{adNumber}}"
 							appid="f1522535" apid="6775935" class="ad" type="feed"></ad>
-						<ad s-if="{{idx == 7}}" binderror="aderror3" updatetime="{{adNumber}}" appid="f1522535"
+						<ad wx:if="{{idx == 7}}" binderror="aderror3" updatetime="{{adNumber}}" appid="f1522535"
 							apid="{{adid_3}}" class="ad" type="feed"></ad>
-						<ad s-if="{{idx == 7 && showadid_3}}" updatetime="{{adNumber}}" binderror="aderror3"
+						<ad wx:if="{{idx == 7 && showadid_3}}" updatetime="{{adNumber}}" binderror="aderror3"
 							appid="f1522535" apid="6775935" class="ad" type="feed"></ad>
-						<ad s-if="{{idx != 3 && idx != 7}}" updatetime="{{adNumber}}" appid="f1522535" apid="6775935"
+						<ad wx:if="{{idx != 3 && idx != 7}}" updatetime="{{adNumber}}" appid="f1522535" apid="6775935"
 							class="ad" type="feed"></ad>
 					</view>
 				</view>

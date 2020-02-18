@@ -25,7 +25,7 @@ Component({
         jumpDetail: function (e) {
             let _id = e.currentTarget.dataset.id;
             console.log(e.currentTarget.dataset.id)
-            swan.navigateTo({
+            wx.navigateTo({
                 url: '/pages/detail/detail?id=' + _id,
                 success: res => {
                     console.log('navigateTo success')

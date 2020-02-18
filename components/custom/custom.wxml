@@ -10,16 +10,16 @@
 				<image src="{{dataitem.headImg}}"></image>
 			</view>
 			<text class="info_detail_text">{{dataitem.authorName}}</text>
-			<text s-if="{{dataitem.detail && dataitem.detail != ''}}" class="info_detail_text m_20 color_9">/</text>
-			<text s-if="{{dataitem.detail && dataitem.detail != ''}}"
+			<text wx:if="{{dataitem.detail && dataitem.detail != ''}}" class="info_detail_text m_20 color_9">/</text>
+			<text wx:if="{{dataitem.detail && dataitem.detail != ''}}"
 				class="info_detail_text info_detail_text_hidden color_9 {{dataitem.likeNum == 0 ? 'lang':''}}">{{dataitem.detail}}</text>
 		</view>
 		<view class="info_detail_right flex">
 			<text class="info_detail_text color_9">{{dataitem.readNum}} 阅读</text>
 			<!-- <text class="info_detail_text color_9">11 阅读</text> -->
-			<text s-if="{{dataitem.likeNum != 0}}" class="info_detail_text m_20 color_9">/</text>
-			<text s-if="{{dataitem.likeNum != 0}}" class="info_detail_text color_9">{{dataitem.likeNum}} 赞</text>
-			<!-- <text s-if="{{dataitem.likeNum != 0}}" class="info_detail_text color_9">{{dataitem.likeNum}} 赞</text> -->
+			<text wx:if="{{dataitem.likeNum != 0}}" class="info_detail_text m_20 color_9">/</text>
+			<text wx:if="{{dataitem.likeNum != 0}}" class="info_detail_text color_9">{{dataitem.likeNum}} 赞</text>
+			<!-- <text wx:if="{{dataitem.likeNum != 0}}" class="info_detail_text color_9">{{dataitem.likeNum}} 赞</text> -->
 		</view>
 	</view>
 </view>

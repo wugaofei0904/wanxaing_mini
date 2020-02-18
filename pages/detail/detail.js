@@ -85,7 +85,7 @@ Page({
         this.getDetailData(option.id)
 
 
-        const likedData = JSON.parse(swan.getStorageSync('liked') || '{}');
+        const likedData = JSON.parse(wx.getStorageSync('liked') || '{}');
         if (likedData[option.id]) {
             this.setData({
                 hasLike: true
@@ -152,7 +152,7 @@ Page({
     },
     setContentHeight() {
         try {
-            const result = swan.getSystemInfoSync();
+            const result = wx.getSystemInfoSync();
             console.log('getSystemInfoSync success', result.windowHeight);
             this.setData({
                 contentHeight: result.windowHeight * 3
@@ -164,7 +164,7 @@ Page({
     },
     yueduAdd(id) {
 
-        swan.request({
+        wx.request({
             url: 'https://pub.suwenyj.xyz/open/article/read?id=' + id,
             header: {
                 'content-type': 'application/json'
@@ -183,7 +183,7 @@ Page({
 
     getJdAd(id) {
         // /open/ad/list-ad-m?id
-        swan.request({
+        wx.request({
             url: 'https://pub.suwenyj.xyz/open/ad/list-ad-m?id=' + id,
             header: {
                 'content-type': 'application/json'
@@ -209,11 +209,11 @@ Page({
         if (hasLike) return;
         let { id, likeNum } = this.data;
 
-        const likedData = JSON.parse(swan.getStorageSync('liked') || '{}');
+        const likedData = JSON.parse(wx.getStorageSync('liked') || '{}');
         if (likedData[id]) return;
 
 
-        swan.request({
+        wx.request({
             url: 'https://pub.suwenyj.xyz/open/article/like?id=' + id,
             header: {
                 'content-type': 'application/json'
@@ -226,9 +226,9 @@ Page({
                         hasLike: true
                     })
                     likedData[id] = 1;
-                    swan.setStorageSync('liked', JSON.stringify(likedData));
+                    wx.setStorageSync('liked', JSON.stringify(likedData));
                 } else {
-                    swan.showToast({
+                    wx.showToast({
                         title: res.data.msg
                     });
                 }
@@ -242,7 +242,7 @@ Page({
     getDetailData(id) {
 
         let _this = this;
-        swan.request({
+        wx.request({
             url: 'https://pub.suwenyj.xyz/open/article/article?id=' + id,
             header: {
                 'content-type': 'application/json'
@@ -294,7 +294,7 @@ Page({
                     })
 
                 } else {
-                    swan.showToast({
+                    wx.showToast({
                         title: res.data.msg
                     });
                 }
@@ -308,7 +308,7 @@ Page({
     },
     getTuijianList(name) {
         let { id } = this.data;
-        swan.request({
+        wx.request({
             url: 'https://pub.suwenyj.xyz/open/article/list-page-m?id=' + id + '&pageSize=20&pageNum=1&status=&title=&authorName=' + name + '&startTime=&endTime=',
             header: {
                 'content-type': 'application/json'
@@ -332,7 +332,7 @@ Page({
                     })
 
                 } else {
-                    swan.showToast({
+                    wx.showToast({
                         title: res.data.msg
                     });
                 }
