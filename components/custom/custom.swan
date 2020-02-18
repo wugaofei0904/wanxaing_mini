@@ -1,4 +1,4 @@
-<view data-id="{{dataitem.id}}" bindtap="jumpDetail" class="article_item {{noMargin ? 'noMargin' :''}}">
+<view data-id="{{dataitem.id}}" data-title="{{dataitem.title}}" bindtap="jumpDetail" class="article_item {{noMargin ? 'noMargin' :''}}">
 	<view class="article_img">
 		<image mode="aspectFill" lazy-load="{{true}}" src="{{imgurl}}"></image>
 	</view>

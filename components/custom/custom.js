@@ -24,9 +24,11 @@ Component({
         tap: function () { },
         jumpDetail: function (e) {
             let _id = e.currentTarget.dataset.id;
-            console.log(e.currentTarget.dataset.id)
+            let _title = e.currentTarget.dataset.title;
+            // console.log(e.currentTarget.dataset)
+            // debugger
             swan.navigateTo({
-                url: '/pages/detail/detail?id=' + _id,
+                url: '/pages/detail/detail?id=' + _id + '&title=' + _title,
                 success: res => {
                     console.log('navigateTo success')
                 },

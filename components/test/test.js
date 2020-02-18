@@ -87,7 +87,7 @@ Component({
 
         jdYuedu() {
             swan.request({
-                url: 'https://pub.suwenyj.xyz/open/ad/ad-read?id=' + this.data.itemData.id,
+                url: 'https://www.jiandi.life/open/ad/ad-read?id=' + this.data.itemData.id,
                 header: {
                     'content-type': 'application/json'
                 },

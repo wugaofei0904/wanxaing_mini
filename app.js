@@ -24,8 +24,40 @@ App({
     },
     onShow(options) {
         // do something when show
+
+        this.getNetworkType();
+
+
     },
     onHide() {
         // do something when hide
+    },
+    getNetworkType() {
+        swan.getNetworkType({
+            success: res => {
+                console.log(res.networkType)
+                if (res.networkType == 'none') {
+                    swan.showToast({
+                        title: '网络不给力，请稍后再试',
+                        icon: 'none'
+                    });
+                }
+            },
+            fail: err => {
+                // swan.showToast({
+                //     title: '获取网络状态失败'
+                // });
+                // swan.showToast({
+                //     title: res.networkType,
+                //     icon: 'none'
+                // });
+            },
+            complete: res => {
+                // swan.showToast({
+                //     title: res.networkType,
+                //     icon: 'none'
+                // });
+            }
+        });
     }
 });

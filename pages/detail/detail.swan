@@ -226,7 +226,10 @@
 				</view>
 
 				<view s-for="{{tuijianList}}" s-for-item="item" s-for-index="idx">
-					<custom s-if="{{item != ''}}" noMargin='{{idx == 0}}' dataitem='{{item}}'></custom>
+					<view class="padddd">
+						<custom s-if="{{item != ''}}" noMargin='{{idx == 0}}' dataitem='{{item}}'></custom>
+					</view>
+
 					<view s-if="{{item == ''}}" class="ad_container">
 						<!-- <view  class="ad_container"> -->
 						<view class="ad-title {{hidecontent ? '':'show'}}">

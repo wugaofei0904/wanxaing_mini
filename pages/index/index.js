@@ -10,10 +10,16 @@ Page({
     },
     onLoad() {
 
+        swan.setPageInfo({
+            title: '见地'
+        })
+
+        this.getNetworkType()
+
         let that = this;
         let { pageNum } = this.data;
         swan.request({
-            url: 'https://pub.suwenyj.xyz/open/article/list-page-m?pageSize=5&pageNum=' + pageNum + '&status=1', // 仅为示例，并非真实的接口地址
+            url: 'https://www.jiandi.life/open/article/list-page-m?pageSize=5&pageNum=' + pageNum + '&status=1', // 仅为示例，并非真实的接口地址
             header: {
                 'content-type': 'application/json'
             },
@@ -45,6 +51,34 @@ Page({
             }
         });
     },
+    getNetworkType() {
+        swan.getNetworkType({
+            success: res => {
+                console.log(res.networkType)
+                if (res.networkType == 'none') {
+                    swan.showToast({
+                        title: '网络不给力，请稍后再试',
+                        icon: 'none'
+                    });
+                }
+            },
+            fail: err => {
+                swan.showToast({
+                    title: '获取网络状态失败'
+                });
+                // swan.showToast({
+                //     title: res.networkType,
+                //     icon: 'none'
+                // });
+            },
+            // complete: res => {
+            //     swan.showToast({
+            //         title: res.networkType,
+            //         icon: 'none'
+            //     });
+            // }
+        });
+    },
     lower() {
         let that = this;
         let { pageNum, listData, isNoDta } = this.data;
@@ -56,7 +90,7 @@ Page({
 
         swan.showLoading();
         swan.request({
-            url: 'https://pub.suwenyj.xyz/open/article/list-page-m?pageSize=5&pageNum=' + pageNum + '&status=1',
+            url: 'https://www.jiandi.life/open/article/list-page-m?pageSize=5&pageNum=' + pageNum + '&status=1',
             header: {
                 'content-type': 'application/json'
             },

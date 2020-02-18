@@ -14,10 +14,10 @@ Page({
         adNumber: '0',
         showIcon: false,
         noLineHeight: false,
-        hidecontent: true,
-        showContent: false,
-        // hidecontent: false,
-        // showContent: true,
+        // hidecontent: true,
+        // showContent: false,
+        hidecontent: false,
+        showContent: true,
         adid_1: '6859839',
         adid_2: '6859974',
         adid_3: '6860042',
@@ -25,6 +25,34 @@ Page({
         showadid_2: false,
         showadid_3: false,
         contentHeight: 1000
+    },
+    getNetworkType() {
+        swan.getNetworkType({
+            success: res => {
+                console.log(res.networkType)
+                if (res.networkType == 'none') {
+                    swan.showToast({
+                        title: '网络不给力，请稍后再试',
+                        icon: 'none'
+                    });
+                }
+            },
+            fail: err => {
+                swan.showToast({
+                    title: '获取网络状态失败'
+                });
+                // swan.showToast({
+                //     title: res.networkType,
+                //     icon: 'none'
+                // });
+            },
+            // complete: res => {
+            //     swan.showToast({
+            //         title: res.networkType,
+            //         icon: 'none'
+            //     });
+            // }
+        });
     },
     leftTimer(date) {
 
@@ -71,8 +99,15 @@ Page({
         return i < 10 ? "0" + i : i;
     },
     onLoad: function (option) {
+
+        // console.log(option)
+        swan.setPageInfo({
+            title: option.title
+        })
+
+        this.getNetworkType();
         // this.leftTimer('2020/01/16 13:59:36')
-        console.log(option.id)
+        // console.log(option.id)
         // 监听页面加载的生命周期函数
         this.setData({
             id: option.id,
@@ -165,7 +200,7 @@ Page({
     yueduAdd(id) {
 
         swan.request({
-            url: 'https://pub.suwenyj.xyz/open/article/read?id=' + id,
+            url: 'https://www.jiandi.life/open/article/read?id=' + id,
             header: {
                 'content-type': 'application/json'
             },
@@ -182,9 +217,8 @@ Page({
     },
 
     getJdAd(id) {
-        // /open/ad/list-ad-m?id
         swan.request({
-            url: 'https://pub.suwenyj.xyz/open/ad/list-ad-m?id=' + id,
+            url: 'https://www.jiandi.life/open/ad/list-ad-m?id=' + id,
             header: {
                 'content-type': 'application/json'
             },
@@ -214,7 +248,7 @@ Page({
 
 
         swan.request({
-            url: 'https://pub.suwenyj.xyz/open/article/like?id=' + id,
+            url: 'https://www.jiandi.life/open/article/like?id=' + id,
             header: {
                 'content-type': 'application/json'
             },
@@ -243,7 +277,7 @@ Page({
 
         let _this = this;
         swan.request({
-            url: 'https://pub.suwenyj.xyz/open/article/article?id=' + id,
+            url: 'https://www.jiandi.life/open/article/article?id=' + id,
             header: {
                 'content-type': 'application/json'
             },
@@ -309,7 +343,7 @@ Page({
     getTuijianList(name) {
         let { id } = this.data;
         swan.request({
-            url: 'https://pub.suwenyj.xyz/open/article/list-page-m?id=' + id + '&pageSize=20&pageNum=1&status=&title=&authorName=' + name + '&startTime=&endTime=',
+            url: 'https://www.jiandi.life/open/article/list-page-m?id=' + id + '&pageSize=20&pageNum=1&status=&title=&authorName=' + name + '&startTime=&endTime=',
             header: {
                 'content-type': 'application/json'
             },
