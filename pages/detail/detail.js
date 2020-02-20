@@ -29,7 +29,7 @@ Page({
     getNetworkType() {
         swan.getNetworkType({
             success: res => {
-                console.log(res.networkType)
+                // console.log(res.networkType)
                 if (res.networkType == 'none') {
                     swan.showToast({
                         title: '网络不给力，请稍后再试',
@@ -318,12 +318,10 @@ Page({
                             })
                         }
                         let _body1 = res.data.data.body.replace(/http:/g, 'https:');
-
-                        let _body = bdParse.bdParse('article', 'html', _body1, _this, 5);
+                      
+                        bdParse.bdParse('article', 'html', _body1, _this, 5, '<ad appid="f1522535" apid="6928971" class="ad" type="banner" ></ad>');
 
                         _this.setContentHeight();
-                        // console.log(_body1,'_body1')
-                        // _this.setData({ content: _body })
                         _this.getTuijianList(res.data.data.authorName);
                     })
 
@@ -348,7 +346,6 @@ Page({
                 'content-type': 'application/json'
             },
             success: res => {
-                console.log(res.data.data);
                 if (res.data.success) {
                     let arrtype = res.data.data;
                     // 隔三个添加广告

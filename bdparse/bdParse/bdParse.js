@@ -25,17 +25,31 @@ swan.getSystemInfo({
 /**
  * 主函数入口区
  **/
-function bdParse(bindName = 'bdParseData', type = 'html', data = '<div class="color:red;">数据不能为空</div>', target, imagePadding) {
+function bdParse(bindName = 'bdParseData', type = 'html', data = '<div class="color:red;">数据不能为空</div>', target, imagePadding, adStr) {
     var that = target;
     var transData = {};//存放转化后的数据
     if (type == 'html') {
         transData = HtmlToJson.html2json(data, bindName);
-        console.log(transData,'122')
+        if (adStr && transData.nodes.length > 1) {
+            let adNodes = HtmlToJson.html2json(adStr);
+            let adNode = adNodes.nodes[0];
+            let centerNum = Math.floor(transData.nodes.length/2);
+            if (transData.images.length) {
+                for (let i = 0; i < transData.images.length; i++) {
+                    let indexs = transData.images[i].index.split('.')
+                    if ( indexs[0]/1 > centerNum) {
+                        indexs[0] = indexs[0]/1 + 1
+                        transData.images[i].index = indexs.join('.')
+                    }
+                }
+            }
+            transData.nodes.splice(centerNum, 0, adNode);
+
+        }
     } else if (type == 'md' || type == 'markdown') {
         var converter = new showdown.Converter();
         var html = converter.makeHtml(data);
         transData = HtmlToJson.html2json(html, bindName);
-        console.log(JSON.stringify(transData, ' ', ' '));
     }
     transData.view = {};
     transData.view.imagePadding = 0;
@@ -44,7 +58,6 @@ function bdParse(bindName = 'bdParseData', type = 'html', data = '<div class="co
     }
     var bindData = {};
     bindData[bindName] = transData;
-    console.log(bindData,'bindData')
     that.setData(bindData)
     that.bdParseImgLoad = bdParseImgLoad;
     that.bdParseImgTap = bdParseImgTap;
@@ -98,11 +111,6 @@ function calMoreImageInfo(e, idx, that, bindName) {
     let max_w = realWindowWidth * 0.85;
     let last_w = recal.imageWidth > max_w ? max_w : recal.imageWidth
 
-    // console.log(last_w,'wwwwwww')
-    // console.log(last_w * recal.imageheight / recal.imageWidth,'hhhhhh')
-    // console.log([keyW],'[keyShow]')
-    // console.log([keyShow],'[keyShow]')
-    
     that.setData({
         [keyW]: last_w,
         [keyH]: last_w * recal.imageheight / recal.imageWidth,
@@ -132,6 +140,7 @@ function wxAutoImageCal(originalWidth, originalHeight, that, bindName) {
         results.imageWidth = originalWidth;
         results.imageheight = originalHeight;
     }
+    console.log('results', results);
     return results;
 }
 

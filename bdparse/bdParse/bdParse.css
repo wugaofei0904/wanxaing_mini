@@ -27,6 +27,17 @@
     margin: 0;
     padding: 0;
 }
+
+.adParse-ad-wrapper{
+    margin: 0 -15px;
+    padding: 20px 0 10px;
+    /* background: red; */
+    /* height: 100px; */
+}
+.adParse-ad{
+    margin: 0;
+    width: 100%;
+}
 /*//标题 */
 .bdParse-div {
     margin: 0;

@@ -26,6 +26,15 @@
 	</view>
 </template>
 
+<template name="bdParseAD">
+	<!-- <view style="width:{{item.width}}px;minHeight:{{item.width*3/4}}px;" class="img-loading"> -->
+	<view class="adParse-ad-wrapper">
+		<ad appid="{{ item.attr.appid }}" apid="{{ item.attr.apid }}" class="adParse-ad" type="banner" ></ad>
+	</view>
+</template>
+
+
+
 <template name="WxEmojiView">
 	<view class="WxEmojiView bdParse-inline" style="{{item.styleStr}}">
 		<block s-for="{{item.textArray}}" s-for-index="idx">
@@ -41,6 +50,8 @@
 <template name="bdParseBr">
 	<view class="bdParse-br">\n</view>
 </template>
+
+
 <!--入口模版-->
 <template name="bdParse">
 	<block s-for="{{ bdParseData }}" s-for-index="0">
@@ -80,6 +91,11 @@
 		<!--video类型-->
 		<block s-elif="{{item.tag == 'video'}}">
 			<template is="bdParseVideo" data="{{ {item} }}" />
+		</block>
+
+		<!-- 广告类型 -->
+		<block s-elif="{{item.tag == 'ad'}}">
+			<template is="bdParseAD" data="{{ {item} }}" />
 		</block>
 
 		<!--img类型-->

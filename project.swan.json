@@ -1,1 +1,60 @@
-{"appid":"17598442","compilation-args":{"options":[{"extra":{"compileArgs":"--module cmd","ext":{},"index":"pages/detail/detail","query":"id=10738","scene":{}},"id":0,"text":"详情"},{"extra":{"compileArgs":"--module cmd","ext":{},"index":"pages/test/test","query":"","scene":{}},"id":1,"text":"测试"},{"extra":{"compileArgs":"--module cmd","ext":{},"index":"pages/detail/detail","query":"id=30","scene":{}},"id":2,"text":"232"}],"selected":-1},"editor":{"curPath":"/Users/workspace/wanxiang_mini/pages/detail/detail.js","expands":["/Users/workspace/wanxiang_mini/pages","/Users/workspace/wanxiang_mini/components","/Users/workspace/wanxiang_mini/pages/test","/Users/workspace/wanxiang_mini/components/test123","/Users/workspace/wanxiang_mini/pages/detail"],"markdownUploadTimeMap":{},"paths":["/Users/workspace/wanxiang_mini/pages/detail/detail.swan","/Users/workspace/wanxiang_mini/pages/detail/detail.js","/Users/workspace/wanxiang_mini/bdparse/bdParse/bdParse.swan","/Users/workspace/wanxiang_mini/pages/detail/detail.css","/Users/workspace/wanxiang_mini/bdparse/bdParse/bdParse.js","/Users/workspace/wanxiang_mini/project.swan.json","/Users/workspace/wanxiang_mini/pages/detail/detail.json","/Users/workspace/wanxiang_mini/components/custom/custom.css","/Users/workspace/wanxiang_mini/pages/index/index.js","/Users/workspace/wanxiang_mini/app.js","/Users/workspace/wanxiang_mini/components/anthor/anthor.js","/Users/workspace/wanxiang_mini/components/test/test.swan","/Users/workspace/wanxiang_mini/components/test/test.css","/Users/workspace/wanxiang_mini/components/test/test.js","/Users/workspace/wanxiang_mini/components/test/test.json","/Users/workspace/wanxiang_mini/images/jump_btn_1.gif","/Users/workspace/wanxiang_mini/components/test123/test123.js","/Users/workspace/wanxiang_mini/components/test123/test123.swan","/Users/workspace/wanxiang_mini/components/test123/test123.css","/Users/workspace/wanxiang_mini/pages/test/test.js","/Users/workspace/wanxiang_mini/components/custom/custom.js","search"],"recentlyFiles":["/Users/workspace/wanxiang_mini/pages/detail/detail.js","/Users/workspace/wanxiang_mini/components/test123/test123.js","/Users/workspace/wanxiang_mini/components/test/test.js","/Users/workspace/wanxiang_mini/components/custom/custom.js","/Users/workspace/wanxiang_mini/components/anthor/anthor.js","/Users/workspace/wanxiang_mini/components/adContainer/adContainer.js","/Users/workspace/wanxiang_mini/pages/test/test.swan","/Users/workspace/wanxiang_mini/pages/test/test.js","/Users/workspace/wanxiang_mini/pages/index/index.js","/Users/workspace/wanxiang_mini/app.js","/Users/workspace/wanxiang_mini/pages/detail/detail.swan","/Users/workspace/wanxiang_mini/pages/detail/detail.css","/Users/workspace/wanxiang_mini/components/anthor/anthor.swan","/Users/workspace/wanxiang_mini/pages/index/index.swan","/Users/workspace/wanxiang_mini/pages/detail/detail.json","/Users/workspace/wanxiang_mini/components/test/test.swan","/Users/workspace/wanxiang_mini/components/test123/test123.css","/Users/workspace/wanxiang_mini/components/test123/test123.swan","/Users/workspace/wanxiang_mini/components/test123/test123.json","/Users/workspace/wanxiang_mini/components/test/test.css"]},"host":"baiduboxapp","preview":{"packageId":347830},"publish":{"version":"1.0.34.2"},"setting":{"urlCheck":true},"swan":{"baiduboxapp":{"extensionJsVersion":"1.5.4","swanJsVersion":"3.105.25"}}}
+{
+    "appid": "17598442",
+    "compilation-args": {
+        "common": {},
+        "options": [
+            {
+                "extra": {
+                    "compileArgs": "--module cmd",
+                    "ext": {},
+                    "index": "pages/detail/detail",
+                    "query": "id=21345&title=%E6%9B%B2%E8%A7%A3%E5%8E%86%E5%8F%B2%EF%BC%9A%E3%80%8A%E9%85%92%E5%B9%B2%E5%80%98%E5%8D%96%E6%97%A0%E3%80%8B",
+                    "scene": {}
+                },
+                "id": 0,
+                "text": "详情"
+            },
+            {
+                "extra": {
+                    "compileArgs": "--module cmd",
+                    "ext": {},
+                    "index": "pages/test/test",
+                    "query": "",
+                    "scene": {}
+                },
+                "id": 1,
+                "text": "测试"
+            },
+            {
+                "extra": {
+                    "compileArgs": "--module cmd",
+                    "ext": {},
+                    "index": "pages/detail/detail",
+                    "query": "id=30",
+                    "scene": {}
+                },
+                "id": 2,
+                "text": "232"
+            }
+        ],
+        "selected": -1
+    },
+    "host": "baiduboxapp",
+    "preview": {
+        "packageId": 351259
+    },
+    "projectname": "wanxaing_mini",
+    "publish": {
+        "hideTips": true,
+        "version": "1.0.35.3"
+    },
+    "setting": {
+        "urlCheck": false
+    },
+    "swan": {
+        "baiduboxapp": {
+            "extensionJsVersion": "1.7.3",
+            "swanJsVersion": "3.120.15"
+        }
+    }
+}
