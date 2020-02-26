@@ -37,7 +37,7 @@ function bdParse(bindName = 'bdParseData', type = 'html', data = '<div class="co
             if (transData.images.length) {
                 for (let i = 0; i < transData.images.length; i++) {
                     let indexs = transData.images[i].index.split('.')
-                    if ( indexs[0]/1 > centerNum) {
+                    if ( indexs[0]/1 >= centerNum) {
                         indexs[0] = indexs[0]/1 + 1
                         transData.images[i].index = indexs.join('.')
                     }
@@ -140,7 +140,6 @@ function wxAutoImageCal(originalWidth, originalHeight, that, bindName) {
         results.imageWidth = originalWidth;
         results.imageheight = originalHeight;
     }
-    console.log('results', results);
     return results;
 }
 
