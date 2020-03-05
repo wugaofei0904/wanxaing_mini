@@ -1,12 +1,37 @@
 
+
+const App = getApp();
+
 Page({
     data: {
         listData: [],
         pageNum: 1,
         isNoDta: 0
     },
+    
     imageError(e) {
         console.log('image 发生 error 事件，携带值为', e.detail.errMsg);
+    },
+    cacheAction(res) {
+        if (res.data && res.data.data && res.data.data.length) {
+            res.data.data.forEach(item => {
+                const id = `${item.id}`
+                if (!App.cache.get(id)) {
+                    swan.request({
+                        url: 'https://www.jiandi.life/open/article/article?id=' + id,
+                        header: {
+                            'content-type': 'application/json'
+                        },
+                        success: res => {
+                            App.cache.set(id, res)
+                        },
+                        fail: err => {
+                        App.cache.delete(id)
+                        }
+                    })
+                }
+            })
+        }
     },
     onLoad() {
 
@@ -41,6 +66,7 @@ Page({
                             pageNum: pageNum + 1
                         })
                     }
+                    this.cacheAction(res)
                 } else {
 
                 }
@@ -109,6 +135,7 @@ Page({
                             pageNum: pageNum + 1
                         })
                     }
+                    this.cacheAction(res)
                 } else {
                     console.log('加载失败')
                 }

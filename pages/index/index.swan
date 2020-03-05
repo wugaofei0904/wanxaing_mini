@@ -1,6 +1,16 @@
-<scroll-view scroll-y class="scroll-view" scroll-into-view="{= toView =}" scroll-with-animation="true"
-	bind:scrolltoupper="upper" bind:scrolltolower="lower" upper-threshold="1" scroll-top="{= scrollTop =}"
-	lower-threshold="10" bind:scroll="myscroll" enable-back-to-top="true">
+<scroll-view
+	scroll-y
+	class="scroll-view"
+	scroll-into-view="{= toView =}"
+	scroll-with-animation="true"
+	bind:scrolltoupper="upper"
+	bind:scrolltolower="lower"
+	upper-threshold="1"
+	scroll-top="{= scrollTop =}"
+	lower-threshold="10"
+	bind:scroll="myscroll"
+	enable-back-to-top="true"
+>
 	<view class="style_pad">
 		<view s-for="listData" s-for-item="item">
 			<custom dataitem='{{item}}'></custom>
