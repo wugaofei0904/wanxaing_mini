@@ -284,28 +284,22 @@ Page({
             success: res => {
 
                 if (res.data.success) {
+                    setTimeout(() => {
+                      _this.removeSkeleton()
+                    }, 0)
                     this.setData({
                         detailData: res.data.data,
                         likeNum: res.data.data.likeNum,
+                        showIcon: true,
+                        showContent: true,
                     }, () => {
+                      let _body1 = res.data.data.body.replace(/http:/g, 'https:');
+                      bdParse.bdParse('article', 'html', _body1, _this, 5, '<ad appid="f1522535" apid="6928971" class="ad" type="banner" ></ad>');
                         let _time = res.data.data.createTime.split(' ')[0].split('-');
                         // let _time = res.data.data.createTime.split('T')[0].split('-');
                         _this.setData({
-                            time: _time[1] + '月' + _time[2] + '日'
+                            time: _time[1] + '月' + _time[2] + '日',
                         })
-                        setTimeout(() => {
-                            try {
-                                _this.removeSkeleton()
-                            } catch (err) {
-
-                            }
-                            _this.setData({
-                                showIcon: true,
-                                showContent: true
-                            })
-                        }, 500);
-
-
                         let num = 0;
                         let str = res.data.data.body;
                         while (str.indexOf('line-height') !== -1) {
@@ -317,9 +311,7 @@ Page({
                                 noLineHeight: true
                             })
                         }
-                        let _body1 = res.data.data.body.replace(/http:/g, 'https:');
-                      
-                        bdParse.bdParse('article', 'html', _body1, _this, 5, '<ad appid="f1522535" apid="6928971" class="ad" type="banner" ></ad>');
+                        
 
                         _this.setContentHeight();
                         _this.getTuijianList(res.data.data.authorName);
