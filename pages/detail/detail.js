@@ -99,8 +99,6 @@ Page({
         return i < 10 ? "0" + i : i;
     },
     onLoad: function (option) {
-
-        // console.log(option)
         swan.setPageInfo({
             title: option.title
         })

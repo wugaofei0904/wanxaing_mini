@@ -13,11 +13,6 @@ Page({
         console.log('image 发生 error 事件，携带值为', e.detail.errMsg);
     },
     onLoad() {
-
-        swan.setPageInfo({
-            title: '见地'
-        })
-
         this.getNetworkType()
 
         let that = this;
@@ -123,4 +118,9 @@ Page({
             }
         });
     },
+    onShow(){
+        swan.setPageInfo({
+            title: '见地'
+        })
+    }
 });
