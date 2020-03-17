@@ -1,0 +1,84 @@
+<view class='author_layout'>
+  <view class='author_top' bindtap='showDialog'>
+    <image class='author_avatar' src="{{authorDetail.headImg}}" />
+    <view class="author_info">
+      <view class="author_name">
+        <text>{{authorDetail.name}}</text>
+        <image class='right' src="../../images/back.png" /></view>
+      <view class='authro_tag'>
+        <image class='icon' src="../../images/authentication.png" />
+        <text>特邀作者</text>
+      </view>
+    </view>
+  </view>
+  <view class='author_desc' s-if='{{authorDetail.detail}}'>{{authorDetail.detail}}</view>
+  <!-- <view class='author_contact' s-if='{{authorDetail.wxId}}'>
+    <text>公众号ID：{{authorDetail.wxId}}</text>
+    <image class='copy' src="../../images/copy.png" bindtap='copy' data-text='{{authorDetail.wxId}}' />
+  </view> -->
+  <view class='author_business' s-if='{{authorDetail.business}}'>
+    <text>{{authorDetail.business}}</text>
+    <image class='copy' src="../../images/copy.png" bindtap='copy' data-text='{{authorDetail.business}}' />
+  </view>
+</view>
+
+<view class='article_layout'>
+  <view class='article_item' s-for='{{articleList}}' s-key='index'>
+    <view class='articel_info'>
+      <view class='article_name'>{{item.title}}</view>
+      <view class='article_bottom'>
+        <view class='articel_author'>
+          <image class='article_avatar' src="{{item.headImg}}" />
+          <text>{{item.authorName}}</text>
+        </view>
+        <text class='article_reading'>{{item.readNum}} 阅读</text>
+      </view>
+    </view>
+    <image class='article_cover' src="{{item.picUrl}}" />
+  </view>
+</view>
+
+<view class='dialog' bindtap='closeDialog' animation="{{animationData}}" catchtouchmove="true">
+  <view class='content' catchtap='catchClose' animation="{{animationData1}}">
+    <view class='info'>
+      <div class='canvas_avatar_layout'>
+        <image class='canvas_avatar' src="{{authorDetail.headImg}}" mode="aspectFit" />
+        <!-- <view></view>
+        <view></view>
+        <view></view>
+        <view></view> -->
+      </div>
+      <view class='canvas_author'>
+        <view class='canvas_author_name'>{{authorDetail.name}}</view>
+        <view class='canvas_author_desc' s-if='{{authorDetail.detail}}'>{{authorDetail.detail}}</view>
+        <view class='canvas_author_bottom'>
+          <view class='canvas_author_contact'>
+            <view class='canvas_author_contact_item_layout'>
+              <!-- <view class='canvas_author_contact_item' s-if='{{authorDetail.wxId}}'>公众号ID：{{authorDetail.wxId}}</view> -->
+              <text class='canvas_author_contact_item' s-if='{{authorDetail.business}}'>{{authorDetail.business}}</text>
+            </view>
+            <view class='canvas_author_tag'>见地  |  特邀作者</view>
+          </view>
+          <view class='canvas_author_code' s-if="{{authorDetail.qrCode && authorDetail.qrCode != 'null'}}">
+            <image class='canvas_author_code_img' src="{{authorDetail.qrCode}}" />
+            <text>扫一扫进入公众号</text>
+          </view>
+        </view>
+        
+      </view>
+    </view>
+
+    <view class='buttons'>
+      <view class='button' bindtap='drawCanvas'>
+        <image class='icon' src="../../images/save.png" />
+        <text>保存</text>
+      </view>
+      <view class='button' bindtap='closeDialog'>
+        <image class='icon' src="../../images/close.png" />
+        <text>关闭</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<canvas id="canvasId" class="myCanvas" canvas-id="canvasId" style='height: {{canvasHeight}}px'></canvas>

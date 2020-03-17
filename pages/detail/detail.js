@@ -366,5 +366,16 @@ Page({
             }
         });
 
-    }
+    },
+    startAuthor(){
+        swan.navigateTo({
+            url: `/pages/author/author?authorId=${this.data.detailData.authorId}`,
+            success: res => {
+                console.log('navigateTo success')
+            },
+            fail: err => {
+                console.log('navigateTo fail')
+            }
+        });
+    },
 });

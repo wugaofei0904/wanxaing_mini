@@ -2,7 +2,8 @@
     "pages": [
         "pages/index/index",
         "pages/detail/detail",
-        "pages/test/test"
+        "pages/test/test",
+        "pages/author/author"
     ],
     "window": {
         "navigationBarBackgroundColor": "#ffffff",

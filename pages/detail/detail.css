@@ -145,6 +145,7 @@ swan-ad {
     /* padding: 0 18rpx; */
     /* margin: 18.12rpx 0;
     width: 100%; */
+    margin-top: 40rpx;
     margin-bottom: -7.25rpx;
     /* border-top: 16.04rpx solid rgba(0, 0, 0, 0.038); */
     border-bottom: 20.04rpx solid rgba(0, 0, 0, 0);
@@ -517,6 +518,7 @@ swan-ad {
 }
 .anthor_msg {
     display: flex;
+    padding:0 6.688vw;
 }
 .anthor_msg_logo {
     width: 83.33rpx;
@@ -558,4 +560,8 @@ swan-ad {
     font-size: 23.55rpx;
     color: #9c9c9c;
     text-align: justify;
+    max-width: 510rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
 }
