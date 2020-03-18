@@ -17,13 +17,13 @@
     <image class='copy' src="../../images/copy.png" bindtap='copy' data-text='{{authorDetail.wxId}}' />
   </view> -->
   <view class='author_business' s-if='{{authorDetail.business}}'>
-    <text>{{authorDetail.business}}</text>
+    <text space="ensp">{{authorDetail.business}}</text>
     <image class='copy' src="../../images/copy.png" bindtap='copy' data-text='{{authorDetail.business}}' />
   </view>
 </view>
 
 <view class='article_layout'>
-  <view class='article_item' s-for='{{articleList}}' s-key='index'>
+  <view class='article_item' s-for='{{articleList}}' s-key='index' bindtap='jumpDetail' data-id='{{item.id}}' data-title='{{item.title}}'>
     <view class='articel_info'>
       <view class='article_name'>{{item.title}}</view>
       <view class='article_bottom'>
@@ -59,10 +59,10 @@
             </view>
             <view class='canvas_author_tag'>见地  |  特邀作者</view>
           </view>
-          <view class='canvas_author_code' s-if="{{authorDetail.qrCode && authorDetail.qrCode != 'null'}}">
+          <!-- <view class='canvas_author_code' s-if="{{authorDetail.qrCode && authorDetail.qrCode != 'null'}}">
             <image class='canvas_author_code_img' src="{{authorDetail.qrCode}}" />
             <text>扫一扫进入公众号</text>
-          </view>
+          </view> -->
         </view>
         
       </view>

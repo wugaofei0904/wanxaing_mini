@@ -116,9 +116,9 @@ Page({
 
         let promiseArr = []
         promiseArr.push(this.getImgInfo(detail.headImg))
-        if (detail.qrCode && detail.qrCode != 'null') {
-          promiseArr.push(this.getImgInfo(detail.qrCode))
-        }
+        // if (detail.qrCode && detail.qrCode != 'null') {
+        //   promiseArr.push(this.getImgInfo(detail.qrCode))
+        // }
 
         Promise.all(promiseArr).then( resList => {
           let ctx = swan.createCanvasContext('canvasId', this)
@@ -162,7 +162,7 @@ Page({
           //     this.drawQrCode(ctx, resList[1], mark)
           //     mark += 160 - textArr.length * 40
           //     ctx.setFillStyle('#999999')
-          //     ctx.setFontSize(22)
+          //     ctx.setFontSize(22) w
           //     this.drawText(ctx, textArr, mark)
               
           //     mark += textArr.length * 40
@@ -221,16 +221,46 @@ Page({
     
       drawText(ctx, arr, mark) {
         for (let i = 0; i < arr.length; i++) {
-          if (ctx.measureText(arr[i]).width < 400){
+          if (this.measureText(arr[i], 22) < 400){
             ctx.fillText(arr[i], 40, mark + 31 * i + 9 * (i+1))
           } else {
-            while (ctx.measureText(arr[i]).width >= 400) {
-              arr[i] = arr[i].substr(0, arr[i].length - 1)
+            for (let j = arr[i].length - 1; j >= 0; j--){
+              if(this.measureText(arr[i].substr(0, j), 22) < 400){
+                ctx.fillText(arr[i].substring(0, j), 40, mark + 31 * i + 9 * (i+1))
+                arr.splice(i+1, 0, arr[i].substring(j))
+                break;
+              }
             }
-            ctx.fillText(arr[i], 40, mark + 31 * i + 9 * (i+1))
           }
         }
-      },    
+      },
+      measureText (text, fontSize=10) {
+        text = String(text);
+        var text = text.split('');
+        var width = 0;
+        text.forEach(function(item) {
+            if (/[a-zA-Z]/.test(item)) {
+                width += 7;
+            } else if (/[0-9]/.test(item)) {
+                width += 5.5;
+            } else if (/\./.test(item)) {
+                width += 2.7;
+            } else if (/-/.test(item)) {
+                width += 3.25;
+            } else if (/[\u4e00-\u9fa5]/.test(item)) {  //中文匹配
+                width += 10;
+            } else if (/\(|\)/.test(item)) {
+                width += 3.73;
+            } else if (/\s/.test(item)) {
+                width += 2.5;
+            } else if (/%/.test(item)) {
+                width += 8;
+            } else {
+                width += 10;
+            }
+        });
+        return width * fontSize / 10;
+      },
     
       /**
        * 保存canvas内容为图片
@@ -329,4 +359,26 @@ Page({
           }
         })
       },
+
+      jumpDetail: function(e) {
+        let _id = e.currentTarget.dataset.id;
+        let _title = e.currentTarget.dataset.title;
+        swan.navigateTo({
+            url: '/pages/detail/detail?id=' + _id + '&title=' + _title,
+            success: res => {
+                console.log('navigateTo success')
+            },
+            fail: err => {
+                console.log('navigateTo fail')
+            }
+        });
+      },
+
+      onShareAppMessage() {
+        return {
+          title: `@${this.data.authorDetail.name} 的作者主页`,
+          imageUrl: this.data.authorDetail.headImg,
+          content: `#见地 | 特邀作者# ${this.data.authorDetail.detail}`
+        }
+    }
 });

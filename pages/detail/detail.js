@@ -99,8 +99,6 @@ Page({
         return i < 10 ? "0" + i : i;
     },
     onLoad: function (option) {
-
-        // console.log(option)
         swan.setPageInfo({
             title: option.title
         })
@@ -378,4 +376,11 @@ Page({
             }
         });
     },
+    onShareAppMessage() {
+        return {
+            title: this.data.detailData.title,
+            imageUrl: this.data.detailData.picUrl,
+            content: this.data.detailData.corePoint ? this.data.detailData.corePoint : `作者：${this.data.detailData.authorName}`,
+        }
+    }
 });

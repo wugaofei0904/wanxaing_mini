@@ -88,14 +88,13 @@ page {
   .author_desc {
     width: 100%;
     margin-top: 20rpx;
-    margin-bottom: 30rpx;
     font-size: 28rpx;
     color: #333333;
     line-height: 38rpx;
     max-height: 76rpx;
     overflow: hidden;
   }
-  .author_contact {
+  /* .author_contact {
     width: 100%;
     height: 40rpx;
     margin-bottom: 5rpx;
@@ -112,9 +111,10 @@ page {
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
-  }
+  } */
   .author_business {
     width: 100%;
+    margin-top: 30rpx;
     font-size: 22rpx;
     color: #666666;
     display: flex;
@@ -123,6 +123,8 @@ page {
   .author_business > text {
     max-width: 580rpx;
     line-height: 40rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .author_contact .copy,
   .author_business .copy {
@@ -334,9 +336,7 @@ page {
     font-size: 22rpx;
     color: #999999;
     line-height: 40rpx;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    overflow: hidden;
   }
   .canvas_author_tag {
     white-space: pre;

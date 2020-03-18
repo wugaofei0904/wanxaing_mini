@@ -123,7 +123,7 @@
 				</view>
 				<view class="anthor_msg_info">
 					<view class="anthor_msg_name">{{detailData.authorName}}</view>
-					<view class="anthor_msg_bq">知名科技界的自媒体达人</view>
+					<view class="anthor_msg_bq">{{detailData.detail}}</view>
 				</view>
 			</view>
 		</view>
