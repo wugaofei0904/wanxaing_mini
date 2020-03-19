@@ -9,7 +9,8 @@
                     "ext": {},
                     "index": "pages/author/author",
                     "query": "authorId=225",
-                    "scene": {}
+                    "scene": {},
+                    "isUpdate": false
                 },
                 "id": 0,
                 "text": "pages/author/author"
@@ -37,7 +38,7 @@
                 "text": "232"
             }
         ],
-        "selected": -1
+        "selected": 0
     },
     "editor": {
         "curPath": "/Users/workspace/wanxiang_mini/sitemap.txt",
@@ -100,7 +101,7 @@
     },
     "host": "baiduboxapp",
     "preview": {
-        "packageId": 366014
+        "packageId": 366286
     },
     "projectname": "wanxaing_mini",
     "publish": {

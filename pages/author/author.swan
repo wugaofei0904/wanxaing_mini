@@ -6,8 +6,8 @@
         <text>{{authorDetail.name}}</text>
         <image class='right' src="../../images/back.png" /></view>
       <view class='authro_tag'>
-        <image class='icon' src="../../images/authentication.png" />
-        <text>特邀作者</text>
+        <image class='icon' src="../../images/authentication.png" mode='widthFix' />
+        <!-- <text>特邀作者</text> -->
       </view>
     </view>
   </view>
