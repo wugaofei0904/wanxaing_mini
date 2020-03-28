@@ -1,3 +1,4 @@
+<filter src="/utils/filter.js" module="filter"></filter>
 <import src="../../bdParse/bdParse/bdParse.swan" />
 <!-- <test123 hours="{{hours}}" minutes="{{minutes}}" seconds="{{seconds}}"></test123> -->
 <!-- <view class="time_auto">倒计时{{hours}}:{{minutes}}:{{seconds}}</view> -->
@@ -16,8 +17,6 @@
 			</view>
 			<!-- 作者信息 -->
 			<view s-if="{{detailData.isOwn == 1}}" class="anthor_info pad_box">
-
-
 				<view class="flex_box">
 					<view class="left_con">
 						<view class="touxiang">
@@ -110,23 +109,6 @@
 
 		</view>
 
-		<!-- 作者 -->
-		<!-- <view class="container_node">
-		<view class="container_node_top">
-			<view class="container_node_top_line"></view>
-			<view class="container_node_title">作者</view>
-		</view>
-		<view class="anthor_msg">
-			<view class="anthor_msg_logo">
-				<image class="anthor_logo" src="{{detailData.headImg}}"></image>
-				<image class="v_logo" src="./../../images/v_logo.png"></image>
-			</view>
-			<view class="anthor_msg_info">
-				<view class="anthor_msg_name">{{detailData.authorName}}</view>
-				<view class="anthor_msg_bq">知名科技界的自媒体达人</view>
-			</view>
-		</view>
-	</view> -->
 		<!-- jd广告位 -->
 		<!-- <view class="jd_ad_container">
 			<image class="jd-ad-head" src="./../../images/ad-icon-1.png"></image>
@@ -217,6 +199,43 @@
 			<!-- <ad s-if="{{showadid_1}}" appid="f1522535" updatetime="{{adNumber}}" apid="6775935" class="ad" type="feed">
 			</ad> -->
 		</view>
+        <!-- 底部作者区域 -->
+        <view class="container_node">
+            <view class="container_node_top">
+                <view class="container_node_top_line"></view>
+                <view class="container_node_title">作者</view>
+            </view>
+            <view class="anthor_msg">
+                <view class="anthor_msg_logo">
+                    <image class="anthor_logo" src="{{detailData.headImg}}"></image>
+                    <image class="v_logo" src="./../../images/v_logo.png"></image>
+                </view>
+                <view class="anthor_msg_info">
+                    <view class="anthor_msg_name">{{detailData.authorName}}</view>
+                    <view class="anthor_msg_bq">知名科技界的自媒体达人</view>
+                </view>
+            </view>
+        </view>
+        <!-- 评论区 -->
+        <view class="container_node" s-if="commentList.total > 0">
+            <view class="container_node_top m_b_0">
+                <view class="container_node_top_line"></view>
+                <view class="container_node_title">评论</view>
+            </view>
+            <view class="comment_list">
+                <comment-list
+                    data-list="{{commentList}}"
+                    bindcheckall="commentListShow"
+                    bindcheckreplay="commentDetailShow"
+                    bindreplay="initPublisher" bind:likeerror="likeError"
+                    bind:likesuccess="likeSuceess"
+                    article="{={title:detailData.title,id:detailData.id,openid:openid}=}"
+                    bind:getuser="returnUserInfo"
+                    getuser="{{!userInfo}}">
+                </comment-list>
+            </view>
+            
+        </view>
 		<view class="tj-detail-padding-box">
 			<!-- 相关推荐 -->
 			<view s-if="{{tuijianList.length}}" class="container_node pad_box">
@@ -254,3 +273,141 @@
 
 	</view>
 </scroll-view>
+<view class="bottom_bar">
+    <view class="input-box">
+        <button type="primary" class="btn-get-info" size="mini" plain="false" open-type="getUserInfo" bindgetuserinfo="returnUserInfo" s-if="!userInfo"></button>
+        <view class="click-wrap" bindtap="commentThis">
+            <view class="bottom_bar_input_image">
+                <image src="../../images/input_logo.png"></image>
+            </view>
+            <view class="input-talk">{{commentValue}}</view>
+        </view>
+    </view>
+    
+    <view class="bottom_bar_btn_wrap">
+        <view class="btn-bar-wrap" bindtap="commentListShow">
+            <image src="../../images/comment_logo_4.png" class="bottom_bar_image_1"></image>
+            <view class="btn-bar-wrap_red_count" s-if="commentList.total>0"><text>{{filter.likeFormat(commentList.total)}}</text></view>
+        </view>
+        <image src="../../images/liked_2.png" class="bottom_bar_image_2" s-if="hasLike" bindtap="cancelLike"></image>
+        <image src="../../images/like_icon_bottom.png" class="bottom_bar_image_2" s-else bindtap="likeAdd"></image>
+        <image src="../../images/shop_logo.png" class="bottom_bar_image_3" bindtap="goodShow" s-if="goodList&&goodList.length>0"></image>
+        <image src="../../images/share_logo_2.png" class="bottom_bar_image_4" bindtap="shareArticle"></image>
+    </view>
+</view>
+<!-- 评论列表弹出层 -->
+<modal show="{{showCommentList}}" bindback="commentListHide" title="{{pageCommentData.total}} 条评论">
+    <scroll-view scroll-y class="comment-list-scroll" bind:scrolltolower="getPageComment" lower-threshold="50">
+        <comment-list
+            data-list="{=pageCommentData=}"
+            showAll="{{false}}"
+            s-if="pageCommentData.total > 0"
+            bindreplay="initPublisher"
+            bindcheckreplay="commentDetailShow"
+            bind:likeerror="likeError"
+            bind:likesuccess="likeSuceess"
+            article="{={title:detailData.title,id:detailData.id,openid:openid}=}"
+            bind:getuser="returnUserInfo2"
+            getuser="{{!userInfo}}"
+            s-if="showCommentList"
+        >
+        </comment-list>
+        <block s-else>
+            <view class="take-up"></view>
+            <image src="/images/no-comment.png" class="no-comment"></image>
+            <view class="no-comment-text">没有任何评论</view>
+        </block>
+    </scroll-view>
+    <view class="comment-list-action">
+        <view class="input-box m_r_0">
+            <button type="primary" class="btn-get-info" size="mini" plain="false" open-type="getUserInfo" bindgetuserinfo="returnUserInfo" s-if="!userInfo"></button>
+            <view class="click-wrap" bindtap="commentThis">
+                <view class="bottom_bar_input_image">
+                    <image src="../../images/input_logo.png"></image>
+                </view>
+                <view class="input-talk">{{commentValue}}</view>
+            </view>
+        </view>
+    </view>
+</modal>
+<!-- 评论详情弹出层 -->
+<modal show="{{showCommentDetail}}" bindback="commentDetailHide" title="评论详情">
+    <scroll-view scroll-y class="comment-list-scroll" bindscrolltolower="getCommetDetail">
+        <view class="comment-detail-comment">
+            <per-comment
+                item="{{currentComment}}"
+                bindreply="initPublisher"
+                is-comment="{{true}}"
+                bind:likeerror="likeError"
+                bind:likesuccess="likeSuceess"
+                article="{={title:detailData.title,id:detailData.id,openid:openid}=}"
+                bind:getuser="returnUserInfo3"
+                getuser="{{!userInfo}}"
+            ></per-comment>
+        </view>
+        <view class="comment-detail-blank"></view>
+        <view class="comment-detail-count">
+            {{commentDetailData.total}}条回复
+        </view>
+        <per-comment
+            s-for="commentDetailData.data"
+            s-for-item="item" item="{{item}}"
+            index="{{index}}" length="{{commentDetailData.data.length}}"
+            bindreply="initPublisher"
+            bind:likeerror="likeError"
+            bind:likesuccess="likeSuceess"
+            article="{={title:detailData.title,id:detailData.id,openid:openid}=}"
+            bind:getuser="returnUserInfo2"
+            getuser="{{!userInfo}}"
+            toggle-show="{{detailLikeToggle}}"
+        ></per-comment>
+        <block s-if="commentDetailData.total == 0">
+            <view class="no-reply-take-up"></view>
+            <image src="/images/no-comment.png" class="no-comment no-reply"></image>
+            <view class="no-comment-text no-reply-text">没有任何回复</view>
+        </block>
+    </scroll-view>
+    <view class="comment-list-action">
+        <view class="input-box m_r_0">
+            <button type="primary" class="btn-get-info" size="mini" plain="false" open-type="getUserInfo" bindgetuserinfo="returnUserInfo3" s-if="!userInfo"></button>
+            <view class="click-wrap" bindtap="commentToComment">
+                <view class="bottom_bar_input_image">
+                    <image src="../../images/input_logo.png"></image>
+                </view>
+                <view class="input-talk">回复{{currentComment.nickname}}：</view>
+            </view>
+        </view>
+    </view>
+</modal>
+<!-- 专项好物弹出层 -->
+<modal show="{{showGood}}" bindback="goodHide" title="专享好物">
+    <scroll-view scroll-y class="goog-list-box">
+        <view class="per-good" s-for="goodList trackBy item" bindtap="jumpUrl" data-url="{{item.adUrl}" data-title="{{item.goodsTitle}}">
+            <image src="{{item.goodsPic}}" class="per-good_image"></image>
+            <view class="per-good_content">
+                <view class="per-good_content_title">
+                   {{item.goodsTitle}}
+                </view>
+                <view class="price-box">
+                    <view class="current-price">
+                        ￥<text class="current-price_number">{{item.salesPrice}}</text>
+                    </view>
+                    <view class="former-price">￥{{item.price}}</view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</modal>
+
+<!-- 半屏发布器 bind:browsemode="publishClose"-->
+<c-comment-publisher
+    show-publish="{= showPublish =}"
+    content-placeholder="{{commentSendData.nickname?'回复'+commentSendData.nickname+'：':'谈谈你的见解...'}}"
+    comment-param="{{commentParam}}"
+    bind:error="publishError"
+    bind:fail="publishFail"
+    bind:relasecomment="releseComment">
+</c-comment-publisher>
+
+<!-- 获取用户信息弹出层 -->
+<!-- <get-info show="{{true}}" bindconfirm="publisherShow" bind:cancel="getUserHide"/> -->

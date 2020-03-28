@@ -1,0 +1,17 @@
+<view class="container" s-if="show" bindtouchstart="touchStart" bindtouchmove="touchMove">
+    <!--to do-->
+    <view class="mask {{modalShow?'show':''}}" bindtap="back"></view>
+    <view class="modal-box {{modalShow?'show':''}}" >
+        <view class="modal-title" bindtap="back">
+            <view class="back-icon-box">
+                <image src="/images/back-icon.png" class="back-icon"></image>
+            </view>
+            <view class="modal-title-text">
+                {{title}}
+            </view>
+        </view>
+        <view class="content">
+            <slot></slot>
+        </view>
+    </view>
+</view>

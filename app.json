@@ -2,12 +2,18 @@
     "pages": [
         "pages/index/index",
         "pages/detail/detail",
-        "pages/test/test"
+        "pages/test/test",
+        "pages/good/good"
     ],
     "window": {
         "navigationBarBackgroundColor": "#ffffff",
         "navigationBarTextStyle": "black",
         "navigationBarTitleText": "见地",
         "backgroundTextStyle": "light"
+    },
+    "dynamicLib": {
+        "myDynamicLib": {
+            "provider": "smart-sc"
+        }
     }
 }

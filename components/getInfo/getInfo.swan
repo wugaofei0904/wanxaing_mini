@@ -1,0 +1,13 @@
+<view class="container" s-if="{{comShow}}">
+    <view class="mask" bindtap="cancel" bindtap="close"></view>  
+    <!--content-->  
+    <view animation="{{animationData}}" class="showModal-box">  
+        <view class="showModal-title">用户授权</view>  
+        <view class="showModal-content">  
+             <button type="primary" class="btn-get-info" size="mini" plain="false" open-type="getUserInfo" bindgetuserinfo="returnUserInfo">
+                获取用户头像及昵称
+            </button>
+        </view>  
+        <view class="btn-wrap" bindtap="cancel" data-statu="close">取消</view>  
+    </view>
+</view>

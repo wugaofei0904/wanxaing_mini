@@ -1,0 +1,45 @@
+<filter src="/utils/filter.js" module="filter"></filter>
+<view class="container">
+    <view class="per-comment">
+        <view class="author">
+            <image src="{{item.headimg}}"></image>
+            <view class="author-nickname">{{item.nickname}}</view>
+        </view>
+        <view class="content">
+            <block s-if="item.type==2">回复<text class="color_b">{{item.answerName}}</text>：</block>
+            {{item.body}}
+        </view>
+        <view class="action_box">
+            <view class="time">
+                <text>{{filter.dateFormat(item.createTime)}}</text>
+            </view>
+            <view class="action">
+                <view class="like-wrap">
+                    <!-- <image src="/images/zan_logo_2.png" class="action_image_zan"></image> -->
+                    <c-like
+                        class="custom-class"
+                        is-liked="{{!!item.isLike}}"
+                        is-show-toast="{{false}}"
+                        animation-type="{{1}}"
+                        like-param='{{filter.stringFormat({openid:article.openid,snid:article.id,spid:item.id,title:article.title,path:"/pages/detail/detail?id="+article.id})}}'
+                        bind:success="likeSuccess"
+                        bind:success="likeSuccess"
+                        bind:error="likeError"
+                        data-comment="{{item}}"
+                        s-if="toggleShow"
+                    >
+                    </c-like>
+                    <text class="{{item.isLike?'is-liked':''}}">{{filter.likeFormat(item.likeNum)}}认同</text>
+                </view>
+                <view class="m_l_80 position_r">
+                    <button type="primary" class="btn-get-info" size="mini" plain="false" open-type="getUserInfo" bindgetuserinfo="returnUserInfo" s-if="getuser" data-comment="{{item}}"></button>
+                    <view class="flex-box" bindtap="replay" data-comment="{{item}}">
+                        <image src="/images/comment_logo_4.png" class="action_image_replay"></image>
+                        <text class="action_txt">回复</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="line_1px" s-if="index < length-1"></view>
+</view>

@@ -1,0 +1,78 @@
+<filter src="/utils/filter.js" module="filter"></filter>
+<view class="container">
+    <!--to do-->
+    <view class="comment-box">
+        <view class="per-comment" s-for="dataList.data" s-for-item="item" bindtap="discuss" data-id="{{item.id}}">
+            <view class="author">
+                <image src="{{item.headimg}}"></image>
+                <view class="author-nickname">{{item.nickname}}</view>
+            </view>
+            <view class="content">
+                {{filter.ellipsis({item:item.body,limit:limit,ellipsis:ellipsisObj[item.id]&&ellipsisObj[item.id].show})}}
+                <text class="btn-more" s-if='!(ellipsisObj[item.id]&&ellipsisObj[item.id].show)&&item.body.length>limit' data-id="{{item.id}}" bindtap="showAll">展开</text>
+            </view>
+            <view class="action_box">
+                <view class="time">
+                    <text>{{filter.dateFormat(item.createTime)}}</text>
+                </view>
+                <view class="action">
+                    <view class="like-wrap flex-box" data-comment="{{item}}">
+                        <!-- <image src="/images/zan_logo_2.png" class="action_image_zan"></image> -->
+                        <c-like
+                            class="custom-class"
+                            is-liked="{{!!item.isLike}}"
+                            is-show-toast="{{false}}"
+                            animation-type="{{1}}"
+                            like-param='{{filter.stringFormat({openid:article.openid,snid:article.id,spid:item.id,title:article.title,path:"/pages/detail/detail?id="+article.id})}}'
+                            bind:success="likeSuccess"
+                            bind:error="likeError"
+                            data-comment="{=item=}"
+                            s-if="toggleShow"
+                        >
+                        </c-like>
+                        <text class="{{item.isLike?'is-liked':''}}">{{filter.likeFormat(item.likeNum)}}认同</text>
+                        <!-- <view class="no-openid" s-if="noLike"></view> -->
+                    </view>
+                    <view class="m_l_80 position_r">
+                        <button type="primary" class="btn-get-info" size="mini" plain="false" open-type="getUserInfo" bindgetuserinfo="returnUserInfo" s-if="getuser" data-comment="{{item}}"></button>
+                        <view class="flex-box" bindtap="replay" data-comment="{{item}}">
+                            <image src="/images/comment_logo_4.png" class="action_image_replay"></image>
+                            <text class="action_txt">回复</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <block s-if="{{item.answer&&String(item.answer)!='{}'}}">
+                <view class="line_1px"></view>
+                <view class="reply-box">
+                    <view class="reply-author">
+                        <image src="{{item.answer.headimg}}"></image>
+                        <view class="reply-author">{{item.answer.nickname}}</view>
+                    </view>
+                    <view class="reply-pad-box">
+                        <view class="content reply-content">
+                            <!-- {{item.answer.body}} -->
+                            <!-- {{filter.ellipsis({item:item.answer.body,limit:limit,ellipsisObj:ellipsisObj["id"]})}}
+                            <text class="btn-more" s-if="(!ellipsisObj["id"]||!ellipsisObj["id"].answerShow)&&item.body.answer.length>limit" data-id="{{item.id}}" bindtap="showAnserAll">展开</text> -->
+                            {{filter.ellipsis({item:item.answer.body,limit:limit,ellipsis:ellipsisObj[item.id]&&ellipsisObj[item.id].answerShow})}}
+                            <text class="btn-more" s-if='!(ellipsisObj[item.id]&&ellipsisObj[item.id].answerShow)&&item.answer.body.length>limit' data-id="{{item.id}}" bindtap="showAnserAll">展开</text>
+                        </view>
+                        <block s-if="{{item.answer.total>2}}">
+                            <view class="line_1px"></view>
+                            <view class="checkohter" bindtap="checkReplay" data-comment="{{item}}">
+                                <text>查看全部{{item.answer.total}}条回复</text>
+                                <image src="/images/right-icon.png"  />
+                            </view>
+                        </block>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </view>
+    <view class="btn-all-box" s-if="showAll&&dataList.total > 2">
+        <view class="btn-all" bindtap="checkall">
+            <image src="/images/comment_logo_3.png"></image>
+            <text>查看全部{{dataList.total}}}条评论</text>
+        </view>
+    </view>
+</view>

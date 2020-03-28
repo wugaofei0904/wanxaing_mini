@@ -3,6 +3,11 @@
     "usingComponents": {
         "custom": "/components/custom/custom",
         "test": "/components/test/test",
-        "test123": "/components/test123/test123"
+        "test123": "/components/test123/test123",
+        "comment-list": "/components/commentList/commentList",
+        "modal": "/components/modal/modal",
+        "per-comment": "/components/perComment/perComment",
+        "c-comment-publisher": "dynamicLib://myDynamicLib/comment-publisher",
+        "get-info": "/components/getInfo/getInfo"
     }
 }
