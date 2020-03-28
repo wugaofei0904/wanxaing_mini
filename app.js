@@ -4,8 +4,10 @@
  */
 
 /* globals swan */
+import { LRUMap } from './utils/lru'
 
 App({
+    cache: new LRUMap(30),
     onLaunch(options) {
         // do something when launch
         // 引导添加，参见文档： http://smartprogram.baidu.com/docs/design/component/guide_add/

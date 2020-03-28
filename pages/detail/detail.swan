@@ -16,7 +16,8 @@
 				<!-- <view s-if="{{detailData.isOwn == 1 && showIcon}}" class="yc_icon">原创</view> -->
 			</view>
 			<!-- 作者信息 -->
-			<view s-if="{{detailData.isOwn == 1}}" class="anthor_info pad_box">
+			<!-- <view s-if="{{detailData.isOwn == 1}}" class="anthor_info pad_box"> -->
+			<view s-if="{{detailData.isOwn == 1}}" class="anthor_info pad_box" bindtap='startAuthor'>
 				<view class="flex_box">
 					<view class="left_con">
 						<view class="touxiang">
@@ -39,7 +40,7 @@
 
 			</view>
 
-			<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName == ''}}" class="anthor_info pad_box">
+			<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName == ''}}" class="anthor_info pad_box" bindtap='startAuthor'>
 				<view class="flex_box">
 					<view class="left_con">
 						<view class="touxiang">
@@ -58,7 +59,7 @@
 				</view>
 			</view>
 
-			<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName != ''}}" class="anthor_info pad_box">
+			<view s-if="{{detailData.isOwn != 1 && detailData.otherAuthorName != ''}}" class="anthor_info pad_box" bindtap='startAuthor'>
 				<view class="touxiang">
 					<image class="touxiang" src="{{detailData.headImg}}"></image>
 					<image class="v_logo" src="./../../images/v_logo.png"></image>
@@ -108,7 +109,23 @@
 
 
 		</view>
-
+		<!-- 作者 -->
+		<view class="container_node" bindtap='startAuthor'>
+			<view class="container_node_top">
+				<view class="container_node_top_line"></view>
+				<view class="container_node_title">作者</view>
+			</view>
+			<view class="anthor_msg">
+				<view class="anthor_msg_logo">
+					<image class="anthor_logo" src="{{detailData.headImg}}"></image>
+					<image class="v_logo" src="./../../images/v_logo.png"></image>
+				</view>
+				<view class="anthor_msg_info">
+					<view class="anthor_msg_name">{{detailData.authorName}}</view>
+					<view class="anthor_msg_bq">{{detailData.detail}}</view>
+				</view>
+			</view>
+		</view>
 		<!-- jd广告位 -->
 		<!-- <view class="jd_ad_container">
 			<image class="jd-ad-head" src="./../../images/ad-icon-1.png"></image>
@@ -200,7 +217,7 @@
 			</ad> -->
 		</view>
         <!-- 底部作者区域 -->
-        <view class="container_node">
+        <!-- <view class="container_node">
             <view class="container_node_top">
                 <view class="container_node_top_line"></view>
                 <view class="container_node_title">作者</view>
@@ -215,7 +232,7 @@
                     <view class="anthor_msg_bq">知名科技界的自媒体达人</view>
                 </view>
             </view>
-        </view>
+        </view> -->
         <!-- 评论区 -->
         <view class="container_node" s-if="commentList.total > 0">
             <view class="container_node_top m_b_0">

@@ -148,6 +148,7 @@ swan-ad {
     /* padding: 0 18rpx; */
     /* margin: 18.12rpx 0;
     width: 100%; */
+    margin-top: 40rpx;
     margin-bottom: -7.25rpx;
     /* border-top: 16.04rpx solid rgba(0, 0, 0, 0.038); */
     border-bottom: 20.04rpx solid rgba(0, 0, 0, 0);
@@ -563,6 +564,10 @@ swan-ad {
     font-size: 23.55rpx;
     color: #9c9c9c;
     text-align: justify;
+    max-width: 510rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
 }
 /* 评论区 */
 /* 底部bar */

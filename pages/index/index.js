@@ -1,19 +1,18 @@
 
+
+const App = getApp();
+
 Page({
     data: {
         listData: [],
         pageNum: 1,
         isNoDta: 0
     },
+    
     imageError(e) {
         console.log('image 发生 error 事件，携带值为', e.detail.errMsg);
     },
     onLoad() {
-
-        swan.setPageInfo({
-            title: '见地'
-        })
-
         this.getNetworkType()
 
         let that = this;
@@ -119,4 +118,16 @@ Page({
             }
         });
     },
+    onShow(){
+        swan.setPageInfo({
+            title: '见地'
+        })
+    },
+    onShareAppMessage() {
+        return {
+            title: '邀请您使用见地阅读发现更多好内容',
+            content: '一个专注于信息价值的内容社区，言之有物，即为@见地',
+            imageUrl: 'https://product-jiandi.cdn.bcebos.com/%E8%A7%81%E5%9C%B0LOGO.png'
+        }
+    }
 });
