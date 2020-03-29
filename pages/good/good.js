@@ -2,8 +2,9 @@ Page({
     data: {
         url:""
     },
-    onLoad: function () {
+    onLoad: function (option) {
         // 监听页面加载的生命周期函数
+        console.log(option)
         this.setData({
             url:option.url
         })

@@ -30,6 +30,9 @@
     transition: transform 0.3s;
     transform: translateY(954.11rpx);
 }
+.modal-box.height-auto{
+    height: auto;
+}
 .modal-box.show{
     transform: translateY(0);
 }

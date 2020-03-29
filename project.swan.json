@@ -20,16 +20,19 @@
     },
     "host": "baiduboxapp",
     "preview": {
-        "packageId": 380123
+        "packageId": 380629
     },
     "projectname": "wanxaing_mini",
+    "publish": {
+        "version": "1.0.36.4"
+    },
     "setting": {
         "urlCheck": true
     },
     "swan": {
         "baiduboxapp": {
-            "extensionJsVersion": "1.10.4",
-            "swanJsVersion": "3.150.255-rc"
+            "extensionJsVersion": "1.7.3",
+            "swanJsVersion": "3.120.16"
         }
     }
 }

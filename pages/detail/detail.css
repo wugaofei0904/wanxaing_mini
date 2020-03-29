@@ -344,10 +344,7 @@ swan-ad {
     padding: 18.12rpx 9.66rpx 18.12rpx 18.12rpx;
     margin-bottom: 72.46rpx;
 }
-.container_node_title {
-    /* font-weight: 600; */
-    font-weight: bold;
-}
+
 .hexin_guandian_title {
     font-family: PingFangSC-Medium;
     font-size: 28.99rpx;
@@ -504,21 +501,32 @@ swan-ad {
 }
 .container_node_top {
     padding: 0 50.16rpx;
-    height: 28.99rpx;
+    height: 28rpx;
+    font-family: PingFangSC-Semibold;
+    font-size: 28rpx;
+    color: #000000;
+    line-height: 28rpx;
+    margin-bottom: 24.15rpx;
     display: flex;
     align-items: center;
-    font-family: PingFangSC-Semibold;
-    font-size: 28.99rpx;
-    color: #000000;
-    line-height: 28.99rpx;
-    margin-bottom: 24.15rpx;
-}
+    /* vertical-align: middle; */
+    /* display: table; */
 
+}
 .container_node_top_line {
     width: 5.43rpx;
-    height: 28.99rpx;
+    height: 28rpx;
     background: #000000;
     margin-right: 7.25rpx;
+}
+.container_node_title {
+    /* font-weight: 600; */
+    font-weight: bold;
+    font-size: 56rpx;
+    line-height: 56rpx;
+    transform: scale(0.5);
+    transform-origin: 0% 50%;
+
 }
 .anthor_msg {
     display: flex;
@@ -570,6 +578,15 @@ swan-ad {
     text-overflow:ellipsis;
 }
 /* 评论区 */
+.commet-title{
+    margin-left: 50.16rpx;
+    font-size: 28.99rpx;
+    height: 28.99rpx;
+    line-height: 28.99rpx;
+    font-weight: bold;
+    border-left:5.43rpx solid#000000;
+    padding-left: 7.25rpx;   
+}
 /* 底部bar */
 .bottom_bar{
     height: 94rpx;

@@ -21,6 +21,10 @@ Component({
                     
                 }
             }
+        },
+        autoHeight: { // 是否高度自适应
+            type: Boolean,
+            value: false,
         }
     },
 

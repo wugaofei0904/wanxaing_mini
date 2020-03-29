@@ -582,6 +582,12 @@ Page({
                 commentSendData: e
             })
         }
+        // console.log(this.data.showPublish);
+        setTimeout(()=>{
+            this.setData({
+                showPublish: false
+            })
+        }, 500);
         // return;
         // this.getOpenid().then(res=>{
             
@@ -593,6 +599,11 @@ Page({
             userInfo:e.detail,
             showPublish: true
         });
+        setTimeout(()=>{
+            this.setData({
+                showPublish: false
+            })
+        }, 500);
     },
     // 同步评论数据到百度后台 失败回调 
     publishFail(e){
@@ -922,19 +933,29 @@ Page({
                 'content-type': 'application/json'
             },
             success: res => {
+                console.log(res);
                 if (res.data.success) {
-                    this.goodList = res.data.data;
+                    this.setData("goodList",res.data.data);
                 }
             }
         })
     },
     // 跳转商品链接
     jumpUrl(e){
+        // console.log(e.currentTarget.dataset)
         const url = e.currentTarget.dataset.url;
-        const title = e.currentTarget.dataset.title;
-        swan.navigateTo({
-            url: '/pages/good/good?url=' + url + '&title=' + title,
-        })
+
+        let _path = 'pages/proxy/union/union?isUnion=1&spreadUrl=' + encodeURIComponent(url)
+        swan.navigateToSmartProgram({
+            appKey: '4VvF29wlVg61mjRYCp4tY5dqkBgOyoYN', // 要打开的小程序 App Key
+            path: _path, // 打开的页面路径，如果为空则打开首页
+            success: res => {
+                console.log('navigateToSmartProgram success', res);
+            },
+            fail: err => {
+                console.log('navigateToSmartProgram fail', err);
+            }
+        });
     },
     startAuthor(){
         swan.navigateTo({

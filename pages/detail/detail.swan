@@ -235,10 +235,23 @@
         </view> -->
         <!-- 评论区 -->
         <view class="container_node" s-if="commentList.total > 0">
-            <view class="container_node_top m_b_0">
-                <view class="container_node_top_line"></view>
-                <view class="container_node_title">评论</view>
-            </view>
+            <!-- <view class="commet-title">
+                评论
+            </view> -->
+            <view class="container_node_top">
+				<view class="container_node_top_line"></view>
+				<view class="container_node_title">评论</view>
+			</view>
+            <!-- <comment-list
+                data-list="{{commentList}}"
+                bindcheckall="commentListShow"
+                bindcheckreplay="commentDetailShow"
+                bindreplay="initPublisher" bind:likeerror="likeError"
+                bind:likesuccess="likeSuceess"
+                article="{={title:detailData.title,id:detailData.id,openid:openid}=}"
+                bind:getuser="returnUserInfo"
+                getuser="{{!userInfo}}">
+            </comment-list> -->
             <view class="comment_list">
                 <comment-list
                     data-list="{{commentList}}"
@@ -397,9 +410,9 @@
     </view>
 </modal>
 <!-- 专项好物弹出层 -->
-<modal show="{{showGood}}" bindback="goodHide" title="专享好物">
+<modal show="{{showGood}}" bindback="goodHide" title="专享好物" auto-height="{{true}}">
     <scroll-view scroll-y class="goog-list-box">
-        <view class="per-good" s-for="goodList trackBy item" bindtap="jumpUrl" data-url="{{item.adUrl}" data-title="{{item.goodsTitle}}">
+        <view class="per-good" s-for="goodList trackBy item" bindtap="jumpUrl" data-url="{{item.adUrl}}" data-title="{{item.goodsTitle}}">
             <image src="{{item.goodsPic}}" class="per-good_image"></image>
             <view class="per-good_content">
                 <view class="per-good_content_title">
