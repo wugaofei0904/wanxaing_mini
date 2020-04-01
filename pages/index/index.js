@@ -120,7 +120,7 @@ Page({
     },
     onShow(){
         swan.setPageInfo({
-            title: '见地'
+            title: '见地公会'
         })
     },
     onShareAppMessage() {

@@ -238,7 +238,7 @@
             <!-- <view class="commet-title">
                 评论
             </view> -->
-            <view class="container_node_top">
+            <view class="container_node_top m_b_0">
 				<view class="container_node_top_line"></view>
 				<view class="container_node_title">评论</view>
 			</view>

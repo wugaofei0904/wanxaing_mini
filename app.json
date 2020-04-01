@@ -9,7 +9,7 @@
     "window": {
         "navigationBarBackgroundColor": "#ffffff",
         "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "见地",
+        "navigationBarTitleText": "见地公会",
         "backgroundTextStyle": "light"
     },
     "dynamicLib": {

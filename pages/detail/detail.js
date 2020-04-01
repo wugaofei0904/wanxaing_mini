@@ -159,9 +159,9 @@ Page({
     onLoad: function (option) {
         // 获取当前用户点赞对象，保存到临时变量种
         this.data.commentLikedDataTemp = JSON.parse(swan.getStorageSync('commentLikedData') || '{}');
-        swan.setPageInfo({
-            title: option.title
-        })
+        // swan.setPageInfo({
+        //     title: option.title
+        // })
 
         this.getNetworkType();
         // this.leftTimer('2020/01/16 13:59:36')
@@ -545,9 +545,9 @@ Page({
     // 初始化半屏发布器
     initPublisher(data){
         const e = data.detail;
-        this.setData({
-            showPublish: true
-        })
+        // this.setData({
+        //     showPublish: true
+        // })
         if(!this.data.userInfo){
             swan.getSetting({
                 success:res=>{
@@ -623,8 +623,8 @@ Page({
     },
     // 发送评论
     releseComment(e){
+        if(e.inputValue.trim().length == 0)return;
         let {id,openid,userInfo,commentSendData,detailData,currentComment} = this.data;
-        console.log("releseComment");
         let reqData = {
             nickname: userInfo.nickName,
             headimg: userInfo.avatarUrl,

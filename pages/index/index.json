@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "见地",
+    "navigationBarTitleText": "见地公会",
     "usingComponents": {
         "custom": "/components/custom/custom",
         "anthor": "/components/anthor/anthor"

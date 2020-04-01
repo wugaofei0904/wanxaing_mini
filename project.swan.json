@@ -8,7 +8,6 @@
                     "compileArgs": "--module cmd",
                     "ext": {},
                     "index": "pages/detail/detail",
-                    "isUpdate": false,
                     "query": "id=10738",
                     "scene": {}
                 },
@@ -16,15 +15,15 @@
                 "text": "详情"
             }
         ],
-        "selected": 0
+        "selected": -1
     },
     "host": "baiduboxapp",
     "preview": {
-        "packageId": 380629
+        "packageId": 381687
     },
     "projectname": "wanxaing_mini",
     "publish": {
-        "version": "1.0.36.4"
+        "version": "1.0.37.5"
     },
     "setting": {
         "urlCheck": true

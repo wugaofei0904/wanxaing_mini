@@ -507,8 +507,9 @@ swan-ad {
     color: #000000;
     line-height: 28rpx;
     margin-bottom: 24.15rpx;
-    display: flex;
-    align-items: center;
+    vertical-align: middle;
+    /* display: flex;
+    align-items: flex-start; */
     /* vertical-align: middle; */
     /* display: table; */
 
@@ -518,14 +519,18 @@ swan-ad {
     height: 28rpx;
     background: #000000;
     margin-right: 7.25rpx;
+    display: inline-block;
+    vertical-align: middle;
 }
 .container_node_title {
     /* font-weight: 600; */
     font-weight: bold;
-    font-size: 56rpx;
-    line-height: 56rpx;
-    transform: scale(0.5);
-    transform-origin: 0% 50%;
+    font-size: 28rpx;
+    line-height: 28rpx;
+    display: inline-block;
+    vertical-align: middle;
+    /* transform: scale(0.5);
+    transform-origin: 0% 50%; */
 
 }
 .anthor_msg {
