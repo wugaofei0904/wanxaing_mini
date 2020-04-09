@@ -96,12 +96,14 @@
 
 				<!-- 赞 -->
 				<view bindtap="likeAdd" class="good_btn pad_box">
-					<view class="zan_logo">
+					<!-- <view class="zan_logo">
 						<image class="zan_logo_img"
 							src="{{hasLike ? './../../images/liked.png':'./../../images/zan_logo.png' }}">
 						</image>
 					</view>
-					<view class="zan_num {{hasLike ? 'liked':''}}">{{likeNum}}</view>
+					<view class="zan_num {{hasLike ? 'liked':''}}">{{likeNum}}</view> -->
+                    <follow-swan type="primary"></follow-swan>
+                    <a-follow></a-follow>
 				</view>
 				<!-- </div> -->
 			</view>
@@ -276,7 +278,8 @@
 
 				<view s-for="{{tuijianList}}" s-for-item="item" s-for-index="idx">
 					<view class="padddd">
-						<custom s-if="{{item != ''}}" noMargin='{{idx == 0}}' dataitem='{{item}}'></custom>
+						<!-- <custom s-if="{{item != ''}}" noMargin='{{idx == 0}}' dataitem='{{item}}'></custom> -->
+                        <recommend-list s-if="{{item != ''}}" noMargin='{{idx == 0}}' dataitem='{{item}}' />
 					</view>
 
 					<view s-if="{{item == ''}}" class="ad_container">

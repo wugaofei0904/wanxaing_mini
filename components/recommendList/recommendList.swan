@@ -1,0 +1,28 @@
+<view class="container">
+    <!--to do-->
+    <!-- <view class="per-recommend">
+        <view class="content-box">
+            <view class="title">
+                <text>{{dataitem.title}}</text>
+            </view>
+            <view class="per-footer">
+                
+            </view>
+        </view>
+        <image mode="aspectFill" lazy-load="{{true}}" src="{{imgurl}}"></image>
+    </view> -->
+    <view class='article_item {{noMargin?"p_t_0":""}}' bindtap='jumpDetail' data-id='{{dataitem.id}}' data-title='{{dataitem.title}}'>
+        <view class='articel_info'>
+            <view class='article_name'>{{dataitem.title}}</view>
+            <view class='article_bottom'>
+                <view class='articel_author'>
+                    <image class='article_avatar' src="{{dataitem.headImg}}" />
+                    <text>{{dataitem.authorName}}</text>
+                    <view class="v_logo"></view>
+                </view>
+                <text class='article_reading'>{{dataitem.readNum}} 阅读</text>
+            </view>
+        </view>
+        <image class='article_cover' src="{{imgurl}}" />
+  </view>
+</view>

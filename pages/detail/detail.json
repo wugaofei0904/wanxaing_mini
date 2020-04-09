@@ -5,6 +5,7 @@
         "test": "/components/test/test",
         "test123": "/components/test123/test123",
         "comment-list": "/components/commentList/commentList",
+        "recommend-list": "/components/recommendList/recommendList",
         "modal": "/components/modal/modal",
         "per-comment": "/components/perComment/perComment",
         "c-comment-publisher": "dynamicLib://myDynamicLib/comment-publisher",

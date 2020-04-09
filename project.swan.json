@@ -15,13 +15,13 @@
                 "text": "详情"
             }
         ],
-        "selected": -1
+        "selected": 0
     },
     "host": "baiduboxapp",
     "preview": {
         "packageId": 381687
     },
-    "projectname": "wanxaing_mini",
+    "projectname": "program",
     "publish": {
         "version": "1.0.37.5"
     },
@@ -30,8 +30,8 @@
     },
     "swan": {
         "baiduboxapp": {
-            "extensionJsVersion": "1.7.3",
-            "swanJsVersion": "3.120.16"
+            "swanJsVersion": "3.170.10",
+            "extensionJsVersion": "1.12.3"
         }
     }
 }
