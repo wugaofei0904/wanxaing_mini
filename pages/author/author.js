@@ -1,3 +1,4 @@
+import {api} from '../../config.js'
 Page({
     data: {
         authorId: null,
@@ -31,7 +32,7 @@ Page({
 
     getAuthorDetail() {
         swan.request({
-            url: 'https://www.jiandi.life/open/author/info?authorId=' + this.data.authorId,
+            url: api + '/open/author/info?authorId=' + this.data.authorId,
             header: {
                 'content-type': 'application/json'
             },
@@ -58,7 +59,7 @@ Page({
             return false
         }
         swan.request({
-            url: `https://www.jiandi.life/open/article/list-page-m?pageNum=${this.data.pageNum}&pageSize=10&authorId=${this.data.authorId}`,
+            url: api + `/article/list-page-m?pageNum=${this.data.pageNum}&pageSize=10&authorId=${this.data.authorId}`,
             header: {
                 'content-type': 'application/json'
             },

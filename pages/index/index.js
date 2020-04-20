@@ -1,7 +1,7 @@
 
 
 const App = getApp();
-
+import {api} from '../../config.js'
 Page({
     data: {
         listData: [],
@@ -18,7 +18,7 @@ Page({
         let that = this;
         let { pageNum } = this.data;
         swan.request({
-            url: 'https://www.jiandi.life/open/article/list-page-m?pageSize=5&pageNum=' + pageNum + '&status=1', // 仅为示例，并非真实的接口地址
+            url: api+'/article/list-page-m?pageSize=5&pageNum=' + pageNum + '&status=1', // 仅为示例，并非真实的接口地址
             header: {
                 'content-type': 'application/json'
             },
@@ -89,7 +89,7 @@ Page({
 
         swan.showLoading();
         swan.request({
-            url: 'https://www.jiandi.life/open/article/list-page-m?pageSize=5&pageNum=' + pageNum + '&status=1',
+            url: api + '/article/list-page-m?pageSize=5&pageNum=' + pageNum + '&status=1',
             header: {
                 'content-type': 'application/json'
             },

@@ -1,4 +1,5 @@
 var bdParse = require('./../../bdparse/bdParse/bdParse.js');
+import {api} from '../../config.js'
 // let timer = null
 const debounce = (fn, delay = 500) => {
     let timer   = null;
@@ -20,6 +21,7 @@ const debounce = (fn, delay = 500) => {
         // }
     }
 }
+let app = getApp()
 Page({
     data: {
         id: 0,
@@ -83,6 +85,9 @@ Page({
         currentLikeIdAndStatus: "",// 当前正在点赞id和点赞状态
         commentLikedDataTemp:{},// 当前用户点赞对象
         detailLikeToggle:true,// 重新渲染列表，用于点赞组件的缓存问题
+        canIUseFollow: swan.canIUse('follow-swan'), // 是否可以使用关注组件
+        _showFollow: false,
+        showFollow: false,// 60s 后显示关注
     },
     getNetworkType() {
         swan.getNetworkType({
@@ -157,7 +162,26 @@ Page({
         return i < 10 ? "0" + i : i;
     },
     onLoad: function (option) {
-        // 获取当前用户点赞对象，保存到临时变量种
+        Object.defineProperty(app.globalData,"showFollow",{
+            set:()=>{
+                return this.data._showFollow;
+            },
+            set:val=>{
+                this.setData("showFollow",val);
+                this.data._showFollow = val;
+            }
+        })
+        if(swan.canIUse("follow-swan") && swan.canIUse("checkFavor")){
+            swan.checkFavor({
+                appid:"f1522535",
+                success: res=>{
+                    if(res){
+                        this.setData("isFollow", true);
+                    }
+                }
+            })
+        }
+        // 获取当前用户点赞对象，保存到临时变量中
         this.data.commentLikedDataTemp = JSON.parse(swan.getStorageSync('commentLikedData') || '{}');
         // swan.setPageInfo({
         //     title: option.title
@@ -253,7 +277,7 @@ Page({
     setContentHeight() {
         try {
             const result = swan.getSystemInfoSync();
-            console.log('getSystemInfoSync success', result.windowHeight);
+            // console.log('getSystemInfoSync success', result.windowHeight);
             this.setData({
                 contentHeight: result.windowHeight * 3
             })
@@ -264,7 +288,7 @@ Page({
     },
     yueduAdd(id) {
         swan.request({
-            url: 'https://www.jiandi.life/open/article/read?id=' + id,
+            url: api+'/article/read?id=' + id,
             header: {
                 'content-type': 'application/json'
             },
@@ -282,7 +306,7 @@ Page({
 
     getJdAd(id) {
         swan.request({
-            url: 'https://www.jiandi.life/open/ad/list-ad-m?id=' + id,
+            url: api+'/ad/list-ad-m?id=' + id,
             header: {
                 'content-type': 'application/json'
             },
@@ -313,7 +337,7 @@ Page({
         const likedData = JSON.parse(swan.getStorageSync('liked') || '{}');
         if (likedData[id]) return;
         swan.request({
-            url: 'https://www.jiandi.life/open/article/like?id=' + id,
+            url: api+'/article/like?id=' + id,
             header: {
                 'content-type': 'application/json'
             },
@@ -353,7 +377,7 @@ Page({
             return;
         }
         swan.request({
-            url: 'https://www.jiandi.life/open/article/cancel-like?id=' + id,
+            url: api+'/article/cancel-like?id=' + id,
             header: {
                 'content-type': 'application/json'
             },
@@ -381,7 +405,7 @@ Page({
     getDetailData(id) {
         let _this = this;
         swan.request({
-            url: 'https://www.jiandi.life/open/article/article?id=' + id,
+            url: api+'/article/article?id=' + id,
             header: {
                 'content-type': 'application/json'
             },
@@ -436,7 +460,7 @@ Page({
     getTuijianList(name) {
         let { id } = this.data;
         swan.request({
-            url: 'https://www.jiandi.life/open/article/list-page-m?id=' + id + '&pageSize=20&pageNum=1&status=&title=&authorName=' + name + '&startTime=&endTime=',
+            url: api+'/article/list-page-m?id=' + id + '&pageSize=20&pageNum=1&status=&title=&authorName=' + name + '&startTime=&endTime=',
             header: {
                 'content-type': 'application/json'
             },
@@ -519,7 +543,7 @@ Page({
             appType: 0
         }
         swan.request({
-            url: 'https://www.jiandi.life/open/comment/m/list',
+            url: api+'/comment/m/list',
             header: {
                 'content-type': 'application/json'
             },
@@ -641,7 +665,7 @@ Page({
             reqData.pId = currentComment.id
         }
         swan.request({
-            url: 'https://www.jiandi.life/open/comment/m/comment',
+            url: api+'/comment/m/comment',
             data: reqData,
             header: {
                 'content-type': 'application/json'
@@ -785,7 +809,7 @@ Page({
             pageNum: pageCommentData.pageNum
         }
         swan.request({
-            url: 'https://www.jiandi.life/open/comment/m/list-page',
+            url: api+'/comment/m/list-page',
             header: {
                 'content-type': 'application/json'
             },
@@ -872,7 +896,7 @@ Page({
             pageNum: commentDetailData.pageNum
         }
         swan.request({
-            url: 'https://www.jiandi.life/open/comment/m/list-page-s',
+            url: api+'/comment/m/list-page-s',
             header: {
                 'content-type': 'application/json'
             },
@@ -928,7 +952,7 @@ Page({
     getGoodList(){
         const {id} = this.data;
         swan.request({
-            url: 'https://www.jiandi.life/open/ad/list-ad-m?id='+id,
+            url: api+'/ad/list-ad-m?id='+id,
             header: {
                 'content-type': 'application/json'
             },
@@ -1086,7 +1110,7 @@ Page({
         // const commentLikedData = JSON.parse(swan.getStorageSync('commentLikedData') || '{}');
         if(isPlus){ //点赞态
             swan.request({
-                url: 'https://www.jiandi.life/open/comment/m/like?id='+id,
+                url: api+'/comment/m/like?id='+id,
                 header: {
                     'content-type': 'application/json'
                 },
@@ -1097,7 +1121,7 @@ Page({
             })
         }else{
             swan.request({
-                url: 'https://www.jiandi.life/open/comment/m/cancel-like?id='+id,
+                url: api+'/comment/m/cancel-like?id='+id,
                 header: {
                     'content-type': 'application/json'
                 },
@@ -1159,5 +1183,15 @@ Page({
             imageUrl: this.data.detailData.picUrl,
             content: this.data.detailData.corePoint ? this.data.detailData.corePoint : `作者：${this.data.detailData.authorName}`,
         }
+    },
+    // 不支持follow-swan 组件 点击关注
+    followAction(d){
+        swan.showFavoriteGuide({
+            type: 'tip',
+            content:'关注小程序',
+            complete: res=>{
+                console.log(res)
+            }
+        })
     }
 });

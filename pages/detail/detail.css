@@ -187,7 +187,7 @@ swan-ad {
     /* margin-top: 12.12rpx!important; */
     margin: 0 0 22.08rpx !important;
     line-height: 54.35rpx;
-    font-size: 28.99rpx;
+    /* font-size: 28.99rpx; */
 }
 .bdParse-p {
     line-height: 54.35rpx;
@@ -581,6 +581,20 @@ swan-ad {
     white-space: nowrap;
     overflow: hidden;
     text-overflow:ellipsis;
+}
+/* 关注banner */
+.focus-banner{
+    width: 100%;
+    position: relative;
+    margin: 55.56rpx auto 14rpx;
+}
+.focus-banner image{
+    width: 100%;
+}
+.btn-follow{
+    position: absolute;
+    top: 30%;
+    right: 30rpx; 
 }
 /* 评论区 */
 .commet-title{

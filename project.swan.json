@@ -8,22 +8,22 @@
                     "compileArgs": "--module cmd",
                     "ext": {},
                     "index": "pages/detail/detail",
-                    "query": "id=10738",
+                    "query": "id=40147",
                     "scene": {}
                 },
                 "id": 0,
                 "text": "详情"
             }
         ],
-        "selected": 0
+        "selected": -1
     },
     "host": "baiduboxapp",
     "preview": {
-        "packageId": 381687
+        "packageId": 395750
     },
     "projectname": "program",
     "publish": {
-        "version": "1.0.37.5"
+        "version": "1.0.39.7"
     },
     "setting": {
         "urlCheck": true

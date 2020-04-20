@@ -96,15 +96,20 @@
 
 				<!-- 赞 -->
 				<view bindtap="likeAdd" class="good_btn pad_box">
-					<!-- <view class="zan_logo">
+					<view class="zan_logo">
 						<image class="zan_logo_img"
 							src="{{hasLike ? './../../images/liked.png':'./../../images/zan_logo.png' }}">
 						</image>
 					</view>
-					<view class="zan_num {{hasLike ? 'liked':''}}">{{likeNum}}</view> -->
-                    <follow-swan type="primary"></follow-swan>
-                    <a-follow></a-follow>
+					<view class="zan_num {{hasLike ? 'liked':''}}">{{likeNum}}</view>
 				</view>
+                <!-- 关注banner -->
+                <!-- s-if="canIUseFollow && !isFollow && showFollow" -->
+                <view class="focus-banner" s-if="canIUseFollow && !isFollow && showFollow">
+                    <image src="/images/focus_banner.png" mode="widthFix"></image>
+                    <follow-swan class="btn-follow" size="default" type="primary" />
+                    <!-- <smt-mask name="示例小程序"/> -->
+                </view>
 				<!-- </div> -->
 			</view>
 

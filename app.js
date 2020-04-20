@@ -11,9 +11,9 @@ App({
     onLaunch(options) {
         // do something when launch
         // 引导添加，参见文档： http://smartprogram.baidu.com/docs/design/component/guide_add/
-        if (swan.canIUse('showFavoriteGuide')) {
+        if (swan.canIUse('showFavoriteGuide') && !swan.canIUse('follow-swan')) {
             swan.showFavoriteGuide({
-                type: 'bar',
+                type: 'tip',
                 content: '一键关注小程序',
                 success(res) {
                     console.log('关注成功：', res);
@@ -22,6 +22,13 @@ App({
                     console.log('关注失败：', err);
                 }
             });
+        }
+        
+        if(swan.canIUse('follow-swan')){
+            let timmer = setTimeout(()=>{
+                this.globalData.showFollow = true;
+                clearTimeout(timmer);
+            }, 60 * 1000);
         }
     },
     onShow(options) {
@@ -61,5 +68,8 @@ App({
                 // });
             }
         });
+    },
+    globalData:{
+        showFollow: false
     }
 });

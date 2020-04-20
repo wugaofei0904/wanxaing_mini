@@ -1,4 +1,0 @@
-<view class="container">
-    <!--to do-->
-    <web-view src="{{url}}"></web-view>
-</view>
